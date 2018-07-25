@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="SagloHPTLC.jnlp">
+  <information>
+    <title>SagloHPTLC</title>
+    <vendor>Dell</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="SagloHPTLC.jar" size="65102" download="eager" />
+    <jar href="lib\artoolkitplus-2.3.1-1.2-linux-x86_64.jar" size="173838" download="eager" />
+    <jar href="lib\artoolkitplus-2.3.1-1.2.jar" size="24209" download="eager" />
+    <jar href="lib\ffmpeg-2.1.1-android-arm.jar" size="5878630" download="eager" />
+    <jar href="lib\ffmpeg-2.1.1-linux-x86.jar" size="5528902" download="eager" />
+    <jar href="lib\ffmpeg-2.1.1-linux-x86_64.jar" size="5562192" download="eager" />
+    <jar href="lib\ffmpeg-2.1.1-macosx-x86_64.jar" size="5494910" download="eager" />
+    <jar href="lib\ffmpeg-2.1.1-windows-x86.jar" size="10720957" download="eager" />
+    <jar href="lib\ffmpeg-2.1.1-windows-x86_64.jar" size="11225446" download="eager" />
+    <jar href="lib\ffmpeg-3.0.2-1.2-linux-x86_64.jar" size="10940625" download="eager" />
+    <jar href="lib\ffmpeg-3.0.2-1.2.jar" size="223892" download="eager" />
+    <jar href="lib\flandmark-1.07-1.2-linux-x86_64.jar" size="41342" download="eager" />
+    <jar href="lib\flandmark-1.07-1.2.jar" size="11887" download="eager" />
+    <jar href="lib\flycapture-2.9.3.43-1.2-linux-x86_64.jar" size="244714" download="eager" />
+    <jar href="lib\flycapture-2.9.3.43-1.2.jar" size="142816" download="eager" />
+    <jar href="lib\javacpp-0.10.jar" size="225614" download="eager" />
+    <jar href="lib\javacpp-1.2.jar" size="290506" download="eager" />
+    <jar href="lib\javacpp.jar" size="160677" download="eager" />
+    <jar href="lib\javacv-1.2.jar" size="369447" download="eager" />
+    <jar href="lib\javacv-android-arm.jar" size="3141247" download="eager" />
+    <jar href="lib\javacv-linux-x86.jar" size="1775263" download="eager" />
+    <jar href="lib\javacv-linux-x86_64.jar" size="1903104" download="eager" />
+    <jar href="lib\javacv-macosx-x86_64.jar" size="1828476" download="eager" />
+    <jar href="lib\javacv-windows-x86.jar" size="1352112" download="eager" />
+    <jar href="lib\javacv-windows-x86_64.jar" size="1810497" download="eager" />
+    <jar href="lib\javacv.jar" size="1153428" download="eager" />
+    <jar href="lib\libdc1394-2.2.4-1.2-linux-x86_64.jar" size="167116" download="eager" />
+    <jar href="lib\libdc1394-2.2.4-1.2.jar" size="30799" download="eager" />
+    <jar href="lib\libfreenect-0.5.3-1.2-linux-x86_64.jar" size="85071" download="eager" />
+    <jar href="lib\libfreenect-0.5.3-1.2.jar" size="22030" download="eager" />
+    <jar href="lib\mysql-connector-java-5.1.23-bin.jar" size="834126" download="eager" />
+    <jar href="lib\opencv-2.4.10-0.10.jar" size="813781" download="eager" />
+    <jar href="lib\opencv-2.4.8-android-arm.jar" size="6521063" download="eager" />
+    <jar href="lib\opencv-2.4.8-linux-x86.jar" size="5835417" download="eager" />
+    <jar href="lib\opencv-2.4.8-linux-x86_64.jar" size="5815021" download="eager" />
+    <jar href="lib\opencv-2.4.8-macosx-x86_64.jar" size="5459015" download="eager" />
+    <jar href="lib\opencv-2.4.8-windows-x86.jar" size="11039869" download="eager" />
+    <jar href="lib\opencv-2.4.8-windows-x86_64.jar" size="12025234" download="eager" />
+    <jar href="lib\opencv-3.1.0-1.2-linux-x86_64.jar" size="8905603" download="eager" />
+    <jar href="lib\opencv-3.1.0-1.2.jar" size="662534" download="eager" />
+    <jar href="lib\sqlite-jdbc-3.23.1.jar" size="6733696" download="eager" />
+    <jar href="lib\videoinput-0.200-1.2-linux-x86_64.jar" size="2231" download="eager" />
+    <jar href="lib\videoinput-0.200-1.2.jar" size="15616" download="eager" />
+  </resources>
+  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="SagloHPTLC" >
+    <param name="requiredFXVersion" value="8.0+"/>
+  </applet-desc>
+  <jfx:javafx-desc  width="800" height="600" main-class="saglohptlc.SagloHPTLC"  name="SagloHPTLC" />
+  <update check="always"/>
+</jnlp>
