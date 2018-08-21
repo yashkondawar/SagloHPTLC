@@ -8,13 +8,9 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="SagloHPTLC.jar" size="65102" download="eager" />
+    <jar href="SagloHPTLC.jar" size="77955" download="eager" />
     <jar href="lib\artoolkitplus-2.3.1-1.2-linux-x86_64.jar" size="173838" download="eager" />
     <jar href="lib\artoolkitplus-2.3.1-1.2.jar" size="24209" download="eager" />
-    <jar href="lib\ffmpeg-2.1.1-android-arm.jar" size="5878630" download="eager" />
-    <jar href="lib\ffmpeg-2.1.1-linux-x86.jar" size="5528902" download="eager" />
-    <jar href="lib\ffmpeg-2.1.1-linux-x86_64.jar" size="5562192" download="eager" />
-    <jar href="lib\ffmpeg-2.1.1-macosx-x86_64.jar" size="5494910" download="eager" />
     <jar href="lib\ffmpeg-2.1.1-windows-x86.jar" size="10720957" download="eager" />
     <jar href="lib\ffmpeg-2.1.1-windows-x86_64.jar" size="11225446" download="eager" />
     <jar href="lib\ffmpeg-3.0.2-1.2-linux-x86_64.jar" size="10940625" download="eager" />
@@ -40,10 +36,6 @@
     <jar href="lib\libfreenect-0.5.3-1.2.jar" size="22030" download="eager" />
     <jar href="lib\mysql-connector-java-5.1.23-bin.jar" size="834126" download="eager" />
     <jar href="lib\opencv-2.4.10-0.10.jar" size="813781" download="eager" />
-    <jar href="lib\opencv-2.4.8-android-arm.jar" size="6521063" download="eager" />
-    <jar href="lib\opencv-2.4.8-linux-x86.jar" size="5835417" download="eager" />
-    <jar href="lib\opencv-2.4.8-linux-x86_64.jar" size="5815021" download="eager" />
-    <jar href="lib\opencv-2.4.8-macosx-x86_64.jar" size="5459015" download="eager" />
     <jar href="lib\opencv-2.4.8-windows-x86.jar" size="11039869" download="eager" />
     <jar href="lib\opencv-2.4.8-windows-x86_64.jar" size="12025234" download="eager" />
     <jar href="lib\opencv-3.1.0-1.2-linux-x86_64.jar" size="8905603" download="eager" />

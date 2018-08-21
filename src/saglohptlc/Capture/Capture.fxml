@@ -11,17 +11,17 @@
          <children>
             <Button mnemonicParsing="false" prefHeight="52.0" prefWidth="153.0" />
             <Button mnemonicParsing="false" prefHeight="57.0" prefWidth="152.0" text="Load Image" />
-            <Button fx:id="qualitative" mnemonicParsing="false" prefHeight="57.0" prefWidth="152.0" text="Qualitative" />
-            <Button fx:id="quantitative" mnemonicParsing="false" prefHeight="57.0" prefWidth="152.0" text="Quantitative" />
-            <Button fx:id="repo" mnemonicParsing="false" prefHeight="57.0" prefWidth="152.0" text="Reports" />
-            <Button fx:id="logout" mnemonicParsing="false" prefHeight="57.0" prefWidth="152.0" text="Log out" />
-            <Button fx:id="about" mnemonicParsing="false" prefHeight="57.0" prefWidth="152.0" text="About us" />
+            <Button fx:id="qualitative" mnemonicParsing="false" onAction="#onQualitative" prefHeight="57.0" prefWidth="152.0" text="Qualitative" />
+            <Button fx:id="quantitative" mnemonicParsing="false" onAction="#onQuantitative" prefHeight="57.0" prefWidth="152.0" text="Quantitative" />
+            <Button fx:id="repo" mnemonicParsing="false" onAction="#onReports" prefHeight="57.0" prefWidth="152.0" text="Reports" />
+            <Button fx:id="logout" mnemonicParsing="false" onAction="#logOut" prefHeight="57.0" prefWidth="152.0" text="Log out" />
+            <Button fx:id="about" mnemonicParsing="false" onAction="#aboutUs" prefHeight="57.0" prefWidth="152.0" text="About us" />
          </children>
       </VBox>
       <ImageView fx:id="img" fitHeight="298.0" fitWidth="409.0" layoutX="182.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true" />
       <Button layoutX="187.0" layoutY="14.0" mnemonicParsing="false" onAction="#Browse" prefHeight="29.0" prefWidth="83.0" text="Browse" />
       <Button layoutX="287.0" layoutY="14.0" mnemonicParsing="false" onAction="#startCamera" prefHeight="29.0" prefWidth="111.0" text="Start Camera" />
       <Button layoutX="407.0" layoutY="14.0" mnemonicParsing="false" onAction="#Capture" prefHeight="29.0" prefWidth="83.0" text="Capture" />
-      <Button layoutX="502.0" layoutY="14.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="83.0" text="Save" />
+      <Button layoutX="502.0" layoutY="14.0" mnemonicParsing="false" onAction="#Save" prefHeight="29.0" prefWidth="83.0" text="Save" />
    </children>
 </AnchorPane>

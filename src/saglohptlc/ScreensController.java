@@ -93,12 +93,9 @@ public class ScreensController  extends StackPane {
             System.out.println("screen hasn't been loaded!!! \n");
             return false;
         }
+        
 
-
-        /*Node screenToRemove;
-         if(screens.get(name) != null){   //screen loaded
-         if(!getChildren().isEmpty()){    //if there is more than one screen
-         getChildren().add(0, screens.get(name));     //add the screen
+        /*Node screenToRemove;et(name));     //add the screen
          screenToRemove = getChildren().get(1);
          getChildren().remove(1);                    //remove the displayed screen
          }else{

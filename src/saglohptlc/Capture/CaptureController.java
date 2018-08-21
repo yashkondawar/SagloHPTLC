@@ -38,6 +38,8 @@ import org.bytedeco.javacv.Java2DFrameConverter;
 import org.bytedeco.javacv.OpenCVFrameConverter;
 import javafx.scene.image.Image;
 import saglohptlc.SagloHPTLC;
+import saglohptlc.DatabaseModel;
+
 /**
  * FXML Controller class
  *
@@ -50,7 +52,7 @@ public class CaptureController implements Initializable,ControlledScreen{
     BufferedImage bufferedimage=null;
     CanvasFrame frame=null;
     Thread thread=null;
-
+    DatabaseModel model=new DatabaseModel();
     @FXML
     ImageView img;
     
@@ -68,8 +70,8 @@ public class CaptureController implements Initializable,ControlledScreen{
             File file = fileChooser.showOpenDialog(null);
                        
             try {
-                BufferedImage bufferedImage = ImageIO.read(file);
-                Image image = SwingFXUtils.toFXImage(bufferedImage, null);
+                bufferedimage = ImageIO.read(file);
+                Image image = SwingFXUtils.toFXImage(bufferedimage, null);
                 img.setImage(image);
                 img.fitWidthProperty().bind(imagecont.widthProperty()); 
                 //pane.setCenter(img);
@@ -84,8 +86,6 @@ public class CaptureController implements Initializable,ControlledScreen{
         public void run() 
         {             
             CvCapture cp=opencv_highgui.cvCreateCameraCapture(0);
-          
-
             grab=opencv_highgui.cvQueryFrame(cp);
             frame=new CanvasFrame("Webcam");
             //frame.setDefaultCloseOperation(CanvasFrame.EXIT_ON_CLOSE); 
@@ -97,9 +97,15 @@ public class CaptureController implements Initializable,ControlledScreen{
     thread.start();
 
     }
-    
+    public void Save(ActionEvent event)
+    {
+        model.storeImage(bufferedimage);
+    }
     public void onQualitative (ActionEvent event) {
+        
+        
         myController.setScreen(SagloHPTLC.QualitativeScene);
+        
     }
     
     public void onQuantitative (ActionEvent event) {
