@@ -140,6 +140,8 @@ public class CaptureController implements Initializable,ControlledScreen{
         img.setImage(image);
         frame.dispose();
     }
+    
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
     }
