@@ -20,6 +20,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
+import javafx.scene.layout.Pane;
 import javafx.stage.Screen;
 
 /**
@@ -63,20 +64,32 @@ public class SagloHPTLC extends Application {
         
         mainContainer.setScreen(SagloHPTLC.Main);
         
-        Group root = new Group();
+        Pane root = new Pane();
         root.getChildren().addAll(mainContainer);
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();
+        letterbox(scene, root);
 
+        //primaryStage.setFullScreen(true);
             
         }catch (Exception e){
             e.printStackTrace();
         }
-        
-        
-        
     }
+    private void letterbox(final Scene scene, final Pane contentPane) {
+    final double initWidth  = scene.getWidth();
+    final double initHeight = scene.getHeight();
+    final double ratio      = initWidth / initHeight;
+
+    SceneSizeChangeListener sizeListener = new SceneSizeChangeListener(scene, ratio, initHeight, initWidth, contentPane);
+    scene.widthProperty().addListener(sizeListener);
+    scene.heightProperty().addListener(sizeListener);
+  }
+
+        
+        
+    
 
     /**
      * @param args the command line arguments

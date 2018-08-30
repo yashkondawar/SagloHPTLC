@@ -9,7 +9,41 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="314.0" prefWidth="514.0" style="-fx-background-color: cyan;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="saglohptlc.Login.LoginController">
+<!--<AnchorPane fx:id="stackpane" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="saglohptlc.Login.LoginController">
+<children>-->
+<!--
+<HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="saglohptlc.Login.LoginController">
+    <children>
+        <ImageView fitHeight="394.0" fitWidth="355.0" pickOnBounds="true" preserveRatio="true">
+             <image>
+            <Image url="@Capture.PNG" />
+         </image>
+        </ImageView>
+     
+
+        
+<VBox  prefHeight="400.0" prefWidth="600.0" spacing="20.0" style="-fx-background-color: DARKCYAN;">
+   <children>
+               <Label fx:id="alert" prefHeight="18.0" prefWidth="350.0" />
+      <Label text="Login" />
+      <TextField fx:id="username" promptText="Username" />
+      <TextField fx:id="password" promptText="Password" />
+               <HBox prefHeight="53.0" prefWidth="500.0">
+                  <children>
+                     <Button fx:id="loginbtn" mnemonicParsing="false" onAction="#login" prefHeight="79.0" prefWidth="168.0" text="Login" />
+                     <Button fx:id="closebtn" mnemonicParsing="false" onAction="#close" prefHeight="76.0" prefWidth="172.0" text="Close" />
+                  </children>
+               </HBox>
+   </children>
+   <padding>
+      <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+   </padding>
+</VBox>
+    </children>
+</HBox>
+-->
+
+<AnchorPane id="AnchorPane" fx:id="anchorpane" prefHeight="314.0" prefWidth="514.0" style="-fx-background-color: cyan;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="saglohptlc.Login.LoginController">
    <children>
       <ImageView fitHeight="314.0" fitWidth="262.0" layoutX="1.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
          <image>

@@ -18,6 +18,7 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.*;
 import saglohptlc.*;
 
@@ -34,8 +35,11 @@ public class LoginController implements Initializable,ControlledScreen{
     private PasswordField password;
     @FXML
     private Label alert;
+    @FXML
+    private AnchorPane root1;
     public LoginModel model=new LoginModel();
     
+   
     public void login (ActionEvent event) {
         try{
             System.out.println(username.getText());
@@ -58,7 +62,6 @@ public class LoginController implements Initializable,ControlledScreen{
         }catch (Exception e){
             e.printStackTrace();
         }
-        
     }
     public void close (ActionEvent event) {
         Platform.exit();

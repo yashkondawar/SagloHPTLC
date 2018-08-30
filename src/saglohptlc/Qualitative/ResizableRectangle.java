@@ -58,9 +58,9 @@ class ResizableRectangle extends Rectangle {
         {
             System.out.println("DBL Click");
             TextField t=new TextField();
-            t.setAlignment(Pos.CENTER_RIGHT);
+            /*t.setAlignment(Pos.CENTER_RIGHT);
             moveRect.getX();
-            moveRect.getY();
+            moveRect.getY();*/
             hb.getChildren().add(t);
             //group.getChildren().add(t);
             
