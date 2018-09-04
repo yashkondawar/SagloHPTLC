@@ -4,15 +4,17 @@
  * and open the template in the editor.
  */
 package saglohptlc.Qualitative;
-
 /**
  *
  * @author Soha
  */
+import java.util.*;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.Group;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -29,10 +31,22 @@ class ResizableRectangle extends Rectangle {
     private double mouseClickPozX;
     private double mouseClickPozY;
     private static final double RESIZER_SQUARE_SIDE = 8;
+    private String newcaption=null;
+    private int counter=0;
     private Paint resizerSquareColor = Color.WHITE;
     private Paint rectangleStrokeColor = Color.BLACK;
-    
-
+    private static ArrayList<Point> array_of_points;
+    private boolean textboxopened=false;
+       
+    public static ArrayList<Point> getArray_of_Points()
+        {
+            return array_of_points;
+        }
+        public static void setArray_of_Points(ArrayList<Point> a)
+    {
+        array_of_points=a;
+    }
+   
     ResizableRectangle(double x, double y, double width, double height, Group group) {
         super(x,y,width,height);
         group.getChildren().add(this);
@@ -49,30 +63,53 @@ class ResizableRectangle extends Rectangle {
         moveRect.yProperty().bind(super.yProperty());
         moveRect.widthProperty().bind(super.widthProperty());
         moveRect.heightProperty().bind(super.heightProperty());
-
+        textboxopened=false;
         group.getChildren().add(moveRect);
-        //moveRect.addEventHandler(EventType.ROOT, eventHandler); double click event open textbox and get rectangl co-ordinates
-        //and then capture n points
         
-        moveRect.addEventHandler(MouseEvent.MOUSE_CLICKED, event->{if(event.getClickCount()==2)
+        
+        moveRect.addEventHandler(MouseEvent.MOUSE_PRESSED, event->{if(event.getClickCount()==2)
         {
             System.out.println("DBL Click");
             TextField t=new TextField();
-            /*t.setAlignment(Pos.CENTER_RIGHT);
-            moveRect.getX();
-            moveRect.getY();*/
-            hb.getChildren().add(t);
+            System.out.println(moveRect.getX());
+            System.out.println(moveRect.getY());
+            group.getChildren().add(t);
+           // hb.getChildren().add(t);
+            //System.out.println(t.getText());
             //group.getChildren().add(t);
-            
-        }});
-        
+            t.setOnAction(e->{
+                newcaption=t.getText();
+                t.clear();
+               array_of_points=new ArrayList();
+               textboxopened=true;
+
+            });
+        }else
+        {
+            if(!(newcaption==null)&& textboxopened){
+             array_of_points.add(new Point(newcaption,event.getX(),event.getY()));
+            System.out.println("Last"+array_of_points.get(array_of_points.size()-1).x);
+            }
+            else if(!textboxopened)
+            {
+                /*Alert alert=new Alert(AlertType.INFORMATION);
+                alert.setHeaderText(null);
+                alert.setContentText("Please enter the textbox by double click");
+                alert.showAndWait();*/
+            }
+            }
+        });
         moveRect.addEventHandler(MouseEvent.MOUSE_ENTERED, event ->
-            moveRect.getParent().setCursor(Cursor.HAND));
+        {moveRect.getParent().setCursor(Cursor.HAND);
+                    } );
 
         moveRect.addEventHandler(MouseEvent.MOUSE_PRESSED, event -> {
             moveRect.getParent().setCursor(Cursor.MOVE);
             mouseClickPozX = event.getX();
             mouseClickPozY = event.getY();
+           /* array_of_points.add(new Point(newcaption,event.getX(),event.getY()));
+            System.out.println("Last"+array_of_points.get(array_of_points.size()-1).x);*/
+
 
         });
 
@@ -100,7 +137,7 @@ class ResizableRectangle extends Rectangle {
             mouseClickPozY = event.getY();
 
         });
-
+        
 
         makeNWResizerSquare(group);
         makeCWResizerSquare(group);

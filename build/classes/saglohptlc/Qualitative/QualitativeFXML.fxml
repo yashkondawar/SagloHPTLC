@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
@@ -22,25 +21,23 @@
             <Button fx:id="about" mnemonicParsing="false" onAction="#onAboutUs" prefHeight="57.0" prefWidth="152.0" text="About us" />
          </children>
       </VBox>
-      <MenuBar layoutX="169.0" layoutY="20.0" prefHeight="25.0" prefWidth="322.0">
-        <menus>
-          <Menu mnemonicParsing="false" text="Options">
-            <items>
-              <MenuItem fx:id="crop" mnemonicParsing="false" onAction="#onCrop" text="Crop" />
-                  <MenuItem mnemonicParsing="false" onAction="#onClear" text="Clear" />
-            </items>
-          </Menu>
-            <Menu mnemonicParsing="false" onAction="#retrieveImage1" text="Load Previous Image">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-              </items>
-            </Menu>
-        </menus>
-      </MenuBar>
-      <StackPane fx:id="stackpane" layoutX="160.0" layoutY="48.0" prefHeight="332.0" prefWidth="419.0">
+      <StackPane fx:id="stackpane" layoutX="163.0" layoutY="48.0" prefHeight="291.0" prefWidth="416.0">
          <children>
-            <ImageView fx:id="img" fitHeight="323.0" fitWidth="427.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="img" fitHeight="280.0" fitWidth="366.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </StackPane>
+      <HBox layoutX="151.0" prefHeight="41.0" prefWidth="434.0" spacing="10.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#retrieveImage1" prefHeight="31.0" prefWidth="143.0" text="Load Previous Image" />
+            <Button mnemonicParsing="false" onAction="#onCrop" prefHeight="38.0" prefWidth="88.0" text="Crop" />
+            <Button mnemonicParsing="false" onAction="#onClear" prefHeight="38.0" prefWidth="88.0" text="Clear" />
+            <Button mnemonicParsing="false" onAction="#onRevert" prefHeight="38.0" prefWidth="88.0" text="Revert" />
+         </children>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </HBox>
+      <Button layoutX="187.0" layoutY="360.0" mnemonicParsing="false" onAction="#onDisplay" text="Display" />
+      <Button layoutX="259.0" layoutY="360.0" mnemonicParsing="false" onAction="#onCalculateRFValue" text="Calculate Rf" />
    </children>
 </AnchorPane>

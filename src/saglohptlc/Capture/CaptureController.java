@@ -30,6 +30,8 @@ import com.googlecode.javacv.cpp.opencv_highgui.CvCapture;
 //import com.googlecode.javacv.cpp.opencv_highgui.cvLoadImage;
 import java.awt.image.BufferedImage;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import org.bytedeco.javacpp.opencv_core.IplImage;
@@ -70,12 +72,13 @@ public class CaptureController implements Initializable,ControlledScreen{
             File file = fileChooser.showOpenDialog(null);
                        
             try {
+                
                 bufferedimage = ImageIO.read(file);
                 Image image = SwingFXUtils.toFXImage(bufferedimage, null);
                 img.setImage(image);
                 img.fitWidthProperty().bind(imagecont.widthProperty()); 
                 //pane.setCenter(img);
-            } catch (IOException ex) {
+            } catch (Exception ex) {
                 Logger.getLogger(CaptureController.class.getName()).log(Level.SEVERE, null, ex);
             }
     }
@@ -100,6 +103,11 @@ public class CaptureController implements Initializable,ControlledScreen{
     public void Save(ActionEvent event)
     {
         model.storeImage(bufferedimage);
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setHeaderText(null);
+        alert.setContentText("Saved Successfully");
+ 
+        alert.showAndWait();
     }
     public void onQualitative (ActionEvent event) {
         

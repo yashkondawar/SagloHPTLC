@@ -9,6 +9,9 @@ import com.googlecode.javacv.CanvasFrame;
 import com.googlecode.javacv.cpp.opencv_core;
 import java.awt.image.BufferedImage;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
@@ -29,7 +32,7 @@ import saglohptlc.DatabaseModel;
 import saglohptlc.SagloHPTLC;
 import saglohptlc.ScreensController;
 import saglohptlc.*;
-
+import saglohptlc.Qualitative.ResizableRectangle;
 /**
  * FXML Controller class
  *
@@ -42,6 +45,7 @@ public class QualitativeFXMLController implements Initializable,ControlledScreen
     CanvasFrame frame=null;
     Thread thread=null;
     DatabaseModel model=new DatabaseModel();
+    //Addition of Points and Caption
     
     @FXML
     ImageView img;
@@ -60,10 +64,25 @@ public class QualitativeFXMLController implements Initializable,ControlledScreen
     public void initialize(URL url, ResourceBundle rb) {
        
     } 
+    
     private void clearSelection(Group group) {
         //deletes everything except for base container layer
         isAreaSelected = false;
         group.getChildren().remove(1,group.getChildren().size());
+    }
+    public void onRevert(ActionEvent event)
+    {
+        ArrayList<Point> a=ResizableRectangle.getArray_of_Points();
+        a.remove(a.size()-1);
+        ResizableRectangle.setArray_of_Points(a);
+    }
+    public void onDisplay(ActionEvent event)
+    {
+     ArrayList<Point> a=ResizableRectangle.getArray_of_Points();
+     for(int i=0;i<a.size();i++)
+     {
+         System.out.println(a.get(i).caption+" "+a.get(i).x+" "+a.get(i).y);
+     }
     }
     public void onLoadImage(ActionEvent event) {
         myController.setScreen(SagloHPTLC.CaptureScene);
@@ -92,6 +111,21 @@ public class QualitativeFXMLController implements Initializable,ControlledScreen
     {
         areaSelection.selectArea(selectionGroup);
     }
+    public void onCalculateRFValue(ActionEvent event)
+    {
+      ArrayList <Point>a=ResizableRectangle.getArray_of_Points();
+      double rfvalues[]=new double[a.size()-2];
+      double denominator=a.get(a.size()-1).y-a.get(0).y;
+      double first=a.get(0).y;
+      for(int i=1;i<a.size()-1;i++)
+      {
+          rfvalues[i-1]=(a.get(i).y-first)/(denominator);
+      }
+      for(int i=0;i<a.size()-2;i++)
+      {
+          System.out.println(rfvalues[i]);
+      }
+    }
     public void retrieveImage1(ActionEvent event)
     {
      BufferedImage buf=model.retriveImage();
@@ -102,12 +136,13 @@ public class QualitativeFXMLController implements Initializable,ControlledScreen
     }
     public void onClear(ActionEvent event)
     {
-        
+        ArrayList<Point> a=ResizableRectangle.getArray_of_Points();
+        a.clear();
+        ResizableRectangle.setArray_of_Points(a);
     }
     private class AreaSelection {
 
         private Group group;
-
         private ResizableRectangle selectionRectangle = null;
         private double rectangleStartX;
         private double rectangleStartY;
