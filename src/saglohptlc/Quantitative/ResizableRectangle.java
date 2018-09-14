@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package saglohptlc.Qualitative;
+package saglohptlc.Quantitative;
 /**
  *
  * @author Soha
  */
+import saglohptlc.Qualitative.*;
 import java.util.*;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -16,7 +17,7 @@ import javafx.scene.Cursor;
 import javafx.scene.Group;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
@@ -34,25 +35,28 @@ class ResizableRectangle extends Rectangle {
     private int counter=0;
     private Paint resizerSquareColor = Color.WHITE;
     private Paint rectangleStrokeColor = Color.BLACK;
-    private static ArrayList<Point> array_of_points=new ArrayList();
+    private static ArrayList<Unit> units=new ArrayList<Unit>();
+
     private boolean textboxopened=false;
        
-    public static ArrayList<Point> getArray_of_Points()
-        {
-            return array_of_points;
-        }
-        public static void setArray_of_Points(ArrayList<Point> a)
+    public static ArrayList<Unit> getArray_of_Unit()
     {
-        array_of_points=a;
+            return units;
     }
+    public static void setArray_of_Unit(ArrayList<Unit> a)
+    {
+        units=a;
+    }
+     
    
+
     ResizableRectangle(double x, double y, double width, double height, Group group) {
         super(x,y,width,height);
         group.getChildren().add(this);
         super.setStroke(rectangleStrokeColor);
         super.setStrokeWidth(1);
         super.setFill(Color.color(1, 1, 1, 0));
-        HBox hb=new HBox();
+        VBox hb=new VBox(3);
         group.getChildren().add(hb);
         Rectangle moveRect = new Rectangle(0,0,0,0);
         moveRect.setFill(Color.color(1,1,1,0));
@@ -70,32 +74,40 @@ class ResizableRectangle extends Rectangle {
         {
             System.out.println("DBL Click");
             TextField t=new TextField();
+            t.setPromptText("Caption");
+            TextField t2=new TextField();
+            t2.setPromptText("Concentration");
+            hb.getChildren().add(t);
+            hb.getChildren().add(t2);
             System.out.println(moveRect.getX());
             System.out.println(moveRect.getY());
-            group.getChildren().add(t);
+           // group.getChildren().add(t);
            // hb.getChildren().add(t);
             //System.out.println(t.getText());
             //group.getChildren().add(t);
+            String caption=null;
+            /*double final x1,x2,y1,y2;
             t.setOnAction(e->{
-                newcaption=t.getText();
-                t.clear();
+                caption=t.getText();
+                x1=moveRect.getX();
+                y1=moveRect.getY();
+                x2=x1+moveRect.getWidth();
+                y2=y1+moveRect.getHeight();
+                
+                
+              //array_of_points=new ArrayList();
+            });*/
+            t2.setOnAction(e->{
+                
+               units.add(new Unit(t.getText(),moveRect.getX(),moveRect.getY(),moveRect.getX()+moveRect.getWidth(),moveRect.getY()+moveRect.getHeight(),Float.parseFloat(t2.getText())));
+                hb.getChildren().remove(t);
+                hb.getChildren().remove(t2);
+                
+                
               // array_of_points=new ArrayList();
-               textboxopened=true;
             });
-        }else
-        {
-            if(!(newcaption==null)&& textboxopened){
-             array_of_points.add(new Point(newcaption,event.getX(),event.getY()));
-            System.out.println("Last"+array_of_points.get(array_of_points.size()-1).x);
-            }
-            else if(!textboxopened)
-            {
-                /*Alert alert=new Alert(AlertType.INFORMATION);
-                alert.setHeaderText(null);
-                alert.setContentText("Please enter the textbox by double click");
-                alert.showAndWait();*/
-            }
-            }
+            
+        }
         });
         moveRect.addEventHandler(MouseEvent.MOUSE_ENTERED, event ->
         {moveRect.getParent().setCursor(Cursor.HAND);

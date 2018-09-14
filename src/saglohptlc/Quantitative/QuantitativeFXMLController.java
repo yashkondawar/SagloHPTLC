@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package saglohptlc.Qualitative;
+package saglohptlc.Quantitative;
 
 import com.googlecode.javacv.CanvasFrame;
 import com.googlecode.javacv.cpp.opencv_core;
@@ -20,7 +20,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.Group;
-import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -33,13 +32,13 @@ import saglohptlc.DatabaseModel;
 import saglohptlc.SagloHPTLC;
 import saglohptlc.ScreensController;
 import saglohptlc.*;
-import saglohptlc.Qualitative.ResizableRectangle;
+import saglohptlc.Quantitative.ResizableRectangle;
 /**
  * FXML Controller class
  *
  * @author Soha
  */
-public class QualitativeFXMLController implements Initializable,ControlledScreen{
+public class QuantitativeFXMLController implements Initializable,ControlledScreen{
     ScreensController myController;
     opencv_core.IplImage grab=null;
     BufferedImage bufferedimage=null;
@@ -62,38 +61,91 @@ public class QualitativeFXMLController implements Initializable,ControlledScreen
      * Initializes the controller class.
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {       
+    public void initialize(URL url, ResourceBundle rb) {
+       
     } 
     private void clearSelection(Group group) {
         //deletes everything except for base container layer
         isAreaSelected = false;
         group.getChildren().remove(1,group.getChildren().size());
     }
-    public void onRevert(ActionEvent event)
-    {
-        ArrayList<Point> a=ResizableRectangle.getArray_of_Points();
-        a.remove(a.size()-1);
-        ResizableRectangle.setArray_of_Points(a);
-    }
-    public void onDisplay(ActionEvent event)
-    {
-     ArrayList<Point> a=ResizableRectangle.getArray_of_Points();
-     for(int i=0;i<a.size();i++)
-     {
-         System.out.println(a.get(i).caption+" "+a.get(i).x+" "+a.get(i).y);
-     }
-    }
     public void onLoadImage(ActionEvent event) {
         myController.setScreen(SagloHPTLC.CaptureScene);
-    }    
-    public void onQuantitative (ActionEvent event) {
-        myController.setScreen(SagloHPTLC.QuantitativeScene);
+    }
+     public void onAnalyse(ActionEvent event) {
+       ArrayList<Unit> res=ResizableRectangle.getArray_of_Unit();
+       bufferedimage=SwingFXUtils.fromFXImage(mainImage,null);
+       int pixel,red,green,blue;
+       for(int i=0;i<res.size();i++)
+       {
+           int j=0,k=0;
+           float sum=0;
+           System.out.println("**********Band no*********************"+i);
+           for(j=(int)res.get(i).x1;j<(int)res.get(i).x2;j++)
+           {
+                for(k=(int)res.get(i).y1;k<(int)res.get(i).y2;k++)
+                {
+                    pixel = bufferedimage.getRGB(k, j);
+                    //alpha = (pixel >> 24) & 0xff;
+                    red = (pixel >> 16) & 0xff;
+                    green = (pixel >> 8) & 0xff;
+                    blue = (pixel) & 0xff;
+                   // avg=avg+alpha;
+                   sum=sum+red+green+blue;
+                   System.out.println(red+" "+green+" "+blue);
+                }
+           }
+           System.out.println(" ");
+           sum=sum/(j*k);
+           res.get(i).intensity=1/sum;
+       }
+       for(int i=0;i<res.size();i++)
+       {
+           System.out.println(res.get(i).caption +"\t"+res.get(i).x1+" "+res.get(i).x2+" "+res.get(i).y1+" "+res.get(i).y2+" "+res.get(i).concentration+" "+res.get(i).intensity);
+       }
+       LinearRegression(res);
+     }
+      public void LinearRegression(ArrayList<Unit> units) {
+        double intercept, slope;
+        double r2;
+        
+        int n = units.size();
+
+        // first pass
+        double sumx = 0.0, sumy = 0.0, sumx2 = 0.0;
+        for (int i = 0; i < n-1; i++) {
+            sumx  += units.get(i).intensity;
+            sumx2 += units.get(i).intensity*units.get(i).intensity;
+            sumy  += units.get(i).concentration;
+        }
+        double xbar = sumx / n-1;
+        double ybar = sumy / n-1;
+
+        // second pass: compute summary statistics
+        double xxbar = 0.0, yybar = 0.0, xybar = 0.0;
+        for (int i = 0; i < n-1; i++) {
+            xxbar += (units.get(i).intensity - xbar) * (units.get(i).intensity- xbar);
+            yybar += (units.get(i).concentration - ybar) * (units.get(i).concentration - ybar);
+            xybar += (units.get(i).intensity - xbar) * (units.get(i).concentration - ybar);
+        }
+        slope  = xybar / xxbar;
+        
+        intercept = ybar - slope * xbar;
+        System.out.println(units.get(n-1).intensity);
+        double prediction=slope*units.get(n-1).intensity+intercept;
+        System.out.println(slope);
+        System.out.println(intercept);
+        System.out.println(prediction);
+        
+    }
+    public void onQualitative (ActionEvent event) {
+        myController.setScreen(SagloHPTLC.QualitativeScene);
     }
     public void onAboutUs (ActionEvent event) {
         myController.setScreen(SagloHPTLC.AboutScene);
     }    
     public void onReports (ActionEvent event) {
-    //    myController.setScreen(SagloHPTLC.QualitativeScene);
+        myController.setScreen(SagloHPTLC.QualitativeScene);
     }
     public void onLogOut (ActionEvent event) {
         
@@ -104,95 +156,25 @@ public class QualitativeFXMLController implements Initializable,ControlledScreen
     @Override
     public void setScreenParent(ScreensController screenPage) {
             myController=screenPage;
+
     }
     public void onCrop(ActionEvent event)
     {
         areaSelection.selectArea(selectionGroup);
     }
-    public void onCalculateRFValue(ActionEvent event)
-    {
-      ArrayList <Point>a=ResizableRectangle.getArray_of_Points();
-      ArrayList<ArrayList<Double>> rfvalues=new ArrayList<ArrayList<Double>>();
-      boolean flag=false;
-      String caption=null;
-      caption=a.get(0).caption;
-      double first=a.get(0).y;
-      double nextfirst=first;
-      int count=0,firstpos=0;
-      System.out.println("Points");
-      for(int j=0;j<a.size();j++)
+         /* 
+      for(int i=0;i<a.size()-2;i++)
       {
-          System.out.println(a.get(j).y);
-      }
-      for(int i=0;i<a.size();i++)
-      {                                                             
-      if(!caption.equals(a.get(i).caption) || i==a.size()-1)
-      {
-          flag=true;
-          caption=a.get(i).caption;
-          nextfirst=a.get(i).y;
-          firstpos=i-count+1;
-          System.out.println("Flag true"+firstpos);
-
-      }
-      count++;
-      if(flag){
-           ArrayList rf=new ArrayList();
-          double denominator=0;
-          if(i==a.size()-1){
-                   denominator=a.get(i).y-first;
-                    for(int j=firstpos;j<=i;j++)
-                    {
-                         rf.add((a.get(j).y-first)/(denominator));
-                         System.out.println("Rf"+(a.get(j).y-first)/(denominator));
-                    }
-          }
-          else
-          {  denominator=a.get(i-1).y-first;
-     
-      for(int j=firstpos;j<i;j++)
-      {
-          rf.add((a.get(j).y-first)/(denominator));
-          System.out.println("Rf"+(a.get(j).y-first)/(denominator));
-      }}
-      rfvalues.add(rf);
-      first=nextfirst;
-      flag=false;
-      count=0;
-      }
-     }
-      //Display
-      for(ArrayList a2:rfvalues)
-      {
-          for(int i=0;i<a2.size();i++)
-          {
-              System.out.print(a2.get(i)+"\t");
-          }
-          System.out.println();
-      }
-      //Store in db
-      RFvalueDAO.storeRF(a,rfvalues);
-    }
+          System.out.println(rfvalues[i]);
+      }*/
+    
     public void retrieveImage1(ActionEvent event)
     {
      BufferedImage buf=model.retriveImage();
-     if(buf==null)
-     {
-         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setHeaderText(null);
-        alert.setContentText("No previous images");
-     }else{
      mainImage = SwingFXUtils.toFXImage(buf, null);
      img.setImage(mainImage);
      selectionGroup.getChildren().add(img);
      stackpane.getChildren().add(selectionGroup);
-    }
-    }
-    public void onClear(ActionEvent event)
-    {
-        ArrayList<Point> a=ResizableRectangle.getArray_of_Points();
-        a.clear();
-        ResizableRectangle.setArray_of_Points(a);
     }
     private class AreaSelection {
 

@@ -12,6 +12,7 @@ package saglohptlc.Login;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import saglohptlc.SagloHPTLC;
 public class LoginModel {
     
     public boolean checkLogin(String Username,String Password){
@@ -23,19 +24,36 @@ public class LoginModel {
                 return false;
             }
             Statement stmt=conn.createStatement();
-           ResultSet rs=stmt.executeQuery("select password from login where username='"+Username+"';");
-           if(rs.next()){
-            if(Password.equals(rs.getString("password"))){
+           ResultSet rs0=stmt.executeQuery("select ID,Password from Admin where Username='"+Username+"';");
+           ResultSet rs1=stmt.executeQuery("select ID,Password from Organisation where Username='"+Username+"';");
+           ResultSet rs2=stmt.executeQuery("select ID,Password from User where Username='"+Username+"';");
+
+           if(rs0.next()){
+            if(Password.equals(rs0.getString("password"))){
+                SagloHPTLC.flag=0;
+                SagloHPTLC.session_id=rs0.getInt("ID");
+                return true;
+            }           
+           }
+           else if(rs1.next())
+           {
+              if(Password.equals(rs1.getString("password"))){
+                SagloHPTLC.flag=1;
+                SagloHPTLC.session_id=rs1.getInt("ID");
+                return true;
+            }  
+           }
+           else if(rs2.next())
+           {
+                if(Password.equals(rs2.getString("password"))){
+                SagloHPTLC.flag=2;
+                SagloHPTLC.session_id=rs2.getInt("ID");
                 return true;
             }
-            else 
-                return false;
-            }
-           else{
-               return false;
            }
-         
-            
+           else
+               return false;
+                
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(LoginModel.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {

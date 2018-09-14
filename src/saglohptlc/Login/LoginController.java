@@ -32,6 +32,8 @@ public class LoginController implements Initializable,ControlledScreen{
     @FXML
     private TextField username;
     @FXML
+    private Button settings;
+    @FXML
     private PasswordField password;
     @FXML
     private Label alert;
@@ -51,7 +53,15 @@ public class LoginController implements Initializable,ControlledScreen{
             {
                 
                 if(model.checkLogin(username.getText(), password.getText()))
-                  myController.setScreen(SagloHPTLC.CaptureScene);
+                {
+                    if(SagloHPTLC.flag!=0)
+                    {
+                        settings.setVisible(false);
+                        settings.setDisable(true);
+                    }
+                            myController.setScreen(SagloHPTLC.CaptureScene);
+
+                }
                 else
                 {
                     alert.setText("Invalid Username or password");

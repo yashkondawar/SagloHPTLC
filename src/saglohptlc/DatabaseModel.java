@@ -37,12 +37,12 @@ public class DatabaseModel {
                 ImageIO.write(buf, "jpg", baos );
                 
                 byte[] imageInByte = baos.toByteArray();
-                String sql="insert into Images values(1,?);";
+                String sql="insert into Images(User_ID,image) values(?,?);";
                 PreparedStatement pstmt=conn.prepareStatement(sql);
-                pstmt.setBytes(1,imageInByte);
+                pstmt.setInt(1, SagloHPTLC.session_id);
+                pstmt.setBytes(2,imageInByte);
                 pstmt.execute();
                 baos.close();
-                System.out.println("heyyyy");
             }
           
     }catch(Exception e)
@@ -69,6 +69,7 @@ public BufferedImage retriveImage (){
         //System.out.println(rs.getInt("ID")+rs.getBytes("image"));
         InputStream in = new ByteArrayInputStream(rs.getBytes("image"));
         image = ImageIO.read(in);
+        SagloHPTLC.image_id=rs.getInt("Image_ID");
     }
      } catch (Exception ex) {
          System.out.println(ex);

@@ -106,7 +106,6 @@ public class CaptureController implements Initializable,ControlledScreen{
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setHeaderText(null);
         alert.setContentText("Saved Successfully");
- 
         alert.showAndWait();
     }
     public void onQualitative (ActionEvent event) {
