@@ -24,8 +24,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.Group;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -44,17 +47,25 @@ import saglohptlc.Qualitative.ResizableRectangle;
  *
  * @author Soha
  */
-public class QualitativeFXMLController implements Initializable,ControlledScreen{
+public class DisplayFXMLController implements Initializable,ControlledScreen{
     ScreensController myController;
     opencv_core.IplImage grab=null;
     BufferedImage bufferedimage=null;
     CanvasFrame frame=null;
     Thread thread=null;
     DatabaseModel model=new DatabaseModel();
-    
+ 
     //Addition of Points and Caption
-    public TextField text;
-    public TableView<ModelRF> table;
+    @FXML
+    TableView<ModelRF> table;
+    @FXML
+    private TableColumn<ModelRF, String> ID;
+    @FXML
+    private TableColumn<ModelRF,String> Caption;
+    @FXML
+    private TableColumn<ModelRF,String> Point_No;
+    @FXML
+    private TableColumn<ModelRF,String> RFValue;
     @FXML
     ImageView img;
     @FXML
@@ -65,23 +76,51 @@ public class QualitativeFXMLController implements Initializable,ControlledScreen
     private boolean isAreaSelected = false;
     private AreaSelection areaSelection = new AreaSelection();
     private Group selectionGroup = new Group();
+    @FXML
+    private Button loadimage;
+    @FXML
+    private Button qualitative;
+    @FXML
+    private Button quantitative;
+    @FXML
+    private Button repo;
+    @FXML
+    private Button logout;
+    @FXML
+    private Button about;
     /**
      * Initializes the controller class.
      */
+  
+    DisplayFXMLController mainApp;
     @Override
-    public void initialize(URL url, ResourceBundle rb) {       
-    } 
+    public void initialize(URL url, ResourceBundle rb) { 
+        
+  
+   ID.setCellValueFactory(new PropertyValueFactory<>("id"));
+   Caption.setCellValueFactory(new PropertyValueFactory<>("caption"));
+   Point_No.setCellValueFactory(new PropertyValueFactory<>("point_no"));
+   RFValue.setCellValueFactory(new PropertyValueFactory<>("rfvalue"));
+  
+    table.getItems().addAll(getData());
+   
+    }
+    
+     public ObservableList<ModelRF>getData()
+     {
+           ArrayList<ModelRF>rf=RFvalueDAO.getTable();
+          ObservableList<ModelRF>rfpoints=FXCollections.observableArrayList();
+          rfpoints.addAll(rf);
+         System.out.println(rfpoints.get(0).getCaption());
+          return rfpoints;
+     }
     private void clearSelection(Group group) {
         //deletes everything except for base container layer
         isAreaSelected = false;
         group.getChildren().remove(1,group.getChildren().size());
     }
-    public void onRevert(ActionEvent event)
-    {
-        ArrayList<Point> a=ResizableRectangle.getArray_of_Points();
-        a.remove(a.size()-1);
-        ResizableRectangle.setArray_of_Points(a);
-    }
+  
+    @FXML
     public void onDisplay(ActionEvent event)
     {
      ArrayList<Point> a=ResizableRectangle.getArray_of_Points();
@@ -90,18 +129,23 @@ public class QualitativeFXMLController implements Initializable,ControlledScreen
          System.out.println(a.get(i).caption+" "+a.get(i).x+" "+a.get(i).y);
      }
     }
+    @FXML
     public void onLoadImage(ActionEvent event) {
         myController.setScreen(SagloHPTLC.CaptureScene);
     }    
+    @FXML
     public void onQuantitative (ActionEvent event) {
         myController.setScreen(SagloHPTLC.QuantitativeScene);
     }
+    @FXML
     public void onAboutUs (ActionEvent event) {
         myController.setScreen(SagloHPTLC.AboutScene);
     }    
+    @FXML
     public void onReports (ActionEvent event) {
     //    myController.setScreen(SagloHPTLC.QualitativeScene);
     }
+    @FXML
     public void onLogOut (ActionEvent event) {
         
     }
@@ -112,117 +156,18 @@ public class QualitativeFXMLController implements Initializable,ControlledScreen
     public void setScreenParent(ScreensController screenPage) {
             myController=screenPage;
     }
-    public void onCrop(ActionEvent event)
+   
+    
+    @FXML
+    public void retrieveTable(ActionEvent event)
     {
-        areaSelection.selectArea(selectionGroup);
-    }
-    public void onCalculateRFValue(ActionEvent event)
-    {
-      ArrayList <Point>a=ResizableRectangle.getArray_of_Points();
-      ArrayList<ArrayList<Double>> rfvalues=new ArrayList<ArrayList<Double>>();
-      boolean flag=false;
-      String caption=null;
-      caption=a.get(0).caption;
-      double first=a.get(0).y;
-      double nextfirst=first;
-      int count=0,firstpos=0;
-      System.out.println("Points");
-      for(int j=0;j<a.size();j++)
-      {
-          System.out.println(a.get(j).y);
-      }
-      for(int i=0;i<a.size();i++)
-      {                                                             
-      if(!caption.equals(a.get(i).caption) || i==a.size()-1)
-      {
-          flag=true;
-          caption=a.get(i).caption;
-          nextfirst=a.get(i).y;
-          firstpos=i-count+1;
-          System.out.println("Flag true"+firstpos);
-
-      }
-      count++;
-      if(flag){
-           ArrayList rf=new ArrayList();
-          double denominator=0;
-          if(i==a.size()-1){
-                   denominator=a.get(i).y-first;
-                    for(int j=firstpos;j<=i;j++)
-                    {
-                         rf.add((a.get(j).y-first)/(denominator));
-                         System.out.println("Rf"+(a.get(j).y-first)/(denominator));
-                    }
-          }
-          else
-          {  denominator=a.get(i-1).y-first;
      
-      for(int j=firstpos;j<i;j++)
-      {
-          rf.add((a.get(j).y-first)/(denominator));
-          System.out.println("Rf"+(a.get(j).y-first)/(denominator));
-      }}
-      rfvalues.add(rf);
-      first=nextfirst;
-      flag=false;
-      count=0;
-      }
-     }
-      //Display
-      for(ArrayList a2:rfvalues)
-      {
-          for(int i=0;i<a2.size();i++)
-          {
-              System.out.print(a2.get(i)+"\t");
-          }
-          System.out.println();
-      }
-      //Store in db
-    ArrayList<ModelRF>rf=RFvalueDAO.storeRF(a,rfvalues);
-    /*ObservableList<ModelRF> rfpoints=FXCollections.observableArrayList();
-    for(int i=0;i<rf.size();i++)
-    {
-        rfpoints.add(rf.get(i));
-    }*/
-    /* try{
-       FXMLLoader fxmlLoader = new FXMLLoader();
-fxmlLoader.setLocation(getClass().getResource("DisplayFXML.fxml"));
-AnchorPane frame = fxmlLoader.load();
-DisplayFXMLController c = (DisplayFXMLController) fxmlLoader.getController();
-    c.txt=text;
-    text.setText("Heyyaaa");
-       }
-       catch(Exception e){
-           e.printStackTrace();
-       }*/
-      // table.setItems(rfpoints);
-         // text.setText("Heyyaaa");
-
-      SagloHPTLC.rf1=true;
-      myController.setScreen(SagloHPTLC.QualitativeDisplayScene);
-
+            table.getItems().clear();
+            table.getItems().addAll(getData());
+            System.out.println("dw");
+            
     }
-    public void retrieveImage1(ActionEvent event)
-    {
-     BufferedImage buf=model.retriveImage();
-     if(buf==null)
-     {
-         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setHeaderText(null);
-        alert.setContentText("No previous images");
-     }else{
-     mainImage = SwingFXUtils.toFXImage(buf, null);
-     img.setImage(mainImage);
-     selectionGroup.getChildren().add(img);
-     stackpane.getChildren().add(selectionGroup);
-    }
-    }
-    public void onClear(ActionEvent event)
-    {
-        ArrayList<Point> a=ResizableRectangle.getArray_of_Points();
-        a.clear();
-        ResizableRectangle.setArray_of_Points(a);
-    }
+   
   
     private class AreaSelection {
 

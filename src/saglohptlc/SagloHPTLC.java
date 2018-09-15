@@ -35,6 +35,8 @@ public class SagloHPTLC extends Application {
     public static String CaptureFile = "/saglohptlc/Capture/Capture.fxml";
     public static String QualitativeScene = "QualitativeAnalysis";
     public static String QualitativeFile = "/saglohptlc/Qualitative/QualitativeFXML.fxml";
+     public static String QualitativeDisplayScene = "QualitativeDAnalysis";
+    public static String QualitativeDisplayFile = "/saglohptlc/Qualitative/DisplayFXML.fxml";
     public static String QuantitativeScene = "QuantitativeAnalysis";
     public static String QuantitativeFile = "/saglohptlc/Quantitative/QuantitativeFXML.fxml";
     public static String ReportScene = "Reports";
@@ -43,6 +45,7 @@ public class SagloHPTLC extends Application {
     public static String AboutFile = "/saglohptlc/Aboutus/About.fxml";
     public BufferedImage bufferedimage=null;
     public Image image=null;
+    public static boolean rf1=false;
    public static int session_id,flag,image_id;
     @Override
     public void start(Stage primaryStage) {
@@ -59,6 +62,8 @@ public class SagloHPTLC extends Application {
         mainContainer.loadScreen(SagloHPTLC.Main, SagloHPTLC.MainFile);
         mainContainer.loadScreen(SagloHPTLC.CaptureScene, SagloHPTLC.CaptureFile);
         mainContainer.loadScreen(SagloHPTLC.QualitativeScene, SagloHPTLC.QualitativeFile);
+        mainContainer.loadScreen(SagloHPTLC.QualitativeDisplayScene, SagloHPTLC.QualitativeDisplayFile);
+
        mainContainer.loadScreen(SagloHPTLC.QuantitativeScene, SagloHPTLC.QuantitativeFile);
       /*  mainContainer.loadScreen(SagloHPTLC.ReportScene, SagloHPTLC.ReportFile);
         mainContainer.loadScreen(SagloHPTLC.AboutScene, SagloHPTLC.AboutFile);*/

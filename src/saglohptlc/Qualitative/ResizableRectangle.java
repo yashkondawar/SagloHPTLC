@@ -79,8 +79,8 @@ class ResizableRectangle extends Rectangle {
             t.setOnAction(e->{
                 newcaption=t.getText();
                 t.clear();
-              // array_of_points=new ArrayList();
                textboxopened=true;
+               group.getChildren().remove(t);
             });
         }else
         {
