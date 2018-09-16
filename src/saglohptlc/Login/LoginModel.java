@@ -50,17 +50,18 @@ public class LoginModel {
                 SagloHPTLC.session_id=rs2.getInt("ID");
                 return true;
             }
+
            }
            else
                return false;
-                
-        } catch (ClassNotFoundException ex) {
+
+           }
+     
+        catch (ClassNotFoundException ex) {
             Logger.getLogger(LoginModel.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(LoginModel.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
-        
-        
     }
 }

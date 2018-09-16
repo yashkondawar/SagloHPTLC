@@ -132,7 +132,7 @@ public class CaptureController implements Initializable,ControlledScreen{
     }
     
     public void onSettings (ActionEvent event) {
-        
+        myController.setScreen(SagloHPTLC.SettingsScene);
     }
     
     public static BufferedImage IplImageToBufferedImage(IplImage src) {

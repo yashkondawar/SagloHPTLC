@@ -36,10 +36,7 @@
       </StackPane>
       <HBox layoutX="151.0" prefHeight="41.0" prefWidth="434.0" spacing="10.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#retrieveImage1" prefHeight="31.0" prefWidth="143.0" text="Recent RFValues" />
-            <Button mnemonicParsing="false" onAction="#onCrop" prefHeight="38.0" prefWidth="88.0" text="Crop" />
-            <Button mnemonicParsing="false" onAction="#onClear" prefHeight="38.0" prefWidth="88.0" text="Clear" />
-            <Button mnemonicParsing="false" onAction="#onRevert" prefHeight="38.0" prefWidth="88.0" text="Revert" />
+            <Button mnemonicParsing="false" onAction="#retrieveTable" prefHeight="31.0" prefWidth="143.0" text="Recent RFValues" />
          </children>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

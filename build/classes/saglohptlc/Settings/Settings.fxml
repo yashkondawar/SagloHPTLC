@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="saglohptlc.Settings.SettingsController">
+   <children>
+      <VBox prefHeight="396.0" prefWidth="148.0">
+         <children>
+            <Button mnemonicParsing="false" prefHeight="52.0" prefWidth="153.0" text="Settings" />
+            <Button fx:id="loadimage" mnemonicParsing="false" onAction="#abc" prefHeight="57.0" prefWidth="152.0" text="Load Image" />
+            <Button fx:id="qualitative" mnemonicParsing="false" prefHeight="57.0" prefWidth="152.0" text="Qualitative" />
+            <Button fx:id="quantitative" mnemonicParsing="false" onAction="#abc" prefHeight="57.0" prefWidth="152.0" text="Quantitative" />
+            <Button fx:id="repo" mnemonicParsing="false" onAction="#abc" prefHeight="57.0" prefWidth="152.0" text="Reports" />
+            <Button fx:id="logout" mnemonicParsing="false" onAction="#abc" prefHeight="57.0" prefWidth="152.0" text="Log out" />
+            <Button fx:id="about" mnemonicParsing="false" onAction="#abc" prefHeight="57.0" prefWidth="152.0" text="About us" />
+         </children>
+      </VBox>
+      <TabPane layoutX="145.0" prefHeight="396.0" prefWidth="454.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="View Data">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </Tab>
+          <Tab text="Add Data">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TabPane layoutY="-1.0" prefHeight="367.0" prefWidth="454.0" tabClosingPolicy="UNAVAILABLE">
+                          <tabs>
+                            <Tab text="SignUp Organisation">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <TextField layoutX="222.0" layoutY="44.0" />
+                                          <Label layoutX="25.0" layoutY="48.0" text="Name of the Organisation" />
+                                          <Label layoutX="109.0" layoutY="91.0" text="Username" />
+                                          <Label layoutX="113.0" layoutY="132.0" text="Password" />
+                                          <Label layoutX="67.0" layoutY="177.0" text="Confirm Password" />
+                                          <TextField layoutX="222.0" layoutY="128.0" />
+                                          <TextField layoutX="222.0" layoutY="87.0" />
+                                          <TextField layoutX="222.0" layoutY="173.0" />
+                                          <Button layoutX="235.0" layoutY="249.0" mnemonicParsing="false" text="Reset" />
+                                          <Button layoutX="314.0" layoutY="249.0" mnemonicParsing="false" text="Add" />
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </Tab>
+                            <Tab text="SignUp Users">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <TextField layoutX="222.0" layoutY="17.0" />
+                                          <Label layoutX="66.0" layoutY="21.0" text="Name of the User" />
+                                          <Label layoutX="106.0" layoutY="60.0" text="Username" />
+                                          <Label layoutX="108.0" layoutY="99.0" text="Password" />
+                                          <Label layoutX="65.0" layoutY="139.0" text="Confirm Password" />
+                                          <TextField layoutX="222.0" layoutY="95.0" />
+                                          <TextField layoutX="222.0" layoutY="56.0" />
+                                          <TextField layoutX="222.0" layoutY="135.0" />
+                                          <Button layoutX="238.0" layoutY="283.0" mnemonicParsing="false" text="Reset" />
+                                          <Button layoutX="318.0" layoutY="283.0" mnemonicParsing="false" text="Add" />
+                                          <Label layoutX="68.0" layoutY="222.0" text="Roll Number (ID)" />
+                                          <TextField layoutX="222.0" layoutY="218.0" />
+                                          <Label layoutX="56.0" layoutY="183.0" text="Organisation Name" />
+                                          <TextField layoutX="222.0" layoutY="179.0" />
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </Tab>
+                          </tabs>
+                        </TabPane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Modify Data">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TabPane prefHeight="362.0" prefWidth="444.0" tabClosingPolicy="UNAVAILABLE">
+                           <tabs>
+                              <Tab text="Modify Organisation">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <TextField layoutX="222.0" layoutY="44.0" />
+                                          <Label layoutX="25.0" layoutY="48.0" text="Name of the Organisation" />
+                                          <Label layoutX="109.0" layoutY="91.0" text="Username" />
+                                          <Label layoutX="113.0" layoutY="132.0" text="Password" />
+                                          <Label layoutX="67.0" layoutY="177.0" text="Confirm Password" />
+                                          <TextField layoutX="222.0" layoutY="128.0" />
+                                          <TextField layoutX="222.0" layoutY="87.0" />
+                                          <TextField layoutX="222.0" layoutY="173.0" />
+                                          <Button layoutX="222.0" layoutY="237.0" mnemonicParsing="false" text="Reset" />
+                                          <Button layoutX="287.0" layoutY="237.0" mnemonicParsing="false" text="Modify Entry" />
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                              <Tab text="Modify Users">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <TextField layoutX="222.0" layoutY="17.0" />
+                                          <Label layoutX="66.0" layoutY="21.0" text="Name of the User" />
+                                          <Label layoutX="106.0" layoutY="60.0" text="Username" />
+                                          <Label layoutX="108.0" layoutY="99.0" text="Password" />
+                                          <Label layoutX="65.0" layoutY="139.0" text="Confirm Password" />
+                                          <TextField layoutX="222.0" layoutY="95.0" />
+                                          <TextField layoutX="222.0" layoutY="56.0" />
+                                          <TextField layoutX="222.0" layoutY="135.0" />
+                                          <Button layoutX="222.0" layoutY="271.0" mnemonicParsing="false" text="Reset" />
+                                          <Button layoutX="287.0" layoutY="271.0" mnemonicParsing="false" text="Modify Entry" />
+                                          <Label layoutX="68.0" layoutY="222.0" text="Roll Number (ID)" />
+                                          <TextField layoutX="222.0" layoutY="218.0" />
+                                          <Label layoutX="56.0" layoutY="183.0" text="Organisation Name" />
+                                          <TextField layoutX="222.0" layoutY="179.0" />
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                           </tabs>
+                        </TabPane>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
