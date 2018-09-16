@@ -55,6 +55,7 @@ public class CaptureController implements Initializable,ControlledScreen{
     CanvasFrame frame=null;
     Thread thread=null;
     DatabaseModel model=new DatabaseModel();
+    DatabaseModel logentry = new DatabaseModel();
     @FXML
     ImageView img;
     
@@ -103,6 +104,7 @@ public class CaptureController implements Initializable,ControlledScreen{
     public void Save(ActionEvent event)
     {
         model.storeImage(bufferedimage);
+        logentry.LogEntry("Stored Image");
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setHeaderText(null);
         alert.setContentText("Saved Successfully");
@@ -110,25 +112,31 @@ public class CaptureController implements Initializable,ControlledScreen{
     }
     public void onQualitative (ActionEvent event) {
         
-        
         myController.setScreen(SagloHPTLC.QualitativeScene);
+        logentry.LogEntry("Opened Qualitative window");
         
     }
     
     public void onQuantitative (ActionEvent event) {
+        logentry.LogEntry("Opened Quantitative window");
         myController.setScreen(SagloHPTLC.QuantitativeScene);
     }
     
     public void aboutUs (ActionEvent event) {
+        logentry.LogEntry("Opened AboutUs window");
         myController.setScreen(SagloHPTLC.AboutScene);
     }
     
     public void onReports (ActionEvent event) {
+        logentry.LogEntry("Opened Reports window");
         myController.setScreen(SagloHPTLC.QualitativeScene);
     }
     
     public void logOut (ActionEvent event) {
-        
+        logentry.LogEntry("Logged Out");
+        SagloHPTLC.session_id=0;
+        SagloHPTLC.image_id=0;
+        myController.setScreen(SagloHPTLC.Main);
     }
     
     public void onSettings (ActionEvent event) {
@@ -146,6 +154,7 @@ public class CaptureController implements Initializable,ControlledScreen{
         Image image = SwingFXUtils.toFXImage(bufferedimage, null);
         img.setImage(image);
         frame.dispose();
+        logentry.LogEntry("Captured an Image");
     }
     
     

@@ -45,6 +45,7 @@ public class QuantitativeFXMLController implements Initializable,ControlledScree
     CanvasFrame frame=null;
     Thread thread=null;
     DatabaseModel model=new DatabaseModel();
+    DatabaseModel logentry = new DatabaseModel();
     //Addition of Points and Caption
     
     @FXML
@@ -68,9 +69,6 @@ public class QuantitativeFXMLController implements Initializable,ControlledScree
         //deletes everything except for base container layer
         isAreaSelected = false;
         group.getChildren().remove(1,group.getChildren().size());
-    }
-    public void onLoadImage(ActionEvent event) {
-        myController.setScreen(SagloHPTLC.CaptureScene);
     }
      public void onAnalyse(ActionEvent event) {
        ArrayList<Unit> res=ResizableRectangle.getArray_of_Unit();
@@ -138,20 +136,41 @@ public class QuantitativeFXMLController implements Initializable,ControlledScree
         System.out.println(prediction);
         
     }
-    public void onQualitative (ActionEvent event) {
-        myController.setScreen(SagloHPTLC.QualitativeScene);
-    }
-    public void onAboutUs (ActionEvent event) {
-        myController.setScreen(SagloHPTLC.AboutScene);
+    public void onLoadImage(ActionEvent event) {
+        logentry.LogEntry("Opened Load Image window");
+        myController.setScreen(SagloHPTLC.CaptureScene);
     }    
+    public void onQualitative (ActionEvent event) {
+        
+        logentry.LogEntry("Opened Qualitative window");
+        myController.setScreen(SagloHPTLC.QualitativeScene);
+        
+    }
+    
+    public void onQuantitative (ActionEvent event) {
+        logentry.LogEntry("Opened Quantitative window");
+        myController.setScreen(SagloHPTLC.QuantitativeScene);
+    }
+    
+    public void aboutUs (ActionEvent event) {
+        logentry.LogEntry("Opened AboutUs window");
+        myController.setScreen(SagloHPTLC.AboutScene);
+    }
+    
     public void onReports (ActionEvent event) {
+        logentry.LogEntry("Opened Reports window");
         myController.setScreen(SagloHPTLC.QualitativeScene);
     }
-    public void onLogOut (ActionEvent event) {
-        
+    
+    public void logOut (ActionEvent event) {
+        logentry.LogEntry("Logged Out");
+        SagloHPTLC.session_id=0;
+        SagloHPTLC.image_id=0;
+        myController.setScreen(SagloHPTLC.Main);
     }
+    
     public void onSettings (ActionEvent event) {
-        
+        myController.setScreen(SagloHPTLC.SettingsScene);
     }
     @Override
     public void setScreenParent(ScreensController screenPage) {

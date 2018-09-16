@@ -32,6 +32,7 @@ public class LoginModel {
             if(Password.equals(rs0.getString("password"))){
                 SagloHPTLC.flag=0;
                 SagloHPTLC.session_id=rs0.getInt("ID");
+                conn.close();
                 return true;
             }           
            }
@@ -40,6 +41,7 @@ public class LoginModel {
               if(Password.equals(rs1.getString("password"))){
                 SagloHPTLC.flag=1;
                 SagloHPTLC.session_id=rs1.getInt("ID");
+                conn.close();
                 return true;
             }  
            }
@@ -48,14 +50,16 @@ public class LoginModel {
                 if(Password.equals(rs2.getString("password"))){
                 SagloHPTLC.flag=2;
                 SagloHPTLC.session_id=rs2.getInt("ID");
+                conn.close();
                 return true;
             }
 
            }
-           else
+           else{
+               conn.close();
                return false;
-
            }
+        }
      
         catch (ClassNotFoundException ex) {
             Logger.getLogger(LoginModel.class.getName()).log(Level.SEVERE, null, ex);

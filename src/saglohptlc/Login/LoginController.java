@@ -40,6 +40,7 @@ public class LoginController implements Initializable,ControlledScreen{
     @FXML
     private AnchorPane root1;
     public LoginModel model=new LoginModel();
+    public DatabaseModel logentry = new DatabaseModel();
     
    
     public void login (ActionEvent event) {
@@ -60,6 +61,7 @@ public class LoginController implements Initializable,ControlledScreen{
                         settings.setDisable(true);
                     }
                             myController.setScreen(SagloHPTLC.CaptureScene);
+                            logentry.LogEntry("Logged In");
 
                 }
                 else
@@ -74,6 +76,7 @@ public class LoginController implements Initializable,ControlledScreen{
         }
     }
     public void close (ActionEvent event) {
+        logentry.LogEntry("Closed the System");
         Platform.exit();
         System.exit(0);
     }

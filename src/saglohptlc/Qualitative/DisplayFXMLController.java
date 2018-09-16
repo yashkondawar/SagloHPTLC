@@ -54,7 +54,7 @@ public class DisplayFXMLController implements Initializable,ControlledScreen{
     CanvasFrame frame=null;
     Thread thread=null;
     DatabaseModel model=new DatabaseModel();
- 
+    DatabaseModel logentry=new DatabaseModel();
     //Addition of Points and Caption
     @FXML
     TableView<ModelRF> table;
@@ -131,26 +131,41 @@ public class DisplayFXMLController implements Initializable,ControlledScreen{
     }
     @FXML
     public void onLoadImage(ActionEvent event) {
+        logentry.LogEntry("Opened Load Image window");
         myController.setScreen(SagloHPTLC.CaptureScene);
-    }    
+    }  
+    @FXML
+    public void onQualitative (ActionEvent event) {
+        
+        logentry.LogEntry("Opened Qualitative window");
+        myController.setScreen(SagloHPTLC.QualitativeScene);
+        
+    }
     @FXML
     public void onQuantitative (ActionEvent event) {
+        logentry.LogEntry("Opened Quantitative window");
         myController.setScreen(SagloHPTLC.QuantitativeScene);
     }
     @FXML
-    public void onAboutUs (ActionEvent event) {
+    public void aboutUs (ActionEvent event) {
+        logentry.LogEntry("Opened AboutUs window");
         myController.setScreen(SagloHPTLC.AboutScene);
-    }    
+    }
     @FXML
     public void onReports (ActionEvent event) {
-    //    myController.setScreen(SagloHPTLC.QualitativeScene);
+        logentry.LogEntry("Opened Reports window");
+        myController.setScreen(SagloHPTLC.QualitativeScene);
     }
     @FXML
-    public void onLogOut (ActionEvent event) {
-        
+    public void logOut (ActionEvent event) {
+        logentry.LogEntry("Logged Out");
+        SagloHPTLC.session_id=0;
+        SagloHPTLC.image_id=0;
+        myController.setScreen(SagloHPTLC.Main);
     }
+    @FXML
     public void onSettings (ActionEvent event) {
-        
+        myController.setScreen(SagloHPTLC.SettingsScene);
     }
     @Override
     public void setScreenParent(ScreensController screenPage) {

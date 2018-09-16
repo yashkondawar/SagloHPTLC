@@ -10,15 +10,15 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="saglohptlc.Quantitative.QuantitativeFXMLController">
    <children>
-      <VBox layoutX="10.0" layoutY="10.0" prefHeight="396.0" prefWidth="148.0">
+      <VBox layoutX="-2.0" prefHeight="406.0" prefWidth="160.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="52.0" prefWidth="153.0" />
+            <Button mnemonicParsing="false" onAction="#onSettings" prefHeight="52.0" prefWidth="153.0" text="Settings" />
             <Button fx:id="loadimage" mnemonicParsing="false" onAction="#onLoadImage" prefHeight="57.0" prefWidth="152.0" text="Load Image" />
-            <Button fx:id="qualitative" mnemonicParsing="false" prefHeight="57.0" prefWidth="152.0" text="Qualitative" />
+            <Button fx:id="qualitative" mnemonicParsing="false" onAction="#onQualitative" prefHeight="57.0" prefWidth="152.0" text="Qualitative" />
             <Button fx:id="quantitative" mnemonicParsing="false" prefHeight="57.0" prefWidth="152.0" text="Quantitative" />
             <Button fx:id="repo" mnemonicParsing="false" onAction="#onReports" prefHeight="57.0" prefWidth="152.0" text="Reports" />
-            <Button fx:id="logout" mnemonicParsing="false" onAction="#onLogOut" prefHeight="57.0" prefWidth="152.0" text="Log out" />
-            <Button fx:id="about" mnemonicParsing="false" onAction="#onAboutUs" prefHeight="57.0" prefWidth="152.0" text="About us" />
+            <Button fx:id="logout" mnemonicParsing="false" onAction="#logOut" prefHeight="57.0" prefWidth="152.0" text="Log out" />
+            <Button fx:id="about" mnemonicParsing="false" onAction="#aboutUs" prefHeight="57.0" prefWidth="152.0" text="About us" />
          </children>
       </VBox>
       <StackPane fx:id="stackpane" layoutX="173.0" layoutY="58.0" prefHeight="291.0" prefWidth="416.0">
