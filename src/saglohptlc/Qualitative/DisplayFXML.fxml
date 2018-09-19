@@ -14,6 +14,7 @@
       <VBox prefHeight="396.0" prefWidth="148.0">
          <children>
             <Button mnemonicParsing="false" onAction="#onSettings" prefHeight="52.0" prefWidth="153.0" text="Settings" />
+            <Button fx:id="Settings" mnemonicParsing="false" onAction="#onSettings" prefHeight="52.0" prefWidth="153.0" text="Settings" />
             <Button fx:id="loadimage" mnemonicParsing="false" onAction="#onLoadImage" prefHeight="57.0" prefWidth="152.0" text="Load Image" />
             <Button fx:id="qualitative" mnemonicParsing="false" prefHeight="57.0" prefWidth="152.0" text="Qualitative" />
             <Button fx:id="quantitative" mnemonicParsing="false" onAction="#onQuantitative" prefHeight="57.0" prefWidth="152.0" text="Quantitative" />

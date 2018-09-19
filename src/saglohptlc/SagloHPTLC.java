@@ -39,6 +39,8 @@ public class SagloHPTLC extends Application {
     public static String QualitativeDisplayFile = "/saglohptlc/Qualitative/DisplayFXML.fxml";
     public static String QuantitativeScene = "QuantitativeAnalysis";
     public static String QuantitativeFile = "/saglohptlc/Quantitative/QuantitativeFXML.fxml";
+    public static String DisplayFXMLQFile="/saglohptlc/Quantitative/DisplayFXMLQ.fxml";
+    public static String DisplayQScene="DisplayQuant";
     public static String SettingsScene = "Settings";
     public static String SettingsFile = "/saglohptlc/Settings/Settings.fxml";
     public static String ReportScene = "Reports";
@@ -60,13 +62,16 @@ public class SagloHPTLC extends Application {
             primaryStage.setTitle("Login");
             primaryStage.setScene(scene1);
             primaryStage.show();*/
-             ScreensController mainContainer = new ScreensController();
+        ScreensController mainContainer = new ScreensController();
         mainContainer.loadScreen(SagloHPTLC.Main, SagloHPTLC.MainFile);
         mainContainer.loadScreen(SagloHPTLC.CaptureScene, SagloHPTLC.CaptureFile);
         mainContainer.loadScreen(SagloHPTLC.QualitativeScene, SagloHPTLC.QualitativeFile);
         mainContainer.loadScreen(SagloHPTLC.QualitativeDisplayScene, SagloHPTLC.QualitativeDisplayFile);
         mainContainer.loadScreen(SagloHPTLC.QuantitativeScene, SagloHPTLC.QuantitativeFile);
         mainContainer.loadScreen(SagloHPTLC.ReportScene, SagloHPTLC.ReportFile);
+        mainContainer.loadScreen(SagloHPTLC.SettingsScene, SagloHPTLC.SettingsFile);
+        mainContainer.loadScreen(SagloHPTLC.DisplayQScene, SagloHPTLC.DisplayFXMLQFile);
+        mainContainer.loadScreen(SagloHPTLC.QuantitativeScene, SagloHPTLC.QuantitativeFile);
         mainContainer.loadScreen(SagloHPTLC.SettingsScene, SagloHPTLC.SettingsFile);
       /*  mainContainer.loadScreen(SagloHPTLC.ReportScene, SagloHPTLC.ReportFile);
 >>>>>>> Stashed changes

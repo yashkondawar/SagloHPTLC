@@ -10,16 +10,14 @@ import com.googlecode.javacv.cpp.opencv_core;
 import java.awt.image.BufferedImage;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Cursor;
 import javafx.scene.Group;
+import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -32,7 +30,6 @@ import saglohptlc.DatabaseModel;
 import saglohptlc.SagloHPTLC;
 import saglohptlc.ScreensController;
 import saglohptlc.*;
-import saglohptlc.Quantitative.ResizableRectangle;
 /**
  * FXML Controller class
  *
@@ -102,6 +99,8 @@ public class QuantitativeFXMLController implements Initializable,ControlledScree
            System.out.println(res.get(i).caption +"\t"+res.get(i).x1+" "+res.get(i).x2+" "+res.get(i).y1+" "+res.get(i).y2+" "+res.get(i).concentration+" "+res.get(i).intensity);
        }
        LinearRegression(res);
+       QuantitativeModel.storeUnit(res);
+       myController.setScreen(SagloHPTLC.DisplayQScene);
      }
       public void LinearRegression(ArrayList<Unit> units) {
         double intercept, slope;
@@ -171,6 +170,15 @@ public class QuantitativeFXMLController implements Initializable,ControlledScree
     
     public void onSettings (ActionEvent event) {
         myController.setScreen(SagloHPTLC.SettingsScene);
+        if(SagloHPTLC.flag==0)
+            myController.setScreen(SagloHPTLC.SettingsScene);
+        else
+        {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(null);
+        alert.setContentText("This Option can be accessed by Admin only");
+        alert.showAndWait();
+        }
     }
     @Override
     public void setScreenParent(ScreensController screenPage) {
@@ -181,12 +189,6 @@ public class QuantitativeFXMLController implements Initializable,ControlledScree
     {
         areaSelection.selectArea(selectionGroup);
     }
-         /* 
-      for(int i=0;i<a.size()-2;i++)
-      {
-          System.out.println(rfvalues[i]);
-      }*/
-    
     public void retrieveImage1(ActionEvent event)
     {
      BufferedImage buf=model.retriveImage();

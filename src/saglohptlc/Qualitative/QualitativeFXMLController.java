@@ -125,6 +125,16 @@ public class QualitativeFXMLController implements Initializable,ControlledScreen
     
     public void onSettings (ActionEvent event) {
         myController.setScreen(SagloHPTLC.SettingsScene);
+
+    if(SagloHPTLC.flag==0)
+            myController.setScreen(SagloHPTLC.SettingsScene);
+        else
+        {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(null);
+        alert.setContentText("This Option can be accessed by Admin only");
+        alert.showAndWait();
+        }
     }
     @Override
     public void setScreenParent(ScreensController screenPage) {

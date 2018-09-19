@@ -13,7 +13,7 @@
       <VBox layoutX="-2.0" prefHeight="406.0" prefWidth="160.0">
          <children>
             <Button mnemonicParsing="false" onAction="#onSettings" prefHeight="52.0" prefWidth="153.0" text="Settings" />
-            <Button fx:id="loadimage" mnemonicParsing="false" onAction="#onLoadImage" prefHeight="57.0" prefWidth="152.0" text="Load Image" />
+            <Button fx:id="Settings" mnemonicParsing="false" onAction="#onSettings" prefHeight="52.0" prefWidth="153.0" text="Settings" />            <Button fx:id="loadimage" mnemonicParsing="false" onAction="#onLoadImage" prefHeight="57.0" prefWidth="152.0" text="Load Image" />
             <Button fx:id="qualitative" mnemonicParsing="false" onAction="#onQualitative" prefHeight="57.0" prefWidth="152.0" text="Qualitative" />
             <Button fx:id="quantitative" mnemonicParsing="false" prefHeight="57.0" prefWidth="152.0" text="Quantitative" />
             <Button fx:id="repo" mnemonicParsing="false" onAction="#onReports" prefHeight="57.0" prefWidth="152.0" text="Reports" />

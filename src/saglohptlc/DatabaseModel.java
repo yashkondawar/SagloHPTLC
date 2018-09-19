@@ -44,7 +44,9 @@ public class DatabaseModel {
                 pstmt.setBytes(2,imageInByte);
                 pstmt.execute();
                 baos.close();
+                
             }
+            conn.close();
           
     }catch(Exception e)
     {
@@ -61,17 +63,20 @@ public BufferedImage retriveImage (){
             {
                 System.out.println("Connection not reached");
             }
-    String sql="Select * from Images;";
-    Statement stmt=conn.createStatement();
-    ResultSet rs=stmt.executeQuery(sql);
-    
-    while(rs.next())
-    {
-        //System.out.println(rs.getInt("ID")+rs.getBytes("image"));
-        InputStream in = new ByteArrayInputStream(rs.getBytes("image"));
-        image = ImageIO.read(in);
-        SagloHPTLC.image_id=rs.getInt("Image_ID");
-    }
+            else{
+                    String sql="Select * from Images where User_ID=?;";
+                    PreparedStatement stmt=conn.prepareStatement(sql);
+                    stmt.setInt(1, SagloHPTLC.session_id);
+                    ResultSet rs=stmt.executeQuery();
+                    while(rs.next())
+                    {
+                        //System.out.println(rs.getInt("ID")+rs.getBytes("image"));
+                        InputStream in = new ByteArrayInputStream(rs.getBytes("image"));
+                        image = ImageIO.read(in);
+                        SagloHPTLC.image_id=rs.getInt("Image_ID");
+                    }
+            }
+            conn.close();
      } catch (Exception ex) {
          System.out.println(ex);
      }

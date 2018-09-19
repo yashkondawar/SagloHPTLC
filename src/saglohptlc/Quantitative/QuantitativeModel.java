@@ -34,7 +34,7 @@ import saglohptlc.SagloHPTLC;
  * @author Soha
  */
 public class QuantitativeModel{
-    public static void storeRF(ArrayList<Unit>a){
+    public static void storeUnit(ArrayList<Unit>a){
         try {
             Class.forName("org.sqlite.JDBC");
             Connection conn=DriverManager.getConnection("jdbc:sqlite:yash.db");
@@ -44,19 +44,51 @@ public class QuantitativeModel{
             }
             else
             {
-               String sql="insert into Quantitative(Image_ID,Caption,Intensity) values(?,?,?);";
+               String sql="insert into Quantitative(Image_ID,Caption,Intensity,Concentration) values(?,?,?,?)";
                for(int i=0;i<a.size();i++)
                {
                  PreparedStatement pstmt=conn.prepareStatement(sql);
                  pstmt.setInt(1, SagloHPTLC.image_id);
                  pstmt.setString(2,a.get(i).caption);
                  pstmt.setDouble(3, a.get(i).intensity);
+                 pstmt.setDouble(4, a.get(i).concentration);
                  pstmt.execute();
                }
+               conn.close();
             }
     }catch(Exception e)
     {
         System.out.println(e);
     }
+    }
+    public static ArrayList<ModelQuant> getTable()
+    {
+        ArrayList<ModelQuant> quant=new ArrayList<ModelQuant>();
+         try {
+            Class.forName("org.sqlite.JDBC");
+            Connection conn=DriverManager.getConnection("jdbc:sqlite:yash.db");
+            if(conn==null)
+            {
+                System.out.println("Connection not reached");
+            }
+            else
+            {
+               String sql="select * from Quantitative;";
+               Statement stmt=conn.createStatement();
+               ResultSet rs=stmt.executeQuery(sql);
+               while(rs.next())
+               {
+                   quant.add(new ModelQuant(String.valueOf(rs.getInt("Image_ID")),rs.getString("Caption"),String.valueOf(rs.getFloat("Intensity")),String.valueOf(rs.getFloat("Concentration"))));
+               }
+               conn.close();
+            }
+    }catch(Exception e)
+    {
+        System.out.println(e);
+    }
+         
+         return quant;
+    }
 }
-}
+
+

@@ -57,7 +57,7 @@ public class RFvalueDAO {
                   {
                       //Point is i++;
                       //Rf value is rfvalue.get(j);
-                        String sql="insert into Qualitative(Image_ID,Caption,Point_No,RFValue) values(?,?,?,?);";
+                        String sql="insert into Qualitative(Image_ID,Caption,Point_No,RFValue) values(?,?,?,?)";
                         PreparedStatement pstmt=conn.prepareStatement(sql);
                         model.add(new ModelRF(String.valueOf(SagloHPTLC.image_id),a.get(i).caption,String.valueOf(i),String.valueOf((double)rfvalue.get(j))));
                         pstmt.setInt(1, SagloHPTLC.image_id);
@@ -73,7 +73,7 @@ public class RFvalueDAO {
                 }
                               
             }
-            
+            conn.close();
           
     }catch(Exception e)
     {
@@ -85,7 +85,7 @@ public class RFvalueDAO {
     public static ArrayList<ModelRF> getTable()
     {
         if(!SagloHPTLC.rf1){
-        ArrayList<ModelRF> m1=new ArrayList<ModelRF>();
+        ArrayList<ModelRF> m1=new ArrayList<>();
         try {
             Class.forName("org.sqlite.JDBC");
             Connection conn=DriverManager.getConnection("jdbc:sqlite:yash.db");
@@ -95,17 +95,18 @@ public class RFvalueDAO {
             }
             else
             {
-               Statement stmt=conn.createStatement();
+               
                String sql="Select * from Qualitative;";
+                Statement stmt=conn.createStatement();
                ResultSet rs=stmt.executeQuery(sql);
                while(rs.next())
                {
                    m1.add(new ModelRF(String.valueOf(rs.getInt("Image_ID")),rs.getString("Caption"),String.valueOf(rs.getInt("Point_No")),String.valueOf(rs.getFloat("RFValue"))));
                }
-                              
+                              conn.close();
+          
             }
             
-          
     }catch(Exception e)
     {
         System.out.println(e);

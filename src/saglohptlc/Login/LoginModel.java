@@ -23,13 +23,18 @@ public class LoginModel {
             {
                 return false;
             }
-            Statement stmt=conn.createStatement();
-           ResultSet rs0=stmt.executeQuery("select ID,Password from Admin where Username='"+Username+"';");
-           ResultSet rs1=stmt.executeQuery("select ID,Password from Organisation where Username='"+Username+"';");
-           ResultSet rs2=stmt.executeQuery("select ID,Password from User where Username='"+Username+"';");
-
+           PreparedStatement pstmt=conn.prepareStatement("select ID,Password from Admin where Username=?;");
+           pstmt.setString(1, Username);
+           ResultSet rs0=pstmt.executeQuery();
+           PreparedStatement pstmt1=conn.prepareStatement("select ID,Password from Organisation where Username=?;");
+           pstmt1.setString(1, Username);
+           ResultSet rs1=pstmt1.executeQuery();
+           PreparedStatement pstmt2=conn.prepareStatement("select ID,Password from User where username=?;");
+           pstmt2.setString(1, Username);
+           ResultSet rs2=pstmt2.executeQuery();
            if(rs0.next()){
-            if(Password.equals(rs0.getString("password"))){
+             System.out.println("True");
+            if(Password.equals(rs0.getString("Password"))){
                 SagloHPTLC.flag=0;
                 SagloHPTLC.session_id=rs0.getInt("ID");
                 conn.close();
@@ -38,7 +43,7 @@ public class LoginModel {
            }
            else if(rs1.next())
            {
-              if(Password.equals(rs1.getString("password"))){
+              if(Password.equals(rs1.getString("Password"))){
                 SagloHPTLC.flag=1;
                 SagloHPTLC.session_id=rs1.getInt("ID");
                 conn.close();
@@ -49,6 +54,7 @@ public class LoginModel {
            {
                 if(Password.equals(rs2.getString("password"))){
                 SagloHPTLC.flag=2;
+                System.out.println("here");
                 SagloHPTLC.session_id=rs2.getInt("ID");
                 conn.close();
                 return true;

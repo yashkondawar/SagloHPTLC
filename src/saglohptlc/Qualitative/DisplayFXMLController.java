@@ -10,24 +10,18 @@ import com.googlecode.javacv.cpp.opencv_core;
 import java.awt.image.BufferedImage;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Cursor;
 import javafx.scene.Group;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -72,10 +66,6 @@ public class DisplayFXMLController implements Initializable,ControlledScreen{
     AnchorPane imagecont;
     @FXML
     StackPane stackpane;
-    private Image mainImage;
-    private boolean isAreaSelected = false;
-    private AreaSelection areaSelection = new AreaSelection();
-    private Group selectionGroup = new Group();
     @FXML
     private Button loadimage;
     @FXML
@@ -92,7 +82,6 @@ public class DisplayFXMLController implements Initializable,ControlledScreen{
      * Initializes the controller class.
      */
   
-    DisplayFXMLController mainApp;
     @Override
     public void initialize(URL url, ResourceBundle rb) { 
         
@@ -102,7 +91,7 @@ public class DisplayFXMLController implements Initializable,ControlledScreen{
    Point_No.setCellValueFactory(new PropertyValueFactory<>("point_no"));
    RFValue.setCellValueFactory(new PropertyValueFactory<>("rfvalue"));
   
-    table.getItems().addAll(getData());
+    //table.getItems().addAll(getData());
    
     }
     
@@ -114,11 +103,7 @@ public class DisplayFXMLController implements Initializable,ControlledScreen{
          System.out.println(rfpoints.get(0).getCaption());
           return rfpoints;
      }
-    private void clearSelection(Group group) {
-        //deletes everything except for base container layer
-        isAreaSelected = false;
-        group.getChildren().remove(1,group.getChildren().size());
-    }
+    
   
     @FXML
     public void onDisplay(ActionEvent event)
@@ -166,6 +151,15 @@ public class DisplayFXMLController implements Initializable,ControlledScreen{
     @FXML
     public void onSettings (ActionEvent event) {
         myController.setScreen(SagloHPTLC.SettingsScene);
+     if(SagloHPTLC.flag==0)
+            myController.setScreen(SagloHPTLC.SettingsScene);
+        else
+        {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(null);
+        alert.setContentText("This Option can be accessed by Admin only");
+        alert.showAndWait();
+        }   
     }
     @Override
     public void setScreenParent(ScreensController screenPage) {
@@ -184,120 +178,5 @@ public class DisplayFXMLController implements Initializable,ControlledScreen{
     }
    
   
-    private class AreaSelection {
-
-        private Group group;
-        private ResizableRectangle selectionRectangle = null;
-        private double rectangleStartX;
-        private double rectangleStartY;
-        private Paint darkAreaColor = Color.color(0,0,0,0.5);
-
-        private ResizableRectangle selectArea(Group group) {
-            this.group = group;
-
-            // group.getChildren().get(0) == mainImageView. We assume image view as base container layer
-            if (img != null && mainImage != null) {
-                this.group.getChildren().get(0).addEventHandler(MouseEvent.MOUSE_PRESSED, onMousePressedEventHandler);
-                this.group.getChildren().get(0).addEventHandler(MouseEvent.MOUSE_DRAGGED, onMouseDraggedEventHandler);
-                this.group.getChildren().get(0).addEventHandler(MouseEvent.MOUSE_RELEASED, onMouseReleasedEventHandler);
-            }
-
-            return selectionRectangle;
-        }
-
-        EventHandler<MouseEvent> onMousePressedEventHandler = event -> {
-            if (event.isSecondaryButtonDown())
-                return;
-
-            rectangleStartX = event.getX();
-            rectangleStartY = event.getY();
-
-            clearSelection(group);
-            selectionRectangle = new ResizableRectangle(rectangleStartX, rectangleStartY, 0, 0, group);
-            darkenOutsideRectangle(selectionRectangle);
-        };
-        EventHandler<MouseEvent> onMouseDraggedEventHandler = event -> {
-            if (event.isSecondaryButtonDown())
-                return;
-            double offsetX = event.getX() - rectangleStartX;
-            double offsetY = event.getY() - rectangleStartY;
-            if (offsetX > 0) {
-                if (event.getX() > mainImage.getWidth())
-                    selectionRectangle.setWidth(mainImage.getWidth() - rectangleStartX);
-                else
-                    selectionRectangle.setWidth(offsetX);
-            } else {
-                if (event.getX() < 0)
-                    selectionRectangle.setX(0);
-                else
-                    selectionRectangle.setX(event.getX());
-                selectionRectangle.setWidth(rectangleStartX - selectionRectangle.getX());
-            }
-
-            if (offsetY > 0) {
-                if (event.getY() > mainImage.getHeight())
-                    selectionRectangle.setHeight(mainImage.getHeight() - rectangleStartY);
-                else
-                    selectionRectangle.setHeight(offsetY);
-            } else {
-                if (event.getY() < 0)
-                    selectionRectangle.setY(0);
-                else
-                    selectionRectangle.setY(event.getY());
-                selectionRectangle.setHeight(rectangleStartY - selectionRectangle.getY());
-            }
-        };
-        EventHandler<MouseEvent> onMouseReleasedEventHandler = event -> {
-            if (selectionRectangle != null)
-                isAreaSelected = true;
-        };
-        private void darkenOutsideRectangle(Rectangle rectangle) {
-            Rectangle darkAreaTop = new Rectangle(0,0,darkAreaColor);
-            Rectangle darkAreaLeft = new Rectangle(0,0,darkAreaColor);
-            Rectangle darkAreaRight = new Rectangle(0,0,darkAreaColor);
-            Rectangle darkAreaBottom = new Rectangle(0,0,darkAreaColor);
-
-            darkAreaTop.widthProperty().bind(mainImage.widthProperty());
-            darkAreaTop.heightProperty().bind(rectangle.yProperty());
-
-            darkAreaLeft.yProperty().bind(rectangle.yProperty());
-            darkAreaLeft.widthProperty().bind(rectangle.xProperty());
-            darkAreaLeft.heightProperty().bind(rectangle.heightProperty());
-
-            darkAreaRight.xProperty().bind(rectangle.xProperty().add(rectangle.widthProperty()));
-            darkAreaRight.yProperty().bind(rectangle.yProperty());
-            darkAreaRight.widthProperty().bind(mainImage.widthProperty().subtract(
-                    rectangle.xProperty().add(rectangle.widthProperty())));
-            darkAreaRight.heightProperty().bind(rectangle.heightProperty());
-
-            darkAreaBottom.yProperty().bind(rectangle.yProperty().add(rectangle.heightProperty()));
-            darkAreaBottom.widthProperty().bind(mainImage.widthProperty());
-            darkAreaBottom.heightProperty().bind(mainImage.heightProperty().subtract(
-                    rectangle.yProperty().add(rectangle.heightProperty())));
-
-            // adding dark area rectangles before the selectionRectangle. So it can't overlap rectangle
-            group.getChildren().add(1,darkAreaTop);
-            group.getChildren().add(1,darkAreaLeft);
-            group.getChildren().add(1,darkAreaBottom);
-            group.getChildren().add(1,darkAreaRight);
-
-            // make dark area container layer as well
-            darkAreaTop.addEventHandler(MouseEvent.MOUSE_PRESSED, onMousePressedEventHandler);
-            darkAreaTop.addEventHandler(MouseEvent.MOUSE_DRAGGED, onMouseDraggedEventHandler);
-            darkAreaTop.addEventHandler(MouseEvent.MOUSE_RELEASED, onMouseReleasedEventHandler);
-
-            darkAreaLeft.addEventHandler(MouseEvent.MOUSE_PRESSED, onMousePressedEventHandler);
-            darkAreaLeft.addEventHandler(MouseEvent.MOUSE_DRAGGED, onMouseDraggedEventHandler);
-            darkAreaLeft.addEventHandler(MouseEvent.MOUSE_RELEASED, onMouseReleasedEventHandler);
-
-            darkAreaRight.addEventHandler(MouseEvent.MOUSE_PRESSED, onMousePressedEventHandler);
-            darkAreaRight.addEventHandler(MouseEvent.MOUSE_DRAGGED, onMouseDraggedEventHandler);
-            darkAreaRight.addEventHandler(MouseEvent.MOUSE_RELEASED, onMouseReleasedEventHandler);
-
-            darkAreaBottom.addEventHandler(MouseEvent.MOUSE_PRESSED, onMousePressedEventHandler);
-            darkAreaBottom.addEventHandler(MouseEvent.MOUSE_DRAGGED, onMouseDraggedEventHandler);
-            darkAreaBottom.addEventHandler(MouseEvent.MOUSE_RELEASED, onMouseReleasedEventHandler);
-        }
-    }
-
+    
 }   

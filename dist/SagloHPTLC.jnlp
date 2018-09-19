@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="SagloHPTLC.jar" size="113618" download="eager" />
+    <jar href="SagloHPTLC.jar" size="119594" download="eager" />
     <jar href="lib\artoolkitplus-2.3.1-1.2-linux-x86_64.jar" size="173838" download="eager" />
     <jar href="lib\artoolkitplus-2.3.1-1.2.jar" size="24209" download="eager" />
     <jar href="lib\ffmpeg-2.1.1-windows-x86.jar" size="10720957" download="eager" />
@@ -34,7 +34,6 @@
     <jar href="lib\libdc1394-2.2.4-1.2.jar" size="30799" download="eager" />
     <jar href="lib\libfreenect-0.5.3-1.2-linux-x86_64.jar" size="85071" download="eager" />
     <jar href="lib\libfreenect-0.5.3-1.2.jar" size="22030" download="eager" />
-    <jar href="lib\mysql-connector-java-5.1.23-bin.jar" size="834126" download="eager" />
     <jar href="lib\opencv-2.4.10-0.10.jar" size="813781" download="eager" />
     <jar href="lib\opencv-2.4.8-windows-x86.jar" size="11039869" download="eager" />
     <jar href="lib\opencv-2.4.8-windows-x86_64.jar" size="12025234" download="eager" />

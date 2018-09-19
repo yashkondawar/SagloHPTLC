@@ -32,6 +32,7 @@ import java.awt.image.BufferedImage;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import org.bytedeco.javacpp.opencv_core.IplImage;
@@ -58,7 +59,8 @@ public class CaptureController implements Initializable,ControlledScreen{
     DatabaseModel logentry = new DatabaseModel();
     @FXML
     ImageView img;
-    
+    @FXML
+    Button Settings;
     @FXML
     AnchorPane imagecont;
     public void Browse(ActionEvent event) {
@@ -80,7 +82,7 @@ public class CaptureController implements Initializable,ControlledScreen{
                 img.fitWidthProperty().bind(imagecont.widthProperty()); 
                 //pane.setCenter(img);
             } catch (Exception ex) {
-                Logger.getLogger(CaptureController.class.getName()).log(Level.SEVERE, null, ex);
+                ex.printStackTrace();
             }
     }
     public void startCamera(ActionEvent event){
@@ -141,6 +143,17 @@ public class CaptureController implements Initializable,ControlledScreen{
     
     public void onSettings (ActionEvent event) {
         myController.setScreen(SagloHPTLC.SettingsScene);
+        System.out.println("Her");
+        System.out.println(SagloHPTLC.flag);
+        if(SagloHPTLC.flag==0)
+            myController.setScreen(SagloHPTLC.SettingsScene);
+        else
+        {
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setHeaderText(null);
+        alert.setContentText("This Option can be accessed by Admin only");
+        alert.showAndWait();
+        }
     }
     
     public static BufferedImage IplImageToBufferedImage(IplImage src) {
@@ -160,6 +173,7 @@ public class CaptureController implements Initializable,ControlledScreen{
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        
     }
 
     @Override

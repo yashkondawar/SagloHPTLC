@@ -55,11 +55,7 @@ public class LoginController implements Initializable,ControlledScreen{
                 
                 if(model.checkLogin(username.getText(), password.getText()))
                 {
-                    if(SagloHPTLC.flag!=0)
-                    {
-                        settings.setVisible(false);
-                        settings.setDisable(true);
-                    }
+                    
                             myController.setScreen(SagloHPTLC.CaptureScene);
                             logentry.LogEntry("Logged In");
 
