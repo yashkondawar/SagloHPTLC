@@ -7,19 +7,12 @@ package saglohptlc.Capture;
 
 import com.googlecode.javacv.CanvasFrame;
 import com.googlecode.javacv.cpp.opencv_core;
-import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javax.imageio.ImageIO;
@@ -33,7 +26,6 @@ import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import org.bytedeco.javacpp.opencv_core.IplImage;
 import org.bytedeco.javacv.Frame;
@@ -63,6 +55,7 @@ public class CaptureController implements Initializable,ControlledScreen{
     Button Settings;
     @FXML
     AnchorPane imagecont;
+    CvCapture cp;
     public void Browse(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
              
@@ -91,9 +84,10 @@ public class CaptureController implements Initializable,ControlledScreen{
         @Override
         public void run() 
         {             
-            CvCapture cp=opencv_highgui.cvCreateCameraCapture(0);
+            cp=opencv_highgui.cvCreateCameraCapture(0);
             grab=opencv_highgui.cvQueryFrame(cp);
             frame=new CanvasFrame("Webcam");
+            frame.setBounds(300, 150, 500, 500);
             //frame.setDefaultCloseOperation(CanvasFrame.EXIT_ON_CLOSE); 
             while(frame.isVisible() && (grab=opencv_highgui.cvQueryFrame(cp))!=null){
                 frame.showImage(grab);    

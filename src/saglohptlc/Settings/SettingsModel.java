@@ -54,7 +54,7 @@ public class SettingsModel {
     }
         return true;
     }
-    public static boolean addUser(String Username,String Password,String Org,String org_id){
+   public static boolean addUser(String Username,String Password,String Org,String org_id){
         try {
             Class.forName("org.sqlite.JDBC");
             Connection conn=DriverManager.getConnection("jdbc:sqlite:yash.db");
@@ -89,5 +89,8 @@ public class SettingsModel {
     }
         return true;
     }
-   
-}
+     public static boolean modifyORG(String Name,String Username,String Password){
+         return true;
+     }
+  }
+

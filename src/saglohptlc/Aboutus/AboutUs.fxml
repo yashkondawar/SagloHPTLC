@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="401.0" prefWidth="870.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.1" fx:controller="saglohptlc.Aboutus.AboutUsController">
+   <children>
+      <VBox layoutY="2.0" prefHeight="396.0" prefWidth="148.0">
+         <children>
+            <Button fx:id="Settings" mnemonicParsing="false" onAction="#onSettings" prefHeight="52.0" prefWidth="153.0" text="Settings" />
+            <Button mnemonicParsing="false" onAction="#onLoadImage" prefHeight="57.0" prefWidth="152.0" text="Load Image" />
+            <Button fx:id="qualitative" mnemonicParsing="false" onAction="#onQualitative" prefHeight="57.0" prefWidth="152.0" text="Qualitative" />
+            <Button fx:id="quantitative" mnemonicParsing="false" onAction="#onQuantitative" prefHeight="57.0" prefWidth="152.0" text="Quantitative" />
+            <Button fx:id="repo" mnemonicParsing="false" onAction="#onReports" prefHeight="57.0" prefWidth="152.0" text="Reports" />
+            <Button fx:id="logout" mnemonicParsing="false" onAction="#logOut" prefHeight="57.0" prefWidth="152.0" text="Log out" />
+            <Button fx:id="about" mnemonicParsing="false" onAction="#aboutUs" prefHeight="57.0" prefWidth="152.0" text="About us" />
+         </children>
+      </VBox>
+      <ImageView fitHeight="169.0" fitWidth="135.0" layoutX="157.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Capture.PNG" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" layoutX="300.0" layoutY="40.0" prefHeight="67.0" prefWidth="521.0" text="SAGLO TLC PhotoDoc Soft.">
+         <font>
+            <Font name="Lucida Handwriting Italic" size="35.0" />
+         </font>
+      </Label>
+      <Line endX="591.0" layoutX="296.0" layoutY="189.0" startX="-148.0" />
+      <Label layoutX="341.0" layoutY="121.0" prefHeight="35.0" prefWidth="439.0" text="A Photo Documentation Software for SAGLO's HPTLC instrument. ">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="433.0" layoutY="189.0" text="Developers">
+         <font>
+            <Font name="Lucida Handwriting Italic" size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="157.0" layoutY="246.0" prefHeight="35.0" prefWidth="129.0" text="YASH KONDAWAR">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="157.0" layoutY="292.0" text="Software Developer" />
+      <Label layoutX="157.0" layoutY="309.0" text="Contact : yashmkondawar73@gmail.com" />
+      <Label layoutX="157.0" layoutY="327.0" text="www.linkedin.com/in/yashkondawar" />
+      <Label layoutX="393.0" layoutY="246.0" prefHeight="35.0" prefWidth="129.0" text="SOHA AGARWAL">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="393.0" layoutY="293.0" text="Software Developer" />
+      <Label layoutX="393.0" layoutY="310.0" text="Contact : sohaagarwal93@gmail.com" />
+      <Label layoutX="391.0" layoutY="327.0" text="https://www.linkedin.com/in/sohaagarwal93" />
+      <Label layoutX="635.0" layoutY="246.0" prefHeight="35.0" prefWidth="129.0" text="NEHA CHEDE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="635.0" layoutY="294.0" text="Software Developer" />
+      <Label layoutX="635.0" layoutY="311.0" text="Contact : nehachede98@gmail.com" />
+      <Label layoutX="633.0" layoutY="328.0" text="https://www.linkedin.com/in/nehachede98/" />
+   </children>
+</AnchorPane>

@@ -1,14 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package saglohptlc.Settings;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import saglohptlc.ControlledScreen;
 import saglohptlc.DatabaseModel;
 import javafx.event.Event;
@@ -33,8 +34,20 @@ public class SettingsController implements Initializable,ControlledScreen {
     /**
      * Initializes the controller class.
      */
-    DatabaseModel logentry = new DatabaseModel();
+    @FXML
+    Label userid;
+    @FXML
+    Button resetmorg,modify_org;
+    @FXML
+    TextField m_name_org,m_username_org,m_password_org,m_pass2_org;
+    @FXML
+    TextField nameof_org,username_org,password_org,pass2_org;
+    @FXML
+    TextField nameof_user,username_user,password_user,pass2_user,org_name,org_id;
+    private boolean tabSelection=false;
     ScreensController myController;
+    DatabaseModel logentry;
+    
     public void onLoadImage(ActionEvent event) {
         logentry.LogEntry("Opened Load Image window");
         myController.setScreen(SagloHPTLC.CaptureScene);
@@ -43,8 +56,7 @@ public class SettingsController implements Initializable,ControlledScreen {
         
         logentry.LogEntry("Opened Qualitative window");
         myController.setScreen(SagloHPTLC.QualitativeScene);
-        
-    }
+    }  
     
     public void onQuantitative (ActionEvent event) {
         logentry.LogEntry("Opened Quantitative window");
@@ -58,7 +70,7 @@ public class SettingsController implements Initializable,ControlledScreen {
     
     public void onReports (ActionEvent event) {
         logentry.LogEntry("Opened Reports window");
-        myController.setScreen(SagloHPTLC.QualitativeScene);
+        myController.setScreen(SagloHPTLC.ReportScene);
     }
     
     public void logOut (ActionEvent event) {
@@ -67,40 +79,10 @@ public class SettingsController implements Initializable,ControlledScreen {
         SagloHPTLC.image_id=0;
         myController.setScreen(SagloHPTLC.Main);
     }
-    
-    public void onSettings (ActionEvent event) {
-        myController.setScreen(SagloHPTLC.SettingsScene);
-    }
     @Override
     public void setScreenParent(ScreensController screenPage) {
         myController=screenPage;
-    }
-    public void abc(){
-        System.out.println("Heyyyy");
-    }
-    
-
-    @FXML
-    TextField nameof_org,username_org,password_org,pass2_org;
-    @FXML
-    TextField nameof_user,username_user,password_user,pass2_user,org_name,org_id;
-    private boolean tabSelection=false;
-    @FXML
-    TableView<Organisation> org;
-    @FXML
-    TableColumn<Organisation,String> orgname;
-    @FXML
-    TableColumn<Organisation,String> orgusername;
-    @FXML
-    TableColumn<Organisation,String> orgpass;
-    
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        orgname.setCellValueFactory(new PropertyValueFactory<>("orgname"));
-        orgusername.setCellValueFactory(new PropertyValueFactory<>("orgusername"));
-        orgpass.setCellValueFactory(new PropertyValueFactory<>("orgpassword"));
-    } 
-    
+     }
    @FXML
    void viewData(Event e) {
     if (checkTab()) {
@@ -140,6 +122,32 @@ public class SettingsController implements Initializable,ControlledScreen {
         org_name.setText("");
         org_id.setText("");
     }
+     public void onResetM(ActionEvent event)
+    {
+        m_name_org.setText("");
+        m_username_org.setText("");
+        m_password_org.setText("");
+        m_pass2_org.setText("");
+      
+    }
+     public void onModifyORG(ActionEvent event)
+     {
+         if(m_pass2_org.getText().equals(m_password_org.getText()))
+          if(!SettingsModel.modifyORG(m_name_org.getText(),m_username_org.getText(),m_password_org.getText()))
+          {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText(null);
+            alert.setContentText("Username or Name already exists");
+            alert.showAndWait();   
+          }
+        else
+        {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText(null);
+            alert.setContentText("Passwords don't match!");
+            alert.showAndWait();   
+        }
+     }
      public void onAdd(ActionEvent event)
     {
         if(pass2_org.getText().equals(password_org.getText()))
@@ -157,7 +165,25 @@ public class SettingsController implements Initializable,ControlledScreen {
             alert.setContentText("Passwords don't match!");
             alert.showAndWait();   
         }
-    }
+    }    
+
+   
+    @FXML
+    TableView<Organisation> org;
+    @FXML
+    TableColumn<Organisation,String> orgname;
+    @FXML
+    TableColumn<Organisation,String> orgusername;
+    @FXML
+    TableColumn<Organisation,String> orgpass;
+    
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        orgname.setCellValueFactory(new PropertyValueFactory<>("orgname"));
+        orgusername.setCellValueFactory(new PropertyValueFactory<>("orgusername"));
+        orgpass.setCellValueFactory(new PropertyValueFactory<>("orgpassword"));
+    } 
+    
      public void onAddUser(ActionEvent event)
      {
 //         if(pass2_user.getText().equals(password_user.getText()))
@@ -175,9 +201,7 @@ public class SettingsController implements Initializable,ControlledScreen {
             alert.setContentText("Passwords don't match!");
             alert.showAndWait();   
         }
-
      }
-     
      
 
 }

@@ -3,17 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< Updated upstream
+            <file>file:/F:/NetBeansProjects/SagloHPTLC/src/saglohptlc/Reports/Reports_formController.java</file>
+            <file>file:/F:/NetBeansProjects/SagloHPTLC/src/saglohptlc/Capture/CaptureController.java</file>
+            <file>file:/F:/NetBeansProjects/SagloHPTLC/src/saglohptlc/Qualitative/QualitativeFXMLController.java</file>
             <file>file:/F:/NetBeansProjects/SagloHPTLC/src/saglohptlc/SagloHPTLC.java</file>
-            <file>file:/F:/NetBeansProjects/SagloHPTLC/src/saglohptlc/Login/LoginController.java</file>
-            <file>file:/F:/NetBeansProjects/SagloHPTLC/src/saglohptlc/Login/LoginModel.java</file>
-=======
-            <file>file:/D:/SagloHPTLC/src/saglohptlc/Settings/Settings.fxml</file>
-            <file>file:/D:/SagloHPTLC/src/saglohptlc/Settings/SettingsController.java</file>
-            <file>file:/D:/SagloHPTLC/src/saglohptlc/Quantitative/DisplayFXMLQController.java</file>
-            <file>file:/D:/SagloHPTLC/src/saglohptlc/Settings/SettingsModel.java</file>
-            <file>file:/D:/SagloHPTLC/src/saglohptlc/Settings/Organisation.java</file>
->>>>>>> Stashed changes
+            <file>file:/F:/NetBeansProjects/SagloHPTLC/src/saglohptlc/Aboutus/AboutUsController.java</file>
         </group>
     </open-files>
 </project-private>

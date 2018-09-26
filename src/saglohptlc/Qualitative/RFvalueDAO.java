@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -15,19 +16,12 @@ package saglohptlc.Qualitative;
  * and open the template in the editor.
  */
 
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.imageio.ImageIO;
 import saglohptlc.SagloHPTLC;
 
 /**
@@ -47,11 +41,13 @@ public class RFvalueDAO {
             }
             else
             {
-               int count=0;
+               int count=0,count2=0;
                String caption=a.get(0).caption;
                 for(int i=1;i<a.size();i++)
                 {
-             
+                  if(count!=rf.size())
+                  {
+                  count2=0;
                   ArrayList rfvalue=rf.get(count);
                   for(int j=0;j<rfvalue.size();j++)
                   {
@@ -59,19 +55,24 @@ public class RFvalueDAO {
                       //Rf value is rfvalue.get(j);
                         String sql="insert into Qualitative(Image_ID,Caption,Point_No,RFValue) values(?,?,?,?)";
                         PreparedStatement pstmt=conn.prepareStatement(sql);
-                        model.add(new ModelRF(String.valueOf(SagloHPTLC.image_id),a.get(i).caption,String.valueOf(i),String.valueOf((double)rfvalue.get(j))));
+                         count2++;
+
+                        model.add(new ModelRF(String.valueOf(SagloHPTLC.image_id),a.get(i).caption,String.valueOf(count2),String.valueOf((double)rfvalue.get(j))));
                         pstmt.setInt(1, SagloHPTLC.image_id);
                         pstmt.setString(2,a.get(i).caption);
-                        if(i+1<a.size())
+                       /* if(i+1<a.size())
                             pstmt.setInt(3, i++);
                         else 
-                            break;
+                            break;*/
+                       pstmt.setInt(3,count2);
+                       System.out.println(count2);
+                        i++;
                         pstmt.setDouble(4,(double)rfvalue.get(j));
                         pstmt.execute();
                   }
                   count++;
                 }
-                              
+                }           
             }
             conn.close();
           

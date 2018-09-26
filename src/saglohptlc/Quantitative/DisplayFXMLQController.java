@@ -10,37 +10,22 @@ import com.googlecode.javacv.cpp.opencv_core;
 import java.awt.image.BufferedImage;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Cursor;
-import javafx.scene.Group;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
-import javafx.scene.shape.Rectangle;
 import saglohptlc.DatabaseModel;
 import saglohptlc.SagloHPTLC;
 import saglohptlc.ScreensController;
 import saglohptlc.*;
-import saglohptlc.Qualitative.ModelRF;
-import saglohptlc.Qualitative.RFvalueDAO;
-import saglohptlc.Quantitative.ResizableRectangle;
 /**
  * FXML Controller class
  *

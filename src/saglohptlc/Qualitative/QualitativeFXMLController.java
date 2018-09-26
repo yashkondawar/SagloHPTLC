@@ -159,6 +159,7 @@ public class QualitativeFXMLController implements Initializable,ControlledScreen
       {
           System.out.println(a.get(j).y);
       }
+      try{
       for(int i=0;i<a.size();i++)
       {                                                             
       if(!caption.equals(a.get(i).caption) || i==a.size()-1)
@@ -172,20 +173,30 @@ public class QualitativeFXMLController implements Initializable,ControlledScreen
       }
       count++;
       if(flag){
+          System.out.println("firstpos"+firstpos);
            ArrayList rf=new ArrayList();
           double denominator=0;
+          
           if(i==a.size()-1){
                    denominator=a.get(i).y-first;
-                    for(int j=firstpos;j<=i;j++)
+                     System.out.println("fisrt1"+first+" last"+a.get(i).y);
+
+                    System.out.println("den"+i+denominator);
+
+                    for(int j=firstpos;j<i;j++)//c
                     {
                          rf.add((a.get(j).y-first)/(denominator));
                          System.out.println("Rf"+(a.get(j).y-first)/(denominator));
                     }
           }
           else
-          {  denominator=a.get(i-1).y-first;
-     
-      for(int j=firstpos;j<i;j++)
+          {  
+              System.out.println("I is"+i);
+              denominator=a.get(i-1).y-first;
+              System.out.println("fisrt1"+first+" last"+a.get(i-1).y);
+
+              System.out.println("den"+i+" "+denominator);
+      for(int j=firstpos;j<i-1;j++) //c
       {
           rf.add((a.get(j).y-first)/(denominator));
           System.out.println("Rf"+(a.get(j).y-first)/(denominator));
@@ -196,6 +207,10 @@ public class QualitativeFXMLController implements Initializable,ControlledScreen
       count=0;
       }
      }
+      }catch(Exception e)
+      {
+          e.printStackTrace();
+      }
       //Display
       for(ArrayList a2:rfvalues)
       {

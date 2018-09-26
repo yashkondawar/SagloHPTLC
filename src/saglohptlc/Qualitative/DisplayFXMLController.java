@@ -173,7 +173,7 @@ public class DisplayFXMLController implements Initializable,ControlledScreen{
      
             table.getItems().clear();
             table.getItems().addAll(getData());
-            System.out.println("dw");
+            //System.out.println("dw");
             
     }
    
