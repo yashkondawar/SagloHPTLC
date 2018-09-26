@@ -79,7 +79,7 @@ public class QualitativeFXMLController implements Initializable,ControlledScreen
     public void onRevert(ActionEvent event)
     {
         ArrayList<Point> a=ResizableRectangle.getArray_of_Points();
-        a.remove(a.size()-1);
+        a.clear();
         ResizableRectangle.setArray_of_Points(a);
     }
     public void onDisplay(ActionEvent event)
@@ -124,10 +124,10 @@ public class QualitativeFXMLController implements Initializable,ControlledScreen
     }
     
     public void onSettings (ActionEvent event) {
-        myController.setScreen(SagloHPTLC.SettingsScene);
 
-    if(SagloHPTLC.flag==0)
+    if(SagloHPTLC.flag==0){
             myController.setScreen(SagloHPTLC.SettingsScene);
+    }
         else
         {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -153,7 +153,7 @@ public class QualitativeFXMLController implements Initializable,ControlledScreen
       caption=a.get(0).caption;
       double first=a.get(0).y;
       double nextfirst=first;
-      int count=0,firstpos=0;
+      int firstpos=1;
       System.out.println("Points");
       for(int j=0;j<a.size();j++)
       {
@@ -167,11 +167,11 @@ public class QualitativeFXMLController implements Initializable,ControlledScreen
           flag=true;
           caption=a.get(i).caption;
           nextfirst=a.get(i).y;
-          firstpos=i-count+1;
+          //firstpos=i-count+1;
           System.out.println("Flag true"+firstpos);
 
       }
-      count++;
+      //count++;
       if(flag){
           System.out.println("firstpos"+firstpos);
            ArrayList rf=new ArrayList();
@@ -200,11 +200,14 @@ public class QualitativeFXMLController implements Initializable,ControlledScreen
       {
           rf.add((a.get(j).y-first)/(denominator));
           System.out.println("Rf"+(a.get(j).y-first)/(denominator));
-      }}
+      }
+      firstpos=i+1;
+          }
       rfvalues.add(rf);
       first=nextfirst;
       flag=false;
-      count=0;
+      
+      //count=0;
       }
      }
       }catch(Exception e)

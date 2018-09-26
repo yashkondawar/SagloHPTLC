@@ -56,7 +56,6 @@ public class RFvalueDAO {
                         String sql="insert into Qualitative(Image_ID,Caption,Point_No,RFValue) values(?,?,?,?)";
                         PreparedStatement pstmt=conn.prepareStatement(sql);
                          count2++;
-
                         model.add(new ModelRF(String.valueOf(SagloHPTLC.image_id),a.get(i).caption,String.valueOf(count2),String.valueOf((double)rfvalue.get(j))));
                         pstmt.setInt(1, SagloHPTLC.image_id);
                         pstmt.setString(2,a.get(i).caption);
@@ -70,6 +69,7 @@ public class RFvalueDAO {
                         pstmt.setDouble(4,(double)rfvalue.get(j));
                         pstmt.execute();
                   }
+                  i++;
                   count++;
                 }
                 }           

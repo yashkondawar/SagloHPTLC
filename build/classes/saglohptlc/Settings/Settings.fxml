@@ -31,49 +31,52 @@
                      <children>
                         <TabPane prefHeight="362.0" prefWidth="441.0" tabClosingPolicy="UNAVAILABLE">
                            <tabs>
-                              <Tab text="Organisations">
+                              <Tab onSelectionChanged="#org_Table" text="Organisations">
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="333.0" prefWidth="466.0">
                                        <children>
-                                          <TableView fx:id="org" layoutX="22.0" layoutY="15.0" prefHeight="296.0" prefWidth="376.0">
+                                          <TableView fx:id="org" layoutX="22.0" layoutY="15.0" prefHeight="267.0" prefWidth="354.0">
                                              <columns>
                                                 <TableColumn fx:id="orgname" prefWidth="75.0" text="Name " />
                                                 <TableColumn fx:id="orgusername" prefWidth="75.0" text="Username" />
                                                 <TableColumn fx:id="orgpass" prefWidth="75.0" text="Password" />
                                              </columns>
                                           </TableView>
+                                          <Button layoutX="51.0" layoutY="294.0" mnemonicParsing="false" onAction="#refreshOrg" text="Refresh" />
                                        </children>
                                     </AnchorPane>
                                  </content>
                               </Tab>
-                              <Tab text="User">
+                              <Tab onSelectionChanged="#user_Table" text="User">
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <TableView layoutX="60.0" layoutY="36.0" prefHeight="256.0" prefWidth="372.0">
+                                          <TableView fx:id="user_table" layoutX="60.0" layoutY="36.0" prefHeight="256.0" prefWidth="372.0">
                                              <columns>
-                                                <TableColumn prefWidth="75.0" text="Name" />
-                                                <TableColumn prefWidth="75.0" text="Username" />
-                                                <TableColumn prefWidth="75.0" text="Password" />
-                                                <TableColumn prefWidth="75.0" text="Org_Name" />
-                                                <TableColumn prefWidth="75.0" text="Roll No" />
+                                                <TableColumn fx:id="uname" prefWidth="75.0" text="Name" />
+                                                <TableColumn fx:id="uname2" prefWidth="75.0" text="Username" />
+                                                <TableColumn fx:id="upass" prefWidth="75.0" text="Password" />
+                                                <TableColumn fx:id="u_orgname" prefWidth="75.0" text="Org_Name" />
+                                                <TableColumn fx:id="u_roll" prefWidth="75.0" text="Roll No" />
                                              </columns>
                                           </TableView>
+                                          <Button layoutX="60.0" layoutY="292.0" mnemonicParsing="false" onAction="#refreshUser" text="Refresh" />
                                        </children>
                                     </AnchorPane>
                                  </content>
                               </Tab>
-                              <Tab text="Log">
+                              <Tab onSelectionChanged="#log_Table" text="Log">
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <TableView layoutX="52.0" layoutY="35.0" prefHeight="271.0" prefWidth="358.0">
+                                          <TableView fx:id="log_table" layoutX="35.0" layoutY="14.0" prefHeight="271.0" prefWidth="358.0">
                                              <columns>
-                                                <TableColumn prefWidth="75.0" />
-                                                <TableColumn prefWidth="75.0" text="Activity" />
-                                                <TableColumn prefWidth="75.0" text="Time" />
+                                                <TableColumn fx:id="log_id" prefWidth="75.0" text="User_ID" />
+                                                <TableColumn fx:id="log_activity" prefWidth="123.0" text="Activity" />
+                                                <TableColumn fx:id="log_time" prefWidth="159.0" text="Time" />
                                              </columns>
                                           </TableView>
+                                          <Button layoutX="29.0" layoutY="298.0" mnemonicParsing="false" onAction="#refreshLog" text="Refresh" />
                                        </children>
                                     </AnchorPane>
                                  </content>
@@ -161,18 +164,16 @@
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <TextField fx:id="m_name_org" layoutX="222.0" layoutY="44.0" />
+                                          <TextField fx:id="org_name_modify" layoutX="222.0" layoutY="44.0" />
                                           <Label layoutX="25.0" layoutY="48.0" text="Name of the Organisation" />
                                           <Label layoutX="109.0" layoutY="91.0" text="Username" />
                                           <Label layoutX="113.0" layoutY="132.0" text="Password" />
                                           <Label layoutX="67.0" layoutY="177.0" text="Confirm Password" />
-                                          <TextField fx:id="m_password_org" layoutX="222.0" layoutY="128.0" />
-                                          <TextField fx:id="m_username_org" layoutX="222.0" layoutY="87.0" />
-                                          <TextField fx:id="m_pass2_org" layoutX="222.0" layoutY="173.0" />
-                                          <Button fx:id="resetmorg" layoutX="222.0" layoutY="237.0" mnemonicParsing="false" onAction="#onResetM" text="Reset" />
-                                          <Button fx:id="modify_org" layoutX="287.0" layoutY="237.0" mnemonicParsing="false" onAction="#onModifyORG" text="Modify Entry" />
-                                          <Label layoutX="102.0" layoutY="15.0" prefHeight="30.0" prefWidth="68.0" text="UserID " />
-                                          <Label fx:id="userid" layoutX="163.0" layoutY="21.0" prefWidth="0.0" />
+                                          <TextField fx:id="password_org_modify" layoutX="222.0" layoutY="128.0" />
+                                          <TextField fx:id="username_org_modify" layoutX="222.0" layoutY="87.0" />
+                                          <TextField fx:id="pass2_org_modify" layoutX="222.0" layoutY="173.0" />
+                                          <Button layoutX="222.0" layoutY="237.0" mnemonicParsing="false" onAction="#resetOrg" text="Reset" />
+                                          <Button layoutX="287.0" layoutY="237.0" mnemonicParsing="false" onAction="#modifyOrg" text="Modify Entry" />
                                        </children>
                                     </AnchorPane>
                                  </content>
@@ -181,26 +182,44 @@
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <TextField fx:id="m_name_user" layoutX="222.0" layoutY="17.0" />
+                                          <TextField fx:id="nameof_user_modify" layoutX="222.0" layoutY="17.0" />
                                           <Label layoutX="66.0" layoutY="21.0" text="Name of the User" />
                                           <Label layoutX="106.0" layoutY="60.0" text="Username" />
                                           <Label layoutX="108.0" layoutY="99.0" text="Password" />
                                           <Label layoutX="65.0" layoutY="139.0" text="Confirm Password" />
-                                          <TextField fx:id="m_password_user" layoutX="222.0" layoutY="95.0" />
-                                          <TextField fx:id="m_username_user" layoutX="222.0" layoutY="56.0" />
-                                          <TextField fx:id="m_pass2_user" layoutX="222.0" layoutY="135.0" />
-                                          <Button layoutX="222.0" layoutY="271.0" mnemonicParsing="false" text="Reset" />
-                                          <Button layoutX="287.0" layoutY="271.0" mnemonicParsing="false" text="Modify Entry" />
+                                          <TextField fx:id="password_user_modify" layoutX="222.0" layoutY="95.0" />
+                                          <TextField fx:id="username_user_modify" layoutX="222.0" layoutY="56.0" />
+                                          <TextField fx:id="pass2_user_modify" layoutX="222.0" layoutY="135.0" />
+                                          <Button layoutX="222.0" layoutY="271.0" mnemonicParsing="false" onAction="#resetUserMod" text="Reset" />
+                                          <Button layoutX="287.0" layoutY="271.0" mnemonicParsing="false" onAction="#modifyUser" text="Modify Entry" />
                                           <Label layoutX="68.0" layoutY="222.0" text="Roll Number (ID)" />
-                                          <TextField fx:id="m_rollno_user" layoutX="222.0" layoutY="218.0" />
+                                          <TextField fx:id="orgid_user_modify" layoutX="222.0" layoutY="218.0" />
                                           <Label layoutX="56.0" layoutY="183.0" text="Organisation Name" />
-                                          <TextField fx:id="m_orgname_user" layoutX="222.0" layoutY="179.0" />
+                                          <TextField fx:id="orgname_user_modify" layoutX="222.0" layoutY="179.0" />
                                        </children>
                                     </AnchorPane>
                                  </content>
                               </Tab>
                            </tabs>
                         </TabPane>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Delete User">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="nameof_user_del" layoutX="222.0" layoutY="17.0" />
+                        <Label layoutX="66.0" layoutY="21.0" text="Name of the User" />
+                        <Label layoutX="106.0" layoutY="60.0" text="Username" />
+                        <Label layoutX="108.0" layoutY="99.0" text="Password" />
+                        <Label layoutX="65.0" layoutY="139.0" text="Confirm Password" />
+                        <TextField fx:id="password_user_del" layoutX="222.0" layoutY="95.0" />
+                        <TextField fx:id="username_user_del" layoutX="222.0" layoutY="56.0" />
+                        <TextField fx:id="pass2_user_del" layoutX="222.0" layoutY="135.0" />
+                        <Button layoutX="189.0" layoutY="214.0" mnemonicParsing="false" text="Reset" />
+                        <Button layoutX="271.0" layoutY="214.0" mnemonicParsing="false" onAction="#delUser" text="Delete" />
                      </children>
                   </AnchorPane>
                </content>
