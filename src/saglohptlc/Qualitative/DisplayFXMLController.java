@@ -150,7 +150,6 @@ public class DisplayFXMLController implements Initializable,ControlledScreen{
     }
     @FXML
     public void onSettings (ActionEvent event) {
-        myController.setScreen(SagloHPTLC.SettingsScene);
      if(SagloHPTLC.flag==0)
             myController.setScreen(SagloHPTLC.SettingsScene);
         else

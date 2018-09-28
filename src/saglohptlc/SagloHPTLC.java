@@ -35,6 +35,8 @@ public class SagloHPTLC extends Application {
     public static String SettingsFile = "/saglohptlc/Settings/Settings.fxml";
     public static String ReportScene = "Reports";
     public static String ReportFile = "/saglohptlc/Reports/Reports_form.fxml";
+    public static String ReportPrintScene = "ReportsPrint";
+    public static String ReportPrintFile = "/saglohptlc/Reports/ReportPrint.fxml";
     public static String AboutScene = "AboutUs";
     public static String AboutFile = "/saglohptlc/Aboutus/AboutUs.fxml";
     public BufferedImage bufferedimage=null;
@@ -53,6 +55,7 @@ public class SagloHPTLC extends Application {
             mainContainer.loadScreen(SagloHPTLC.QualitativeDisplayScene, SagloHPTLC.QualitativeDisplayFile);
             mainContainer.loadScreen(SagloHPTLC.QuantitativeScene, SagloHPTLC.QuantitativeFile);
             mainContainer.loadScreen(SagloHPTLC.ReportScene, SagloHPTLC.ReportFile);
+            mainContainer.loadScreen(SagloHPTLC.ReportPrintScene, SagloHPTLC.ReportPrintFile);
             mainContainer.loadScreen(SagloHPTLC.SettingsScene, SagloHPTLC.SettingsFile);
             mainContainer.loadScreen(SagloHPTLC.DisplayQScene, SagloHPTLC.DisplayFXMLQFile);
             mainContainer.loadScreen(SagloHPTLC.QuantitativeScene, SagloHPTLC.QuantitativeFile);

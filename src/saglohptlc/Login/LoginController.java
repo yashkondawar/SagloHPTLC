@@ -57,6 +57,8 @@ public class LoginController implements Initializable,ControlledScreen{
                 {
                     
                             myController.setScreen(SagloHPTLC.CaptureScene);
+                            username.setText("");
+                            password.setText("");
                             logentry.LogEntry("Logged In");
 
                 }

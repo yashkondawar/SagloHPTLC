@@ -10,18 +10,12 @@ import com.googlecode.javacv.cpp.opencv_core;
 import java.awt.image.BufferedImage;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Cursor;
 import javafx.scene.Group;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableView;
@@ -38,7 +32,6 @@ import saglohptlc.DatabaseModel;
 import saglohptlc.SagloHPTLC;
 import saglohptlc.ScreensController;
 import saglohptlc.*;
-import saglohptlc.Qualitative.ResizableRectangle;
 /**
  * FXML Controller class
  *
@@ -113,7 +106,7 @@ public class QualitativeFXMLController implements Initializable,ControlledScreen
     
     public void onReports (ActionEvent event) {
         logentry.LogEntry("Opened Reports window");
-        myController.setScreen(SagloHPTLC.QualitativeScene);
+        myController.setScreen(SagloHPTLC.ReportScene);
     }
     
     public void logOut (ActionEvent event) {

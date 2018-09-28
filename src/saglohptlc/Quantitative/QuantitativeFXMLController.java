@@ -169,7 +169,6 @@ public class QuantitativeFXMLController implements Initializable,ControlledScree
     }
     
     public void onSettings (ActionEvent event) {
-        myController.setScreen(SagloHPTLC.SettingsScene);
         if(SagloHPTLC.flag==0)
             myController.setScreen(SagloHPTLC.SettingsScene);
         else

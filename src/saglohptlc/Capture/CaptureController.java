@@ -136,9 +136,7 @@ public class CaptureController implements Initializable,ControlledScreen{
     }
     
     public void onSettings (ActionEvent event) {
-        myController.setScreen(SagloHPTLC.SettingsScene);
-        System.out.println("Her");
-        System.out.println(SagloHPTLC.flag);
+       
         if(SagloHPTLC.flag==0)
             myController.setScreen(SagloHPTLC.SettingsScene);
         else

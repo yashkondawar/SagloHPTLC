@@ -7,44 +7,36 @@ package saglohptlc.Reports;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.print.PageOrientation;
-import javafx.print.Paper;
-import javafx.print.Printer;
 import javafx.print.PrinterJob;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
-import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import saglohptlc.ControlledScreen;
 import saglohptlc.DatabaseModel;
 import saglohptlc.SagloHPTLC;
 import saglohptlc.ScreensController;
 
-/**
- * FXML Controller class
- *
- * @author Dell
- */
-public class Reports_formController implements Initializable,ControlledScreen {
 
-    /**
-     * Initializes the controller class.
-     */
+public class ReportPrintController implements Initializable,ControlledScreen {
+
+    @FXML
+    AnchorPane printthis;
     ScreensController myController;
     DatabaseModel logentry=new DatabaseModel();
-    public String method,product,equipno,batchno,arno,instruno,test,analysis,platemat,devmode,solvent;
+    DatabaseModel model = new DatabaseModel();
+    Reports_formController rep = new Reports_formController();
+   
+    @FXML
+    Label orgname,dptname,username,date,product,method,eqno,test,instno,batchno,analysis,plmat,solvent,devmode,asign,rsign;
     
     @FXML
-    TextField method1,product1,equip,batch,ar,instru,test1,analysis1,plate,dev,solv;
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }
+    ImageView img;
+    
     @FXML
     
     public void onLoadImage(ActionEvent event) {
@@ -93,24 +85,34 @@ public class Reports_formController implements Initializable,ControlledScreen {
         }
     }
     
-    public void generatereport(ActionEvent event)
-    {
-        method = method1.getText();
-        product = product1.getText();
-        equipno = equip.getText();
-        batchno = batch.getText();
-        arno = ar.getText();
-        instruno = instru.getText();
-        test = test1.getText();
-        analysis = analysis1.getText();
-        devmode = dev.getText();
-        platemat = plate.getText();
-        solvent = solv.getText();
-        myController.setScreen(SagloHPTLC.ReportPrintScene);
+    public void PrintAction(ActionEvent event) {  
+        print(printthis);
+    }
+
+    private void print(Node node){
+        PrinterJob job = PrinterJob.createPrinterJob();
+        if (job != null)
+        {
+            // Print the node
+           boolean printed = job.printPage(node);
+            if (printed)// End the printer job
+               job.endJob();
+            else// Write Error Message
+                System.out.println("Printing failed.");
+        }
+        else// Write Error Message
+            System.out.println("Could not create a printer job.");
     }
     
     @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        //orgname.setText(model.orgret());
+        //dptname.setText(rep.deptname);
+        //username,date,product,method,eqno,test,instno,batchno,analysis,plmat,solvent,devmode,asign,rsign;
+    }    
+
+    @Override
     public void setScreenParent(ScreensController screenPage) {
-        myController=screenPage;
+        myController = screenPage;
     }
 }
