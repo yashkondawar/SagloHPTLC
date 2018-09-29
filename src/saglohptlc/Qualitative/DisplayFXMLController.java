@@ -100,7 +100,7 @@ public class DisplayFXMLController implements Initializable,ControlledScreen{
            ArrayList<ModelRF>rf=RFvalueDAO.getTable();
           ObservableList<ModelRF>rfpoints=FXCollections.observableArrayList();
           rfpoints.addAll(rf);
-         System.out.println(rfpoints.get(0).getCaption());
+          System.out.println(rfpoints.get(0).getCaption());
           return rfpoints;
      }
     
@@ -121,13 +121,14 @@ public class DisplayFXMLController implements Initializable,ControlledScreen{
     }  
     @FXML
     public void onQualitative (ActionEvent event) {
-        
+        SagloHPTLC.quant_qual_flag=1;
         logentry.LogEntry("Opened Qualitative window");
         myController.setScreen(SagloHPTLC.QualitativeScene);
         
     }
     @FXML
     public void onQuantitative (ActionEvent event) {
+        SagloHPTLC.quant_qual_flag=2;
         logentry.LogEntry("Opened Quantitative window");
         myController.setScreen(SagloHPTLC.QuantitativeScene);
     }

@@ -140,13 +140,14 @@ public class QuantitativeFXMLController implements Initializable,ControlledScree
         myController.setScreen(SagloHPTLC.CaptureScene);
     }    
     public void onQualitative (ActionEvent event) {
-        
+        SagloHPTLC.quant_qual_flag=1;
         logentry.LogEntry("Opened Qualitative window");
         myController.setScreen(SagloHPTLC.QualitativeScene);
         
     }
     
     public void onQuantitative (ActionEvent event) {
+        SagloHPTLC.quant_qual_flag=2;
         logentry.LogEntry("Opened Quantitative window");
         myController.setScreen(SagloHPTLC.QuantitativeScene);
     }

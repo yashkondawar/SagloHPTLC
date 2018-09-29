@@ -58,7 +58,7 @@ public class DisplayFXMLQController implements Initializable,ControlledScreen{
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-   image_id.setCellValueFactory(new PropertyValueFactory<>("image_id"));
+   image_id.setCellValueFactory(new PropertyValueFactory<>(""));
    caption.setCellValueFactory(new PropertyValueFactory<>("caption"));
    intensity.setCellValueFactory(new PropertyValueFactory<>("intensity"));
    concentration.setCellValueFactory(new PropertyValueFactory<>("concentration"));
@@ -88,6 +88,7 @@ public class DisplayFXMLQController implements Initializable,ControlledScreen{
     }
     
     public void onQualitative (ActionEvent event) {
+        SagloHPTLC.quant_qual_flag=1;
         myController.setScreen(SagloHPTLC.QualitativeScene);
     }
     public void onAboutUs (ActionEvent event) {

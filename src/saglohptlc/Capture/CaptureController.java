@@ -107,13 +107,14 @@ public class CaptureController implements Initializable,ControlledScreen{
         alert.showAndWait();
     }
     public void onQualitative (ActionEvent event) {
-        
+        SagloHPTLC.quant_qual_flag=1;
         myController.setScreen(SagloHPTLC.QualitativeScene);
         logentry.LogEntry("Opened Qualitative window");
         
     }
     
     public void onQuantitative (ActionEvent event) {
+         SagloHPTLC.quant_qual_flag=2;
         logentry.LogEntry("Opened Quantitative window");
         myController.setScreen(SagloHPTLC.QuantitativeScene);
     }

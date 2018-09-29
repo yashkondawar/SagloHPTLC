@@ -42,9 +42,8 @@ public class SagloHPTLC extends Application {
     public BufferedImage bufferedimage=null;
     public Image image=null;
     public static boolean rf1=false;
-    public static int session_id,flag,image_id;
+    public static int session_id,flag,image_id,quant_qual_flag=0;
     private Pane contentPane;
-    
     @Override
     public void start(Stage primaryStage) {
         try{

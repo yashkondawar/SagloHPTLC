@@ -7,18 +7,11 @@ package saglohptlc.Reports;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.print.PageOrientation;
-import javafx.print.Paper;
-import javafx.print.Printer;
-import javafx.print.PrinterJob;
-import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import saglohptlc.ControlledScreen;
 import saglohptlc.DatabaseModel;
 import saglohptlc.SagloHPTLC;
@@ -107,7 +100,7 @@ public class Reports_formController implements Initializable,ControlledScreen {
         platemat = plate.getText();
         solvent = solv.getText();
         myController.setScreen(SagloHPTLC.ReportPrintScene);
-    }
+           }
     
     @Override
     public void setScreenParent(ScreensController screenPage) {
