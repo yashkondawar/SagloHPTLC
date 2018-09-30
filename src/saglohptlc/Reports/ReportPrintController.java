@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -61,10 +62,11 @@ public class ReportPrintController implements Initializable,ControlledScreen {
     ScreensController myController;
     DatabaseModel logentry=new DatabaseModel();
     DatabaseModel model = new DatabaseModel();
-    Reports_formController rep = new Reports_formController();
+    Reports_formController report=new Reports_formController();
+
    
     @FXML
-    Label orgname,username,date,product,method,eqno,test,instno,batchno,analysis,plmat,solvent,devmode,asign,rsign,arno;
+    Label orgname,username,datetime,product,method,eqno,test,instno,batchno,analysis,plmat,solvent,devmode,asign,rsign,arno;
     
     @FXML
     ImageView img;
@@ -104,7 +106,9 @@ public class ReportPrintController implements Initializable,ControlledScreen {
         myController.setScreen(SagloHPTLC.Main);
     }
     public void loadTable(ActionEvent event){
-        Reports_formController report=new Reports_formController();
+        java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
+        String s = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss").format(date);
+        datetime.setText(s);
         arno.setText(report.arno);
         product.setText(report.product);
         solvent.setText(report.solvent);
@@ -116,6 +120,9 @@ public class ReportPrintController implements Initializable,ControlledScreen {
         batchno.setText(report.batchno);
         analysis.setText(report.analysis);
         method.setText(report.method);
+        System.out.println("print controller "+method);
+        asign.setGraphic(new ImageView(report.analysedimage));
+        rsign.setGraphic(new ImageView(report.reviewedimage));
         BufferedImage buf=model.retriveImage();
      if(buf==null)
      {

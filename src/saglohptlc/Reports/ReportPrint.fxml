@@ -17,7 +17,7 @@
          <content>
             <AnchorPane id="AnchorPane" fx:id="printthis" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="984.0" prefWidth="675.0">
                <children>
-                  <Label fx:id="orgname" alignment="TOP_CENTER" layoutX="93.0" layoutY="14.0" prefHeight="42.0" prefWidth="472.0" style="-fx-underline: black;" text="ORG" textAlignment="CENTER" textFill="#2f12e3">
+                  <Label fx:id="orgname" alignment="TOP_CENTER" layoutX="93.0" layoutY="14.0" prefHeight="42.0" prefWidth="472.0" text="ORG" textAlignment="CENTER" textFill="#2f12e3">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -35,19 +35,19 @@
                   <Label layoutX="54.0" layoutY="902.0" prefHeight="19.0" prefWidth="91.0" text="Analysed By :" />
                   <Label layoutX="346.0" layoutY="902.0" prefHeight="19.0" prefWidth="91.0" text="Reviewed By :" />
                   <Label layoutX="47.0" layoutY="107.0" prefHeight="19.0" prefWidth="76.0" text="Username :" />
-                  <Label fx:id="username" layoutX="123.0" layoutY="105.0" prefHeight="24.0" prefWidth="126.0" text="kjqbjidqw" />
-                  <Label fx:id="date" layoutX="410.0" layoutY="105.0" prefHeight="24.0" prefWidth="148.0" text="98-09-2018   8:09 PM" />
+                  <Label fx:id="username" layoutX="123.0" layoutY="105.0" prefHeight="24.0" prefWidth="126.0" />
+                  <Label fx:id="datetime" layoutX="410.0" layoutY="105.0" prefHeight="24.0" prefWidth="148.0" />
                   <Label layoutX="329.0" layoutY="182.0" prefHeight="22.0" prefWidth="91.0" text="Method Name :" />
-                  <Label fx:id="batchno" layoutX="429.0" layoutY="148.0" prefHeight="24.0" prefWidth="126.0" text="asdasas" />
-                  <Label fx:id="method" layoutX="429.0" layoutY="180.0" prefHeight="24.0" prefWidth="126.0" text="adcadfcdafa" />
-                  <Label fx:id="eqno" layoutX="431.0" layoutY="214.0" prefHeight="24.0" prefWidth="126.0" text="acadcadcad" />
-                  <Label fx:id="product" layoutX="161.0" layoutY="145.0" prefHeight="24.0" prefWidth="126.0" text="adfdaf" />
-                  <Label fx:id="instno" layoutX="161.0" layoutY="177.0" prefHeight="24.0" prefWidth="126.0" text="ascasfdas" />
-                  <Label fx:id="devmode" layoutX="163.0" layoutY="211.0" prefHeight="24.0" prefWidth="126.0" text="asdasasd" />
-                  <Label fx:id="test" layoutX="134.0" layoutY="244.0" prefHeight="24.0" prefWidth="435.0" text="afwfwfqefqebhfkbqejkfnqej" />
-                  <Label fx:id="analysis" layoutX="134.0" layoutY="279.0" prefHeight="24.0" prefWidth="435.0" text="afwfwfqefqebhfkbqejkfnqej" />
-                  <Label fx:id="solvent" layoutX="134.0" layoutY="313.0" prefHeight="24.0" prefWidth="435.0" text="afwfwfqefqebhfkbqejkfnqej" />
-                  <Label fx:id="plmat" layoutX="134.0" layoutY="348.0" prefHeight="24.0" prefWidth="435.0" text="afwfwfqefqebhfkbqejkfnqej" />
+                  <Label fx:id="batchno" layoutX="429.0" layoutY="148.0" prefHeight="24.0" prefWidth="126.0" />
+                  <Label fx:id="method" layoutX="429.0" layoutY="180.0" prefHeight="24.0" prefWidth="126.0" />
+                  <Label fx:id="eqno" layoutX="431.0" layoutY="214.0" prefHeight="24.0" prefWidth="126.0" />
+                  <Label fx:id="product" layoutX="161.0" layoutY="145.0" prefHeight="24.0" prefWidth="126.0" />
+                  <Label fx:id="instno" layoutX="161.0" layoutY="177.0" prefHeight="24.0" prefWidth="126.0" />
+                  <Label fx:id="devmode" layoutX="163.0" layoutY="211.0" prefHeight="24.0" prefWidth="126.0" />
+                  <Label fx:id="test" layoutX="134.0" layoutY="244.0" prefHeight="24.0" prefWidth="435.0" />
+                  <Label fx:id="analysis" layoutX="134.0" layoutY="279.0" prefHeight="24.0" prefWidth="435.0" />
+                  <Label fx:id="solvent" layoutX="134.0" layoutY="313.0" prefHeight="24.0" prefWidth="435.0" />
+                  <Label fx:id="plmat" layoutX="134.0" layoutY="348.0" prefHeight="24.0" prefWidth="435.0" />
                   <Line endX="558.0" layoutX="117.0" layoutY="388.0" startX="-115.0" />
                   <Line endX="522.0" layoutX="131.0" layoutY="894.0" startX="-115.0" />
                   <ImageView fx:id="img" fitHeight="240.0" fitWidth="366.0" layoutX="97.0" layoutY="395.0" pickOnBounds="true" preserveRatio="true" />
@@ -60,9 +60,9 @@
                         <TableColumn fx:id="result" prefWidth="75.0" text="result" />
                      </columns>
                   </TableView>
-                  <Label fx:id="asign" layoutX="54.0" layoutY="925.0" prefHeight="41.0" prefWidth="163.0" />
-                  <Label fx:id="rsign" layoutX="350.0" layoutY="925.0" prefHeight="41.0" prefWidth="163.0" />
-                  <Label layoutX="412.0" layoutY="81.0" prefHeight="17.0" prefWidth="71.0" text="AR No" />
+                  <Label fx:id="asign" layoutX="54.0" layoutY="925.0" prefHeight="41.0" prefWidth="163.0" scaleShape="false" />
+                  <Label fx:id="rsign" layoutX="350.0" layoutY="925.0" prefHeight="41.0" prefWidth="163.0" scaleShape="false" />
+                  <Label layoutX="412.0" layoutY="81.0" prefHeight="17.0" prefWidth="71.0" text="AR No :" />
                   <Label fx:id="arno" layoutX="478.0" layoutY="81.0" prefHeight="17.0" prefWidth="90.0" />
                </children>
             </AnchorPane>

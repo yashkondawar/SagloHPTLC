@@ -43,7 +43,7 @@
 </HBox>
 -->
 
-<AnchorPane id="AnchorPane" fx:id="anchorpane" prefHeight="255.0" prefWidth="491.0" style="-fx-background-color: cyan;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="saglohptlc.Login.LoginController">
+<AnchorPane id="AnchorPane" fx:id="anchorpane" prefHeight="255.0" prefWidth="491.0" style="-fx-background-color: cyan;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="saglohptlc.Login.LoginController">
    <children>
       <ImageView fitHeight="247.0" fitWidth="210.0" layoutX="6.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -52,14 +52,14 @@
       </ImageView>
       <Button fx:id="loginbtn" layoutX="255.0" layoutY="210.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="89.0" text="Login" />
       <Button fx:id="closebtn" layoutX="356.0" layoutY="210.0" mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="89.0" text="Close" />
-      <TextField fx:id="username" layoutX="241.0" layoutY="124.0" prefHeight="25.0" prefWidth="230.0" promptText="Username" />
+      <TextField fx:id="username" layoutX="241.0" layoutY="135.0" prefHeight="25.0" prefWidth="230.0" promptText="Username" />
       <PasswordField fx:id="password" layoutX="241.0" layoutY="169.0" prefHeight="25.0" prefWidth="230.0" promptText="Password" />
       <Label alignment="BOTTOM_LEFT" layoutX="238.0" layoutY="14.0" prefHeight="52.0" prefWidth="237.0" text="Saglo HPTLC" textFill="#655153" textOverrun="WORD_ELLIPSIS">
          <font>
             <Font name="Lucida Handwriting Italic" size="27.0" />
          </font>
       </Label>
-      <Label fx:id="alert" layoutX="289.0" layoutY="95.0" prefHeight="17.0" prefWidth="202.0" textFill="#cd1e1e" />
+      <Label fx:id="alert" layoutX="255.0" layoutY="112.0" prefHeight="17.0" prefWidth="202.0" textFill="#cd1e1e" />
       <Label alignment="BOTTOM_LEFT" layoutX="238.0" layoutY="60.0" prefHeight="52.0" prefWidth="237.0" text="PhotoDoc Soft." textFill="#655153" textOverrun="WORD_ELLIPSIS">
          <font>
             <Font name="Lucida Handwriting Italic" size="27.0" />

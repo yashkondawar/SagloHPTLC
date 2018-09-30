@@ -44,11 +44,11 @@
                   <Label layoutX="54.0" layoutY="405.0" prefHeight="19.0" prefWidth="52.0" text="Solvent :" />
                   <TextField fx:id="solv" layoutX="106.0" layoutY="402.0" prefHeight="25.0" prefWidth="460.0" />
                   <Label layoutX="14.0" layoutY="201.0" prefHeight="19.0" prefWidth="141.0" text="&quot;Analysed By&quot; Signature :" />
-                  <Button layoutX="159.0" layoutY="198.0" mnemonicParsing="false" text="Upload File" />
+                  <Button layoutX="159.0" layoutY="198.0" mnemonicParsing="false" onAction="#Analysedsign" text="Upload File" />
                   <Label layoutX="335.0" layoutY="201.0" prefHeight="19.0" prefWidth="141.0" text="&quot;Reviewed By&quot; Signature :" />
-                  <Button layoutX="480.0" layoutY="198.0" mnemonicParsing="false" text="Upload File" />
-                  <Label layoutX="254.0" layoutY="201.0" prefHeight="19.0" prefWidth="52.0" />
-                  <Label layoutX="574.0" layoutY="201.0" prefHeight="19.0" prefWidth="52.0" />
+                  <Button layoutX="480.0" layoutY="198.0" mnemonicParsing="false" onAction="#Reviewedsign" text="Upload File" />
+                  <Label fx:id="lb1" layoutX="254.0" layoutY="201.0" prefHeight="19.0" prefWidth="52.0" />
+                  <Label fx:id="lb2" layoutX="574.0" layoutY="201.0" prefHeight="19.0" prefWidth="52.0" />
                   <Button layoutX="247.0" layoutY="445.0" mnemonicParsing="false" onAction="#generatereport" prefHeight="25.0" prefWidth="161.0" text="Generate Report" />
                </children>
             </AnchorPane>

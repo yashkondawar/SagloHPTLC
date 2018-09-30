@@ -63,6 +63,7 @@ public class SagloHPTLC extends Application {
             
             mainContainer.setScreen(SagloHPTLC.Main);
             Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
+            primaryStage.setMaximized(true);
             primaryStage.setX(primaryScreenBounds.getMinX());
             primaryStage.setY(primaryScreenBounds.getMinY());
             primaryStage.setWidth(primaryScreenBounds.getWidth());

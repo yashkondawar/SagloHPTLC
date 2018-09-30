@@ -5,13 +5,21 @@
  */
 package saglohptlc.Reports;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
+import javax.imageio.ImageIO;
 import saglohptlc.ControlledScreen;
 import saglohptlc.DatabaseModel;
 import saglohptlc.SagloHPTLC;
@@ -30,10 +38,13 @@ public class Reports_formController implements Initializable,ControlledScreen {
     ScreensController myController;
     DatabaseModel logentry=new DatabaseModel();
     public String method,product,equipno,batchno,arno,instruno,test,analysis,platemat,devmode,solvent;
-    
+    public Image analysedimage,reviewedimage;
     @FXML
     TextField method1,product1,equip,batch,ar,instru,test1,analysis1,plate,dev,solv;
-
+    
+    @FXML
+    Label lb1,lb2;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -86,9 +97,48 @@ public class Reports_formController implements Initializable,ControlledScreen {
         }
     }
     
+    public void Analysedsign(ActionEvent event) {
+        System.out.println("You clicked me!");
+        FileChooser fileChooser = new FileChooser();
+        FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
+        FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.PNG");
+        fileChooser.getExtensionFilters().addAll(extFilterJPG, extFilterPNG);
+
+        File file = fileChooser.showOpenDialog(null);
+
+        try {
+            BufferedImage bufferedImage = ImageIO.read(file);
+            analysedimage = SwingFXUtils.toFXImage(bufferedImage, null);
+
+            lb1.setText("Uploaded");
+        } catch (Exception ex) {
+            System.out.println("error " + ex);
+        }
+    }
+    
+    public void Reviewedsign(ActionEvent event) {
+        System.out.println("You clicked me!");
+        FileChooser fileChooser = new FileChooser();
+        FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
+        FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.PNG");
+        fileChooser.getExtensionFilters().addAll(extFilterJPG, extFilterPNG);
+
+        File file = fileChooser.showOpenDialog(null);
+
+        try {
+            BufferedImage bufferedImage = ImageIO.read(file);
+            reviewedimage = SwingFXUtils.toFXImage(bufferedImage, null);
+
+            lb2.setText("Uploaded");
+        } catch (Exception ex) {
+            System.out.println("error " + ex);
+        }
+    }
+
     public void generatereport(ActionEvent event)
     {
         method = method1.getText();
+        System.out.println("form controller "+method);
         product = product1.getText();
         equipno = equip.getText();
         batchno = batch.getText();
