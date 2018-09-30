@@ -13,9 +13,9 @@
 
 <AnchorPane id="AnchorPane" prefHeight="410.0" prefWidth="576.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="saglohptlc.Reports.ReportPrintController">
    <children>
-      <ScrollPane prefHeight="492.0" prefWidth="678.0">
+      <ScrollPane prefHeight="466.0" prefWidth="678.0">
          <content>
-            <AnchorPane id="AnchorPane" fx:id="printthis" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="984.0" prefWidth="675.0">
+            <AnchorPane id="AnchorPane" fx:id="printthis" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1037.0" prefWidth="725.0">
                <children>
                   <Label fx:id="orgname" alignment="TOP_CENTER" layoutX="93.0" layoutY="14.0" prefHeight="42.0" prefWidth="472.0" text="ORG" textAlignment="CENTER" textFill="#2f12e3">
                      <font>
@@ -32,8 +32,8 @@
                   <Label layoutX="45.0" layoutY="152.0" prefHeight="19.0" prefWidth="69.0" text="Product :" />
                   <Label layoutX="45.0" layoutY="213.0" prefHeight="19.0" prefWidth="116.0" text="Development Mode :" />
                   <Label layoutX="44.0" layoutY="313.0" prefHeight="24.0" prefWidth="88.0" text="Solvent :" />
-                  <Label layoutX="54.0" layoutY="902.0" prefHeight="19.0" prefWidth="91.0" text="Analysed By :" />
-                  <Label layoutX="346.0" layoutY="902.0" prefHeight="19.0" prefWidth="91.0" text="Reviewed By :" />
+                  <Label layoutX="51.0" layoutY="944.0" prefHeight="19.0" prefWidth="91.0" text="Analysed By :" />
+                  <Label layoutX="340.0" layoutY="944.0" prefHeight="19.0" prefWidth="91.0" text="Reviewed By :" />
                   <Label layoutX="47.0" layoutY="107.0" prefHeight="19.0" prefWidth="76.0" text="Username :" />
                   <Label fx:id="username" layoutX="123.0" layoutY="105.0" prefHeight="24.0" prefWidth="126.0" />
                   <Label fx:id="datetime" layoutX="410.0" layoutY="105.0" prefHeight="24.0" prefWidth="148.0" />
@@ -49,19 +49,19 @@
                   <Label fx:id="solvent" layoutX="134.0" layoutY="313.0" prefHeight="24.0" prefWidth="435.0" />
                   <Label fx:id="plmat" layoutX="134.0" layoutY="348.0" prefHeight="24.0" prefWidth="435.0" />
                   <Line endX="558.0" layoutX="117.0" layoutY="388.0" startX="-115.0" />
-                  <Line endX="522.0" layoutX="131.0" layoutY="894.0" startX="-115.0" />
-                  <ImageView fx:id="img" fitHeight="240.0" fitWidth="366.0" layoutX="97.0" layoutY="395.0" pickOnBounds="true" preserveRatio="true" />
-                  <TableView fx:id="ReportsTable" layoutX="87.0" layoutY="659.0" prefHeight="224.0" prefWidth="415.0">
+                  <Line endX="522.0" layoutX="128.0" layoutY="940.0" startX="-115.0" />
+                  <ImageView fx:id="img" fitHeight="330.0" fitWidth="351.0" layoutX="6.0" layoutY="402.0" pickOnBounds="true" preserveRatio="true" />
+                  <TableView fx:id="ReportsTable" layoutX="367.0" layoutY="402.0" prefHeight="471.0" prefWidth="330.0">
                      <columns>
-                        <TableColumn fx:id="sno" prefWidth="75.0" text="sno">
+                        <TableColumn fx:id="sno" prefWidth="45.0" text="sno">
                         </TableColumn>
-                        <TableColumn fx:id="caption" prefWidth="75.0" text="caption" />
-                        <TableColumn fx:id="pointno" prefWidth="75.0" text="pointno" />
-                        <TableColumn fx:id="result" prefWidth="75.0" text="result" />
+                        <TableColumn fx:id="caption" prefWidth="142.0" text="caption" />
+                        <TableColumn fx:id="pointno" prefWidth="64.0" text="pointno" />
+                        <TableColumn fx:id="result" prefWidth="74.0" text="result" />
                      </columns>
                   </TableView>
-                  <Label fx:id="asign" layoutX="54.0" layoutY="925.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="50.0" scaleShape="false" />
-                  <Label fx:id="rsign" layoutX="350.0" layoutY="925.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="50.0" scaleShape="false" AnchorPane.bottomAnchor="0.0" />
+                  <Label fx:id="asign" layoutX="37.0" layoutY="978.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="155.0" scaleShape="false" />
+                  <Label fx:id="rsign" layoutX="352.0" layoutY="925.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="155.0" scaleShape="false" AnchorPane.bottomAnchor="9.0" />
                   <Label layoutX="412.0" layoutY="81.0" prefHeight="17.0" prefWidth="71.0" text="AR No :" />
                   <Label fx:id="arno" layoutX="478.0" layoutY="81.0" prefHeight="17.0" prefWidth="90.0" />
                </children>

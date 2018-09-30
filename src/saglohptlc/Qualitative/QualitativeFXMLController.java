@@ -75,14 +75,7 @@ public class QualitativeFXMLController implements Initializable,ControlledScreen
         a.clear();
         ResizableRectangle.setArray_of_Points(a);
     }
-    public void onDisplay(ActionEvent event)
-    {
-     ArrayList<Point> a=ResizableRectangle.getArray_of_Points();
-     for(int i=0;i<a.size();i++)
-     {
-         System.out.println(a.get(i).caption+" "+a.get(i).x+" "+a.get(i).y);
-     }
-    }
+    
     public void onLoadImage(ActionEvent event) {
         logentry.LogEntry("Opened Load Image window");
         myController.setScreen(SagloHPTLC.CaptureScene);

@@ -20,6 +20,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -78,6 +79,8 @@ public class DisplayFXMLController implements Initializable,ControlledScreen{
     private Button logout;
     @FXML
     private Button about;
+    @FXML
+    Label inst;
     /**
      * Initializes the controller class.
      */
@@ -105,7 +108,7 @@ public class DisplayFXMLController implements Initializable,ControlledScreen{
      }
     
   
-    @FXML
+    /*@FXML
     public void onDisplay(ActionEvent event)
     {
      ArrayList<Point> a=ResizableRectangle.getArray_of_Points();
@@ -113,7 +116,7 @@ public class DisplayFXMLController implements Initializable,ControlledScreen{
      {
          System.out.println(a.get(i).caption+" "+a.get(i).x+" "+a.get(i).y);
      }
-    }
+    }*/
     @FXML
     public void onLoadImage(ActionEvent event) {
         logentry.LogEntry("Opened Load Image window");
@@ -140,7 +143,7 @@ public class DisplayFXMLController implements Initializable,ControlledScreen{
     @FXML
     public void onReports (ActionEvent event) {
         logentry.LogEntry("Opened Reports window");
-        myController.setScreen(SagloHPTLC.QualitativeScene);
+        myController.setScreen(SagloHPTLC.ReportScene);
     }
     @FXML
     public void logOut (ActionEvent event) {
@@ -173,6 +176,7 @@ public class DisplayFXMLController implements Initializable,ControlledScreen{
      
             table.getItems().clear();
             table.getItems().addAll(getData());
+            inst.setText("* Results are saved. You can generate reports.");
             //System.out.println("dw");
             
     }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
@@ -18,10 +19,11 @@
             <Button fx:id="about" mnemonicParsing="false" onAction="#aboutUs" prefHeight="57.0" prefWidth="152.0" text="About us" />
          </children>
       </VBox>
-      <ImageView fx:id="img" fitHeight="298.0" fitWidth="409.0" layoutX="182.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="img" fitHeight="279.0" fitWidth="414.0" layoutX="177.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true" />
       <Button layoutX="187.0" layoutY="14.0" mnemonicParsing="false" onAction="#Browse" prefHeight="29.0" prefWidth="83.0" text="Browse" />
-      <Button layoutX="287.0" layoutY="14.0" mnemonicParsing="false" onAction="#startCamera" prefHeight="29.0" prefWidth="111.0" text="Start Camera" />
-      <Button layoutX="407.0" layoutY="14.0" mnemonicParsing="false" onAction="#Capture" prefHeight="29.0" prefWidth="83.0" text="Capture" />
-      <Button layoutX="502.0" layoutY="14.0" mnemonicParsing="false" onAction="#Save" prefHeight="29.0" prefWidth="83.0" text="Save" />
+      <Button layoutX="284.0" layoutY="14.0" mnemonicParsing="false" onAction="#startCamera" prefHeight="29.0" prefWidth="95.0" text="Start Camera" />
+      <Button layoutX="389.0" layoutY="14.0" mnemonicParsing="false" onAction="#Capture" prefHeight="29.0" prefWidth="83.0" text="Capture" />
+      <Button layoutX="484.0" layoutY="14.0" mnemonicParsing="false" onAction="#Save" prefHeight="29.0" prefWidth="83.0" text="Save" />
+      <Label layoutX="191.0" layoutY="59.0" prefHeight="17.0" prefWidth="378.0" text="* Please Save the captured/browsed image before proceeding." textFill="RED" />
    </children>
 </AnchorPane>

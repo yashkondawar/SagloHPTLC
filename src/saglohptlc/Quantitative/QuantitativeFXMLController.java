@@ -160,7 +160,7 @@ public class QuantitativeFXMLController implements Initializable,ControlledScree
     
     public void onReports (ActionEvent event) {
         logentry.LogEntry("Opened Reports window");
-        myController.setScreen(SagloHPTLC.QualitativeScene);
+        myController.setScreen(SagloHPTLC.ReportScene);
     }
     
     public void logOut (ActionEvent event) {

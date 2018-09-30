@@ -17,6 +17,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -54,6 +55,8 @@ public class DisplayFXMLQController implements Initializable,ControlledScreen{
     AnchorPane imagecont;
     @FXML
     StackPane stackpane;
+    @FXML
+    Label inst;
   
     
     @Override
@@ -95,7 +98,7 @@ public class DisplayFXMLQController implements Initializable,ControlledScreen{
         myController.setScreen(SagloHPTLC.AboutScene);
     }    
     public void onReports (ActionEvent event) {
-        myController.setScreen(SagloHPTLC.QualitativeScene);
+        myController.setScreen(SagloHPTLC.ReportScene);
     }
     public void onLogOut (ActionEvent event) {
         
@@ -120,5 +123,6 @@ public class DisplayFXMLQController implements Initializable,ControlledScreen{
     public void retrieveImage1(ActionEvent event)
     {
         table.getItems().addAll(getData());
+        inst.setText("* Results are saved. You can generate reports.");
     }
 }

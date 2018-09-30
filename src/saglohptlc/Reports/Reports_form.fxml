@@ -49,7 +49,7 @@
                   <Button layoutX="480.0" layoutY="198.0" mnemonicParsing="false" onAction="#Reviewedsign" text="Upload File" />
                   <Label fx:id="lb1" layoutX="254.0" layoutY="201.0" prefHeight="19.0" prefWidth="52.0" />
                   <Label fx:id="lb2" layoutX="574.0" layoutY="201.0" prefHeight="19.0" prefWidth="52.0" />
-                  <Button layoutX="247.0" layoutY="445.0" mnemonicParsing="false" onAction="#generatereport" prefHeight="25.0" prefWidth="161.0" text="Generate Report" />
+                  <Button layoutX="307.0" layoutY="448.0" mnemonicParsing="false" onAction="#generatereport" prefHeight="25.0" prefWidth="83.0" text="Next" />
                </children>
             </AnchorPane>
          </content>

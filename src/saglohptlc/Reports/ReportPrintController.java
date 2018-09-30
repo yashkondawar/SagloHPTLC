@@ -122,7 +122,7 @@ public class ReportPrintController implements Initializable,ControlledScreen {
         batchno.setText(report.batchno);
         analysis.setText(report.analysis);
         method.setText(report.method);
-        System.out.println("print controller "+method);
+        //System.out.println("print controller "+method);
         asign.setGraphic(new ImageView(report.analysedimage));
         rsign.setGraphic(new ImageView(report.reviewedimage));
         
