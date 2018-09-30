@@ -5,12 +5,13 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.control.cell.PropertyValueFactory?>
+
 <AnchorPane id="AnchorPane" prefHeight="410.0" prefWidth="576.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="saglohptlc.Reports.ReportPrintController">
    <children>
       <ScrollPane prefHeight="492.0" prefWidth="678.0">
@@ -22,7 +23,6 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="47.0" layoutY="79.0" prefHeight="19.0" prefWidth="76.0" text="Department :" />
                   <Line endX="522.0" layoutX="149.0" layoutY="139.0" startX="-157.0" startY="-1.52587890625E-5" />
                   <Label layoutX="42.0" layoutY="350.0" prefHeight="24.0" prefWidth="92.0" text="Plate Materials :" />
                   <Label layoutX="44.0" layoutY="281.0" prefHeight="19.0" prefWidth="52.0" text="Analysis :" />
@@ -36,7 +36,6 @@
                   <Label layoutX="54.0" layoutY="902.0" prefHeight="19.0" prefWidth="91.0" text="Analysed By :" />
                   <Label layoutX="346.0" layoutY="902.0" prefHeight="19.0" prefWidth="91.0" text="Reviewed By :" />
                   <Label layoutX="47.0" layoutY="107.0" prefHeight="19.0" prefWidth="76.0" text="Username :" />
-                  <Label fx:id="dptname" layoutX="123.0" layoutY="77.0" prefHeight="24.0" prefWidth="126.0" text="gyhbaydihfb" />
                   <Label fx:id="username" layoutX="123.0" layoutY="105.0" prefHeight="24.0" prefWidth="126.0" text="kjqbjidqw" />
                   <Label fx:id="date" layoutX="410.0" layoutY="105.0" prefHeight="24.0" prefWidth="148.0" text="98-09-2018   8:09 PM" />
                   <Label layoutX="329.0" layoutY="182.0" prefHeight="22.0" prefWidth="91.0" text="Method Name :" />
@@ -59,22 +58,15 @@
                              <cellValueFactory><PropertyValueFactory property="sno" />
         </cellValueFactory>
                         </TableColumn>
-                        <TableColumn prefWidth="75.0" text="caption" >
-                            <cellValueFactory><PropertyValueFactory property="caption" />
-        </cellValueFactory>
-                        </TableColumn> 
-                        <TableColumn prefWidth="75.0" text="pointno">
-                             <cellValueFactory><PropertyValueFactory property="pointno" />
-        </cellValueFactory>
-                        </TableColumn>
-                        <TableColumn prefWidth="75.0" text="result">
-                         <cellValueFactory><PropertyValueFactory property="result" />
-        </cellValueFactory>
-                        </TableColumn>
+                        <TableColumn prefWidth="75.0" text="caption" />
+                        <TableColumn prefWidth="75.0" text="pointno" />
+                        <TableColumn prefWidth="75.0" text="result" />
                      </columns>
                   </TableView>
                   <Label fx:id="asign" layoutX="54.0" layoutY="925.0" prefHeight="41.0" prefWidth="163.0" />
                   <Label fx:id="rsign" layoutX="350.0" layoutY="925.0" prefHeight="41.0" prefWidth="163.0" />
+                  <Label layoutX="412.0" layoutY="81.0" prefHeight="17.0" prefWidth="71.0" text="AR No" />
+                  <Label fx:id="arno" layoutX="478.0" layoutY="81.0" prefHeight="17.0" prefWidth="90.0" />
                </children>
             </AnchorPane>
          </content>

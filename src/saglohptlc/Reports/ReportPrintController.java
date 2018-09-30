@@ -5,12 +5,18 @@
  */
 package saglohptlc.Reports;
 
+import java.awt.image.BufferedImage;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -25,6 +31,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.transform.Scale;
@@ -32,6 +39,7 @@ import saglohptlc.ControlledScreen;
 import saglohptlc.DatabaseModel;
 import saglohptlc.Qualitative.ModelRF;
 import saglohptlc.Qualitative.RFvalueDAO;
+import static saglohptlc.Qualitative.RFvalueDAO.model;
 import saglohptlc.Quantitative.ModelQuant;
 import saglohptlc.Quantitative.QuantitativeModel;
 import saglohptlc.SagloHPTLC;
@@ -58,7 +66,7 @@ public class ReportPrintController implements Initializable,ControlledScreen {
     Reports_formController rep = new Reports_formController();
    
     @FXML
-    Label orgname,dptname,username,date,product,method,eqno,test,instno,batchno,analysis,plmat,solvent,devmode,asign,rsign;
+    Label orgname,username,date,product,method,eqno,test,instno,batchno,analysis,plmat,solvent,devmode,asign,rsign,arno;
     
     @FXML
     ImageView img;
@@ -98,6 +106,55 @@ public class ReportPrintController implements Initializable,ControlledScreen {
         myController.setScreen(SagloHPTLC.Main);
     }
     public void loadTable(ActionEvent event){
+        Reports_formController report=new Reports_formController();
+        arno.setText(report.arno);
+        product.setText(report.product);
+        solvent.setText(report.solvent);
+        test.setText(report.test);
+        eqno.setText(report.equipno);
+        instno.setText(report.instruno);
+        devmode.setText(report.devmode);
+        plmat.setText(report.platemat);
+        batchno.setText(report.batchno);
+        analysis.setText(report.analysis);
+        
+        BufferedImage buf=model.retriveImage();
+     if(buf==null)
+     {
+         Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(null);
+        alert.setContentText("No previous images");
+     }else{
+    Image  mainImage = SwingFXUtils.toFXImage(buf, null);
+    img.setImage(mainImage);
+     }
+      try {
+            Class.forName("org.sqlite.JDBC");
+            Connection conn=DriverManager.getConnection("jdbc:sqlite:yash.db");
+            if(conn==null)
+            {
+                System.out.println("Connection not reached");
+            }
+            else
+            {
+               String sql="select Org_Name,username where ID=?;";
+               PreparedStatement pstmt=conn.prepareStatement(sql);
+               pstmt.setInt(1, SagloHPTLC.session_id);
+               ResultSet rs=pstmt.executeQuery();
+               while(rs.next())
+               {
+                   orgname.setText(rs.getString("Org_Name"));
+                   username.setText(rs.getString("username"));
+               }
+            }
+            conn.close();
+          
+    }catch(Exception e)
+    {
+        System.out.println(e);
+    }
+     
+
         if(SagloHPTLC.quant_qual_flag==1)
         {
             ReportsTable.getItems().clear();
