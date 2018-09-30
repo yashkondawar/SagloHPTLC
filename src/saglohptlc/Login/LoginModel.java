@@ -18,7 +18,7 @@ public class LoginModel {
     public boolean checkLogin(String Username,String Password){
         try {
             Class.forName("org.sqlite.JDBC");
-            Connection conn=DriverManager.getConnection("jdbc:sqlite:yash.db");
+            Connection conn=DriverManager.getConnection("jdbc:sqlite:tlc.db");
             if(conn==null)
             {
                 return false;

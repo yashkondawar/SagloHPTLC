@@ -38,7 +38,7 @@ public class QuantitativeModel{
     public static void storeUnit(ArrayList<Unit>a){
         try {
             Class.forName("org.sqlite.JDBC");
-            Connection conn=DriverManager.getConnection("jdbc:sqlite:yash.db");
+            Connection conn=DriverManager.getConnection("jdbc:sqlite:tlc.db");
             if(conn==null)
             {
                 System.out.println("Connection not reached");
@@ -69,7 +69,7 @@ public class QuantitativeModel{
         ArrayList<ModelQuant> quant=new ArrayList<ModelQuant>();
          try {
             Class.forName("org.sqlite.JDBC");
-            Connection conn=DriverManager.getConnection("jdbc:sqlite:yash.db");
+            Connection conn=DriverManager.getConnection("jdbc:sqlite:tlc.db");
             if(conn==null)
             {
                 System.out.println("Connection not reached");
@@ -100,7 +100,7 @@ public class QuantitativeModel{
         ArrayList<ModelQuant> model1=new ArrayList<ModelQuant>();
         try {
             Class.forName("org.sqlite.JDBC");
-            Connection conn=DriverManager.getConnection("jdbc:sqlite:yash.db");
+            Connection conn=DriverManager.getConnection("jdbc:sqlite:tlc.db");
             if(conn==null)
             {
                 System.out.println("Connection not reached");

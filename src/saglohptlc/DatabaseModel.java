@@ -27,7 +27,7 @@ public class DatabaseModel {
     public void storeImage(BufferedImage buf){
         try {
             Class.forName("org.sqlite.JDBC");
-            Connection conn=DriverManager.getConnection("jdbc:sqlite:yash.db");
+            Connection conn=DriverManager.getConnection("jdbc:sqlite:tlc.db");
             if(conn==null)
             {
                 System.out.println("Connection not reached");
@@ -58,7 +58,7 @@ public BufferedImage retriveImage (){
     BufferedImage image = null;
      try {
          Class.forName("org.sqlite.JDBC");
-         Connection conn=DriverManager.getConnection("jdbc:sqlite:yash.db");
+         Connection conn=DriverManager.getConnection("jdbc:sqlite:tlc.db");
             if(conn==null)
             {
                 System.out.println("Connection not reached");
@@ -87,7 +87,7 @@ public BufferedImage retriveImage (){
     public void LogEntry(String activity){
         try {
             Class.forName("org.sqlite.JDBC");
-            Connection conn=DriverManager.getConnection("jdbc:sqlite:yash.db");
+            Connection conn=DriverManager.getConnection("jdbc:sqlite:tlc.db");
             if(conn==null)
             {
                 System.out.println("Connection not reached");

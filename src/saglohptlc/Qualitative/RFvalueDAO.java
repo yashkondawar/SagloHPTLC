@@ -34,7 +34,7 @@ public class RFvalueDAO {
     public static ArrayList<ModelRF> storeRF(ArrayList<Point>a, ArrayList<ArrayList<Double>> rf){
         try {
             Class.forName("org.sqlite.JDBC");
-            Connection conn=DriverManager.getConnection("jdbc:sqlite:yash.db");
+            Connection conn=DriverManager.getConnection("jdbc:sqlite:tlc.db");
             if(conn==null)
             {
                 System.out.println("Connection not reached");
@@ -89,7 +89,7 @@ public class RFvalueDAO {
         ArrayList<ModelRF> m1=new ArrayList<>();
         try {
             Class.forName("org.sqlite.JDBC");
-            Connection conn=DriverManager.getConnection("jdbc:sqlite:yash.db");
+            Connection conn=DriverManager.getConnection("jdbc:sqlite:tlc.db");
             if(conn==null)
             {
                 System.out.println("Connection not reached");
@@ -123,7 +123,7 @@ public class RFvalueDAO {
              System.out.println("EE");
               try {
             Class.forName("org.sqlite.JDBC");
-            Connection conn=DriverManager.getConnection("jdbc:sqlite:yash.db");
+            Connection conn=DriverManager.getConnection("jdbc:sqlite:tlc.db");
             if(conn==null)
             {
                 System.out.println("Connection not reached");

@@ -24,7 +24,7 @@ public class SettingsModel {
      public static boolean addOrg(String Name,String Username,String Password){
         try {
             Class.forName("org.sqlite.JDBC");
-            Connection conn=DriverManager.getConnection("jdbc:sqlite:yash.db");
+            Connection conn=DriverManager.getConnection("jdbc:sqlite:tlc.db");
             if(conn==null)
             {
                 System.out.println("Connection not reached");
@@ -56,7 +56,7 @@ public class SettingsModel {
     public static boolean addUser(String Name,String Username,String Password,String Org,String org_id){
         try {
             Class.forName("org.sqlite.JDBC");
-            Connection conn=DriverManager.getConnection("jdbc:sqlite:yash.db");
+            Connection conn=DriverManager.getConnection("jdbc:sqlite:tlc.db");
             if(conn==null)
             {
                 System.out.println("Connection not reached");
@@ -91,7 +91,7 @@ public class SettingsModel {
     {
          try {
             Class.forName("org.sqlite.JDBC");
-            Connection conn=DriverManager.getConnection("jdbc:sqlite:yash.db");
+            Connection conn=DriverManager.getConnection("jdbc:sqlite:tlc.db");
             if(conn==null)
             {
                 System.out.println("Connection not reached");
@@ -127,7 +127,7 @@ public class SettingsModel {
     {
       try {
             Class.forName("org.sqlite.JDBC");
-            Connection conn=DriverManager.getConnection("jdbc:sqlite:yash.db");
+            Connection conn=DriverManager.getConnection("jdbc:sqlite:tlc.db");
             if(conn==null)
             {
                 System.out.println("Connection not reached");
@@ -165,7 +165,7 @@ public class SettingsModel {
     {
          try {
             Class.forName("org.sqlite.JDBC");
-            Connection conn=DriverManager.getConnection("jdbc:sqlite:yash.db");
+            Connection conn=DriverManager.getConnection("jdbc:sqlite:tlc.db");
             if(conn==null)
             {
                 System.out.println("Connection not reached");
@@ -206,7 +206,7 @@ public class SettingsModel {
         ArrayList<Organisation> orgtable=new ArrayList();
         try {
             Class.forName("org.sqlite.JDBC");
-            Connection conn=DriverManager.getConnection("jdbc:sqlite:yash.db");
+            Connection conn=DriverManager.getConnection("jdbc:sqlite:tlc.db");
             if(conn==null)
             {
                 System.out.println("Connection not reached");
@@ -238,7 +238,7 @@ public class SettingsModel {
         ArrayList<UserTable> utable=new ArrayList();
         try {
             Class.forName("org.sqlite.JDBC");
-            Connection conn=DriverManager.getConnection("jdbc:sqlite:yash.db");
+            Connection conn=DriverManager.getConnection("jdbc:sqlite:tlc.db");
             if(conn==null)
             {
                 System.out.println("Connection not reached");
@@ -269,7 +269,7 @@ public class SettingsModel {
         ArrayList<LogTable> ltable=new ArrayList();
         try {
             Class.forName("org.sqlite.JDBC");
-            Connection conn=DriverManager.getConnection("jdbc:sqlite:yash.db");
+            Connection conn=DriverManager.getConnection("jdbc:sqlite:tlc.db");
             if(conn==null)
             {
                 System.out.println("Connection not reached");

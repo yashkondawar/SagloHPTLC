@@ -138,7 +138,7 @@ public class ReportPrintController implements Initializable,ControlledScreen {
      }
       try {
             Class.forName("org.sqlite.JDBC");
-            Connection conn=DriverManager.getConnection("jdbc:sqlite:yash.db");
+            Connection conn=DriverManager.getConnection("jdbc:sqlite:tlc.db");
             if(conn==null)
             {
                 System.out.println("Connection not reached");
