@@ -37,8 +37,8 @@ public class Reports_formController implements Initializable,ControlledScreen {
      */
     ScreensController myController;
     DatabaseModel logentry=new DatabaseModel();
-    public String method,product,equipno,batchno,arno,instruno,test,analysis,platemat,devmode,solvent;
-    public Image analysedimage,reviewedimage;
+    public static String method,product,equipno,batchno,arno,instruno,test,analysis,platemat,devmode,solvent;
+    public static Image analysedimage,reviewedimage;
     @FXML
     TextField method1,product1,equip,batch,ar,instru,test1,analysis1,plate,dev,solv;
     
@@ -109,7 +109,6 @@ public class Reports_formController implements Initializable,ControlledScreen {
         try {
             BufferedImage bufferedImage = ImageIO.read(file);
             analysedimage = SwingFXUtils.toFXImage(bufferedImage, null);
-
             lb1.setText("Uploaded");
         } catch (Exception ex) {
             System.out.println("error " + ex);

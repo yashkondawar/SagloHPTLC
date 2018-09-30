@@ -14,6 +14,8 @@ import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.stream.IntStream;
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
@@ -123,6 +125,7 @@ public class ReportPrintController implements Initializable,ControlledScreen {
         System.out.println("print controller "+method);
         asign.setGraphic(new ImageView(report.analysedimage));
         rsign.setGraphic(new ImageView(report.reviewedimage));
+        
         BufferedImage buf=model.retriveImage();
      if(buf==null)
      {
@@ -159,7 +162,13 @@ public class ReportPrintController implements Initializable,ControlledScreen {
         System.out.println(e);
     }
      
+      ReportsTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        //IntStream.range(0, 20).mapToObj(Integer::toString).forEach(ReportsTable.getItems()::add);
 
+    ReportsTable.setFixedCellSize(25);
+    ReportsTable.prefHeightProperty().bind(ReportsTable.fixedCellSizeProperty().multiply(Bindings.size(ReportsTable.getItems()).add(1.01)));
+    ReportsTable.minHeightProperty().bind(ReportsTable.prefHeightProperty());
+    ReportsTable.maxHeightProperty().bind(ReportsTable.prefHeightProperty());
         if(SagloHPTLC.quant_qual_flag==1)
         {
             ReportsTable.getItems().clear();
@@ -233,7 +242,7 @@ public class ReportPrintController implements Initializable,ControlledScreen {
     }    
     public ObservableList getQualData()
      {
-           ArrayList rf=RFvalueDAO.getTable();
+           ArrayList rf=RFvalueDAO.getRecent();
           ObservableList rfpoints=FXCollections.observableArrayList();
           rfpoints.addAll(rf);
           
@@ -243,8 +252,8 @@ public class ReportPrintController implements Initializable,ControlledScreen {
      public ObservableList getQuantData()
      {
          ArrayList a;
-         if(!QuantitativeModel.getTable().isEmpty()){
-         a= QuantitativeModel.getTable();
+         if(!QuantitativeModel.getRecent().isEmpty()){
+         a= QuantitativeModel.getRecent();
          }
          else
          {
@@ -255,6 +264,10 @@ public class ReportPrintController implements Initializable,ControlledScreen {
          //System.out.println(points.get(0).getImage_id());
         // System.out.println(points.isEmpty());
           return points;
+     }
+     public void onBack(ActionEvent event)
+     {
+         myController.setScreen(SagloHPTLC.ReportScene);
      }
     @Override
     public void setScreenParent(ScreensController screenPage) {

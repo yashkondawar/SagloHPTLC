@@ -94,6 +94,45 @@ public class QuantitativeModel{
          else
              return model;
     }
+    
+     public static ArrayList<ModelQuant> getRecent()
+    {
+        ArrayList<ModelQuant> model1=new ArrayList<ModelQuant>();
+        try {
+            Class.forName("org.sqlite.JDBC");
+            Connection conn=DriverManager.getConnection("jdbc:sqlite:yash.db");
+            if(conn==null)
+            {
+                System.out.println("Connection not reached");
+            }
+            else
+            {
+               String sql="Select * from Images where User_ID=?;";
+               PreparedStatement pstmt=conn.prepareStatement(sql);
+               pstmt.setInt(1, SagloHPTLC.session_id);
+               ResultSet rs=pstmt.executeQuery();
+               int image_id=0;
+               while(rs.next())
+               {
+                   image_id=rs.getInt("Image_ID");
+               }
+               String sql2="select * from Quantitative where Image_ID=?;";
+               PreparedStatement pstmt1=conn.prepareStatement(sql2);
+               pstmt1.setInt(1,image_id);
+               ResultSet rs1=pstmt1.executeQuery();
+               while(rs1.next())
+               {
+                 model1.add(new ModelQuant(String.valueOf(rs1.getInt("Image_ID")),rs1.getString("Caption"),String.valueOf(rs1.getFloat("Intensity")),String.valueOf(rs1.getFloat("Concentration"))));
+
+               }
+               conn.close();
+            }
+    }catch(Exception e)
+    {
+        System.out.println(e);
+    }
+        return model1;
+    }
 }
 
 

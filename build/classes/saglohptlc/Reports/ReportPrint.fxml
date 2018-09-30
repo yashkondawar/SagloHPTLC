@@ -60,8 +60,8 @@
                         <TableColumn fx:id="result" prefWidth="75.0" text="result" />
                      </columns>
                   </TableView>
-                  <Label fx:id="asign" layoutX="54.0" layoutY="925.0" prefHeight="41.0" prefWidth="163.0" scaleShape="false" />
-                  <Label fx:id="rsign" layoutX="350.0" layoutY="925.0" prefHeight="41.0" prefWidth="163.0" scaleShape="false" />
+                  <Label fx:id="asign" layoutX="54.0" layoutY="925.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="50.0" scaleShape="false" />
+                  <Label fx:id="rsign" layoutX="350.0" layoutY="925.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="50.0" scaleShape="false" AnchorPane.bottomAnchor="0.0" />
                   <Label layoutX="412.0" layoutY="81.0" prefHeight="17.0" prefWidth="71.0" text="AR No :" />
                   <Label fx:id="arno" layoutX="478.0" layoutY="81.0" prefHeight="17.0" prefWidth="90.0" />
                </children>
@@ -70,7 +70,7 @@
       </ScrollPane>
       <HBox prefHeight="30.0" prefWidth="232.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="76.0" text="Back" />
+            <Button mnemonicParsing="false" onAction="#onBack" prefHeight="30.0" prefWidth="76.0" text="Back" />
             <Button mnemonicParsing="false" onAction="#loadTable" prefHeight="30.0" prefWidth="95.0" text="Load Report" />
             <Button mnemonicParsing="false" onAction="#PrintAction" prefHeight="30.0" prefWidth="76.0" text="Print" />
          </children>

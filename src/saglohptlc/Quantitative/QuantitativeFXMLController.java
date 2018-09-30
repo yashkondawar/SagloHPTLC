@@ -98,11 +98,11 @@ public class QuantitativeFXMLController implements Initializable,ControlledScree
        {
            System.out.println(res.get(i).caption +"\t"+res.get(i).x1+" "+res.get(i).x2+" "+res.get(i).y1+" "+res.get(i).y2+" "+res.get(i).concentration+" "+res.get(i).intensity);
        }
-       LinearRegression(res);
+       res=LinearRegression(res);
        QuantitativeModel.storeUnit(res);
        myController.setScreen(SagloHPTLC.DisplayQScene);
      }
-      public void LinearRegression(ArrayList<Unit> units) {
+      public ArrayList LinearRegression(ArrayList<Unit> units) {
         double intercept, slope;
         double r2;
         
@@ -133,7 +133,8 @@ public class QuantitativeFXMLController implements Initializable,ControlledScree
         System.out.println(slope);
         System.out.println(intercept);
         System.out.println(prediction);
-        
+        units.get(n-1).concentration=(float)prediction;
+        return units;
     }
     public void onLoadImage(ActionEvent event) {
         logentry.LogEntry("Opened Load Image window");
