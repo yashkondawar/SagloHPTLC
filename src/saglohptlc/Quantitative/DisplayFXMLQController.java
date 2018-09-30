@@ -58,10 +58,10 @@ public class DisplayFXMLQController implements Initializable,ControlledScreen{
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-   image_id.setCellValueFactory(new PropertyValueFactory<>(""));
+   image_id.setCellValueFactory(new PropertyValueFactory<>("id"));
    caption.setCellValueFactory(new PropertyValueFactory<>("caption"));
-   intensity.setCellValueFactory(new PropertyValueFactory<>("intensity"));
-   concentration.setCellValueFactory(new PropertyValueFactory<>("concentration"));
+   intensity.setCellValueFactory(new PropertyValueFactory<>("pointno"));
+   concentration.setCellValueFactory(new PropertyValueFactory<>("result"));
 
    System.out.println("Data"+getData().isEmpty());
    /*if(!getData().isEmpty())

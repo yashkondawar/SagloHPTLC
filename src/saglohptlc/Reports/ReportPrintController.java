@@ -12,7 +12,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -39,7 +38,6 @@ import saglohptlc.ControlledScreen;
 import saglohptlc.DatabaseModel;
 import saglohptlc.Qualitative.ModelRF;
 import saglohptlc.Qualitative.RFvalueDAO;
-import static saglohptlc.Qualitative.RFvalueDAO.model;
 import saglohptlc.Quantitative.ModelQuant;
 import saglohptlc.Quantitative.QuantitativeModel;
 import saglohptlc.SagloHPTLC;
@@ -117,7 +115,7 @@ public class ReportPrintController implements Initializable,ControlledScreen {
         plmat.setText(report.platemat);
         batchno.setText(report.batchno);
         analysis.setText(report.analysis);
-        
+        method.setText(report.method);
         BufferedImage buf=model.retriveImage();
      if(buf==null)
      {
@@ -137,7 +135,7 @@ public class ReportPrintController implements Initializable,ControlledScreen {
             }
             else
             {
-               String sql="select Org_Name,username where ID=?;";
+               String sql="select Org_Name,username FROM  User where ID=?;";
                PreparedStatement pstmt=conn.prepareStatement(sql);
                pstmt.setInt(1, SagloHPTLC.session_id);
                ResultSet rs=pstmt.executeQuery();
@@ -158,13 +156,13 @@ public class ReportPrintController implements Initializable,ControlledScreen {
         if(SagloHPTLC.quant_qual_flag==1)
         {
             ReportsTable.getItems().clear();
-            ReportsTable.getItems().addAll(getQuantData());
+            ReportsTable.getItems().addAll(getQualData());
             
         }
         else if(SagloHPTLC.quant_qual_flag==2)
         {
             ReportsTable.getItems().clear();
-            ReportsTable.getItems().addAll(getQualData());
+            ReportsTable.getItems().addAll(getQuantData());
         }
     }
     public void onSettings (ActionEvent event) {
@@ -219,17 +217,20 @@ public class ReportPrintController implements Initializable,ControlledScreen {
         //orgname.setText(model.orgret());
         //dptname.setText(rep.deptname);
         //username,date,product,method,eqno,test,instno,batchno,analysis,plmat,solvent,devmode,asign,rsign;
-      /* sno.setCellValueFactory(new PropertyValueFactory<>("sno"));
-       caption.setCellValueFactory(new PropertyValueFactory<>("caption"));
-       pointno.setCellValueFactory(new PropertyValueFactory<>("pointno"));
-       result.setCellValueFactory(new PropertyValueFactory<>("result"));*/
-    
+
+               sno.setCellValueFactory(new PropertyValueFactory<>("id"));
+               caption.setCellValueFactory(new PropertyValueFactory<>("caption"));
+               pointno.setCellValueFactory(new PropertyValueFactory<>("pointno"));
+               result.setCellValueFactory(new PropertyValueFactory<>("result"));
+
     }    
     public ObservableList getQualData()
      {
            ArrayList rf=RFvalueDAO.getTable();
           ObservableList rfpoints=FXCollections.observableArrayList();
           rfpoints.addAll(rf);
+          
+
           return rfpoints;
      }
      public ObservableList getQuantData()
@@ -244,8 +245,8 @@ public class ReportPrintController implements Initializable,ControlledScreen {
          }
          ObservableList points=FXCollections.observableArrayList();
           points.addAll(a);
-         //System.out.println(points.get(0).getCaption());
-         System.out.println(points.isEmpty());
+         //System.out.println(points.get(0).getImage_id());
+        // System.out.println(points.isEmpty());
           return points;
      }
     @Override

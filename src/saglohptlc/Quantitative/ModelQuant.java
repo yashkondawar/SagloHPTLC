@@ -11,21 +11,14 @@ package saglohptlc.Quantitative;
  * @author Soha
  */
 public class ModelQuant {
-   String image_id,caption,intensity,concentration;
+   String id,caption,pointno,result;
 
-    public ModelQuant(String image_id, String caption, String intensity, String concentration) {
-        this.image_id = image_id;
-        this.caption = caption;
-        this.intensity = intensity;
-        this.concentration = concentration;
+    public String getId() {
+        return id;
     }
 
-    public String getImage_id() {
-        return image_id;
-    }
-
-    public void setImage_id(String image_id) {
-        this.image_id = image_id;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getCaption() {
@@ -36,23 +29,30 @@ public class ModelQuant {
         this.caption = caption;
     }
 
-    public String getIntensity() {
-        return intensity;
+    public String getPointno() {
+        return pointno;
     }
 
-    public void setIntensity(String intensity) {
-        this.intensity = intensity;
+    public void setPointno(String pointno) {
+        this.pointno = pointno;
     }
 
-    public String getConcentration() {
-        return concentration;
+    public String getResult() {
+        return result;
     }
 
-    public void setConcentration(String concentration) {
-        this.concentration = concentration;
+    public void setResult(String result) {
+        this.result = result;
     }
 
-    
-    
+    public ModelQuant(String id, String caption, String pointno, String result) {
+        this.id = id;
+        this.caption = caption;
+        this.pointno = pointno;
+        this.result = result;
+    }
+   
+
+       
     
 }

@@ -1,7 +1,7 @@
 package saglohptlc.Qualitative;
 import javafx.beans.property.*;
 
-public class ModelRF{
+/*public class ModelRF{
     private final SimpleStringProperty id;
     private final SimpleStringProperty caption;
     private final SimpleStringProperty point_no;
@@ -10,7 +10,7 @@ public class ModelRF{
     /**
      * Default constructor.
      */
-    public ModelRF()
+  /*  public ModelRF()
     {
         this(" "," "," "," ");
     }
@@ -23,7 +23,7 @@ public class ModelRF{
      * @param point_no
      * @param rfvalue
      */
-    public ModelRF(String id,String caption, String point_no,String rfvalue) {
+    /*public ModelRF(String id,String caption, String point_no,String rfvalue) {
         this.id = new SimpleStringProperty(id);
         this.caption = new SimpleStringProperty(caption);
         this.point_no = new SimpleStringProperty(point_no);
@@ -80,4 +80,48 @@ public class ModelRF{
     
     
     
+}*/
+public class ModelRF{
+    String id,caption,pointno,result;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getCaption() {
+        return caption;
+    }
+
+    public void setCaption(String caption) {
+        this.caption = caption;
+    }
+
+    public String getPointno() {
+        return pointno;
+    }
+
+    public void setPointno(String pointno) {
+        this.pointno = pointno;
+    }
+
+    public String getResult() {
+        return result;
+    }
+
+    public void setResult(String result) {
+        this.result = result;
+    }
+
+    public ModelRF(String id, String caption, String pointno, String result) {
+        this.id = id;
+        this.caption = caption;
+        this.pointno = pointno;
+        this.result = result;
+    }
+
+  
 }

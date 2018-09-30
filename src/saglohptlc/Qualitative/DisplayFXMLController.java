@@ -88,8 +88,8 @@ public class DisplayFXMLController implements Initializable,ControlledScreen{
   
    ID.setCellValueFactory(new PropertyValueFactory<>("id"));
    Caption.setCellValueFactory(new PropertyValueFactory<>("caption"));
-   Point_No.setCellValueFactory(new PropertyValueFactory<>("point_no"));
-   RFValue.setCellValueFactory(new PropertyValueFactory<>("rfvalue"));
+   Point_No.setCellValueFactory(new PropertyValueFactory<>("pointno"));
+   RFValue.setCellValueFactory(new PropertyValueFactory<>("result"));
   
     //table.getItems().addAll(getData());
    

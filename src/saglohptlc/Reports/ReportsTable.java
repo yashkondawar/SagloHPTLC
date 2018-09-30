@@ -10,22 +10,22 @@ package saglohptlc.Reports;
  * @author Dell
  */
 public class ReportsTable {
-    String sno;
+    String id;
     String caption,pointno,result;
 
-    public ReportsTable(String sno, String caption, String pointno, String result) {
-        this.sno = sno;
+    public ReportsTable(String id, String caption, String pointno, String result) {
+        this.id = id;
         this.caption = caption;
         this.pointno = pointno;
         this.result = result;
     }
 
-    public String getSno() {
-        return sno;
+    public String getID() {
+        return id;
     }
 
-    public void setSno(String sno) {
-        this.sno = sno;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getCaption() {

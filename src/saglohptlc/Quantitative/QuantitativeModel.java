@@ -34,6 +34,7 @@ import saglohptlc.SagloHPTLC;
  * @author Soha
  */
 public class QuantitativeModel{
+  static  ArrayList<ModelQuant>model=new ArrayList<ModelQuant>();
     public static void storeUnit(ArrayList<Unit>a){
         try {
             Class.forName("org.sqlite.JDBC");
@@ -47,6 +48,8 @@ public class QuantitativeModel{
                String sql="insert into Quantitative(Image_ID,Caption,Intensity,Concentration) values(?,?,?,?)";
                for(int i=0;i<a.size();i++)
                {
+                 int j1=SagloHPTLC.image_id;
+                 model.add(new ModelQuant(String.valueOf(j1),a.get(i).caption,String.valueOf(a.get(i).intensity),String.valueOf(a.get(i).concentration)));
                  PreparedStatement pstmt=conn.prepareStatement(sql);
                  pstmt.setInt(1, SagloHPTLC.image_id);
                  pstmt.setString(2,a.get(i).caption);
@@ -86,8 +89,10 @@ public class QuantitativeModel{
     {
         System.out.println(e);
     }
-         
+         if(model.size()==0)
          return quant;
+         else
+             return model;
     }
 }
 
