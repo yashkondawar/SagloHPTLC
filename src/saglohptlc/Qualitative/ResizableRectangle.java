@@ -41,7 +41,7 @@ class ResizableRectangle extends Rectangle {
         {
             return array_of_points;
         }
-        public static void setArray_of_Points(ArrayList<Point> a)
+    public static void setArray_of_Points(ArrayList<Point> a)
     {
         array_of_points=a;
     }

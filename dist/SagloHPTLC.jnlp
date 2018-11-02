@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="SagloHPTLC.jar" size="242942" download="eager" />
+    <jar href="SagloHPTLC.jar" size="4868134" download="eager" />
     <jar href="lib\artoolkitplus-2.3.1-1.2-linux-x86_64.jar" size="173838" download="eager" />
     <jar href="lib\artoolkitplus-2.3.1-1.2.jar" size="24209" download="eager" />
     <jar href="lib\ffmpeg-2.1.1-windows-x86.jar" size="10720957" download="eager" />

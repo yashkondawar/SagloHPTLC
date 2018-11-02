@@ -106,25 +106,25 @@ public class CaptureController implements Initializable,ControlledScreen{
         alert.setContentText("Saved Successfully");
         alert.showAndWait();
     }
-    public void onQualitative (ActionEvent event) {
+       
+   public void onQualitative (ActionEvent event) {
         SagloHPTLC.quant_qual_flag=1;
-        myController.setScreen(SagloHPTLC.QualitativeScene);
-        logentry.LogEntry("Opened Qualitative window");
+       myController.setScreen(SagloHPTLC.QualitativeScene);
+       logentry.LogEntry("Opened Qualitative window");
         
     }
-    
-    public void onQuantitative (ActionEvent event) {
+   public void onQuantitative (ActionEvent event) {
          SagloHPTLC.quant_qual_flag=2;
-        logentry.LogEntry("Opened Quantitative window");
-        myController.setScreen(SagloHPTLC.QuantitativeScene);
-    }
+       logentry.LogEntry("Opened Quantitative window");
+       myController.setScreen(SagloHPTLC.QuantitativeScene);
+   }
     
-    public void aboutUs (ActionEvent event) {
+   public void aboutUs (ActionEvent event) {
         logentry.LogEntry("Opened AboutUs window");
-        myController.setScreen(SagloHPTLC.AboutScene);
-    }
+       myController.setScreen(SagloHPTLC.AboutScene);
+   }
     
-    public void onReports (ActionEvent event) {
+   public void onReports (ActionEvent event) {
         logentry.LogEntry("Opened Reports window");
         myController.setScreen(SagloHPTLC.ReportScene);
     }
@@ -133,6 +133,7 @@ public class CaptureController implements Initializable,ControlledScreen{
         logentry.LogEntry("Logged Out");
         SagloHPTLC.session_id=0;
         SagloHPTLC.image_id=0;
+        img.setImage(null);
         myController.setScreen(SagloHPTLC.Main);
     }
     
@@ -173,6 +174,17 @@ public class CaptureController implements Initializable,ControlledScreen{
     public void setScreenParent(ScreensController screenPage) {
     myController=screenPage;
     }
-
+    
+    public void Export()
+    {
+    File outputFile = new File("SagloHPTLC_inputfile.jpg");
+    //BufferedImage bImage = SwingFXUtils.fromFXImage(bufferedimage, null);
+    try {
+      ImageIO.write(bufferedimage, "jpg", outputFile);
+    } catch (Exception e) {
+      throw new RuntimeException(e);
+    }
+  }
+    
     
 }

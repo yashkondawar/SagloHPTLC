@@ -39,6 +39,10 @@ public class DisplayFXMLQController implements Initializable,ControlledScreen{
     CanvasFrame frame=null;
     Thread thread=null;
     DatabaseModel model=new DatabaseModel();
+    DatabaseModel logentry = new DatabaseModel();
+    ArrayList<ModelQuant> a;
+    ArrayList<Unit> b;
+
     //Addition of Points and Caption
     
     @FXML
@@ -72,7 +76,7 @@ public class DisplayFXMLQController implements Initializable,ControlledScreen{
     } 
     public ObservableList<ModelQuant>getData()
      {
-         ArrayList<ModelQuant> a;
+         //ArrayList<ModelQuant> a;
          if(!QuantitativeModel.getTable().isEmpty()){
          a= QuantitativeModel.getTable();
          }
@@ -101,7 +105,13 @@ public class DisplayFXMLQController implements Initializable,ControlledScreen{
         myController.setScreen(SagloHPTLC.ReportScene);
     }
     public void onLogOut (ActionEvent event) {
-        
+        logentry.LogEntry("Logged Out");
+        SagloHPTLC.session_id=0;
+        SagloHPTLC.image_id=0;
+        //QuantitativeFXMLController.img.setImage(null);
+        //ResizableRectangle.setArray_of_Unit(null);
+        a.clear();
+        myController.setScreen(SagloHPTLC.Main);
     }
     public void onSettings (ActionEvent event) {
         if(SagloHPTLC.flag==0)

@@ -122,13 +122,13 @@ public class DisplayFXMLController implements Initializable,ControlledScreen{
         logentry.LogEntry("Opened Load Image window");
         myController.setScreen(SagloHPTLC.CaptureScene);
     }  
-    @FXML
+    /*@FXML
     public void onQualitative (ActionEvent event) {
         SagloHPTLC.quant_qual_flag=1;
         logentry.LogEntry("Opened Qualitative window");
         myController.setScreen(SagloHPTLC.QualitativeScene);
         
-    }
+    }*/
     @FXML
     public void onQuantitative (ActionEvent event) {
         SagloHPTLC.quant_qual_flag=2;

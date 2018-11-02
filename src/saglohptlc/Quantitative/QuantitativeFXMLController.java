@@ -43,6 +43,7 @@ public class QuantitativeFXMLController implements Initializable,ControlledScree
     Thread thread=null;
     DatabaseModel model=new DatabaseModel();
     DatabaseModel logentry = new DatabaseModel();
+    ArrayList<Unit> res = new ArrayList<Unit>();
     //Addition of Points and Caption
     
     @FXML
@@ -68,7 +69,7 @@ public class QuantitativeFXMLController implements Initializable,ControlledScree
         group.getChildren().remove(1,group.getChildren().size());
     }
      public void onAnalyse(ActionEvent event) {
-       ArrayList<Unit> res=ResizableRectangle.getArray_of_Unit();
+       res=ResizableRectangle.getArray_of_Unit();
        bufferedimage=SwingFXUtils.fromFXImage(mainImage,null);
        int pixel,red,green,blue;
        for(int i=0;i<res.size();i++)
@@ -115,8 +116,8 @@ public class QuantitativeFXMLController implements Initializable,ControlledScree
             sumx2 += units.get(i).intensity*units.get(i).intensity;
             sumy  += units.get(i).concentration;
         }
-        double xbar = sumx / n-1;
-        double ybar = sumy / n-1;
+        double xbar = sumx / n;
+        double ybar = sumy / n;
 
         // second pass: compute summary statistics
         double xxbar = 0.0, yybar = 0.0, xybar = 0.0;
@@ -167,6 +168,10 @@ public class QuantitativeFXMLController implements Initializable,ControlledScree
         logentry.LogEntry("Logged Out");
         SagloHPTLC.session_id=0;
         SagloHPTLC.image_id=0;
+        img.setImage(null);
+        res.clear();
+        clearSelection(selectionGroup);
+        ResizableRectangle.setArray_of_Unit(res);
         myController.setScreen(SagloHPTLC.Main);
     }
     

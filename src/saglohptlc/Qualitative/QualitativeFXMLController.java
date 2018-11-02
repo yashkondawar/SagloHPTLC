@@ -45,6 +45,7 @@ public class QualitativeFXMLController implements Initializable,ControlledScreen
     Thread thread=null;
     DatabaseModel model=new DatabaseModel();
     DatabaseModel logentry=new DatabaseModel();
+    ArrayList <Point> a = new ArrayList <Point>();
     //Addition of Points and Caption
     public TextField text;
     public TableView<ModelRF> table;
@@ -107,6 +108,10 @@ public class QualitativeFXMLController implements Initializable,ControlledScreen
         logentry.LogEntry("Logged Out");
         SagloHPTLC.session_id=0;
         SagloHPTLC.image_id=0;
+        img.setImage(null);
+        a.clear();
+        clearSelection(selectionGroup);
+        ResizableRectangle.setArray_of_Points(a);
         myController.setScreen(SagloHPTLC.Main);
     }
     
@@ -133,7 +138,7 @@ public class QualitativeFXMLController implements Initializable,ControlledScreen
     }
     public void onCalculateRFValue(ActionEvent event)
     {
-      ArrayList <Point>a=ResizableRectangle.getArray_of_Points();
+      a=ResizableRectangle.getArray_of_Points();
       ArrayList<ArrayList<Double>> rfvalues=new ArrayList<ArrayList<Double>>();
       boolean flag=false;
       String caption=null;

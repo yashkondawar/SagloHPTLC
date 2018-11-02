@@ -20,7 +20,7 @@ import javafx.stage.Screen;
  */
 public class SagloHPTLC extends Application {
     public static String Main = "main";
-    public static String MainFile = "/saglohptlc/Login/Login.fxml";
+    public static String MainFile = "/saglohptlc/Login/Login1.fxml";
     public static String CaptureScene = "Capture";
     public static String CaptureFile = "/saglohptlc/Capture/Capture.fxml";
     public static String QualitativeScene = "QualitativeAnalysis";
@@ -74,6 +74,8 @@ public class SagloHPTLC extends Application {
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.show();
+            primaryStage.setTitle("Saglo TLC PhotoDoc Soft");
+            primaryStage.getIcons().add(new Image("file:Capture.png"));
             
             double newWidth  = scene.getWidth();
             double newHeight = scene.getHeight();

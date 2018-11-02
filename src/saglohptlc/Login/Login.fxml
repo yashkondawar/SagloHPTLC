@@ -42,9 +42,8 @@
     </children>
 </HBox>
 -->
-
 <AnchorPane id="AnchorPane" fx:id="anchorpane" prefHeight="255.0" prefWidth="491.0" style="-fx-background-color: cyan;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="saglohptlc.Login.LoginController">
-   <children>
+    <children>
       <ImageView fitHeight="247.0" fitWidth="210.0" layoutX="6.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Capture.PNG" />

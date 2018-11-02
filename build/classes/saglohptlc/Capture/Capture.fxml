@@ -25,5 +25,6 @@
       <Button layoutX="389.0" layoutY="14.0" mnemonicParsing="false" onAction="#Capture" prefHeight="29.0" prefWidth="83.0" text="Capture" />
       <Button layoutX="484.0" layoutY="14.0" mnemonicParsing="false" onAction="#Save" prefHeight="29.0" prefWidth="83.0" text="Save" />
       <Label layoutX="191.0" layoutY="59.0" prefHeight="17.0" prefWidth="378.0" text="* Please Save the captured/browsed image before proceeding." textFill="RED" />
+      <Button layoutX="508.0" layoutY="360.0" mnemonicParsing="false" onAction="#Export" prefHeight="29.0" prefWidth="83.0" text="Export" />
    </children>
 </AnchorPane>
